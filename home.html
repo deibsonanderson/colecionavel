@@ -1,0 +1,141 @@
+<!doctype html>
+<html ng-app="colecionavel.module">
+
+<head>
+	<title>Home | Colecionável - Sistema de cadastro itens colecionáveis</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/gamepad2.svg">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body ng-controller="ColecionavelController as ColecionavelCtrl">
+	<!-- WRAPPER -->
+	<div id="preloader">
+	  <div id="status">&nbsp;</div>
+	</div>
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="brand">
+				
+					<!--img src="assets/img/logo-dark.png" alt="Colecionável Logo" class="img-responsive logo"-->
+					<h4 style="margin:0px"><i class="fa fa-gamepad"></i>&nbsp;&nbsp;Colecionável</h4>
+				
+			</div>
+			<div class="container-fluid">
+				<div class="navbar-btn">
+					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+				</div>
+				<div ng-include="'main-header.html'"></div>
+			</div>
+		</nav>		
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div ng-include="'main-sidebar.html'"></div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		 <ui-view></ui-view>
+	    <!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+			<div class="container-fluid">
+				<p class="copyright">&copy; 2017 <a href="http://dicaseprogramacao.com.br" target="_blank">Dicas & Programação</a>. Todos os direitos reservados.</p>
+			</div>
+		</footer>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	
+	
+<!-- Javascripts-->
+    <!--script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="angular-locale_pt-br.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js  "></script>    
+    <script src="bower_components/ocLazyLoad/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/angular-ui-mask/dist/mask.min.js"></script>
+    <script src="bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+    <!-- lightbox -->
+    <link href="bower_components/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <script src="bower_components/lightbox2/dist/js/lightbox.min.js"></script>
+	<!-- lightbox -->
+
+	<!-- jk-rating-stars -->
+	<!--link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"-->
+    <link href="bower_components/angular-jk-rating-stars/dist/jk-rating-stars.css" rel="stylesheet">
+    <script src="bower_components/angular-jk-rating-stars/dist/jk-rating-stars.js"></script>
+	<!-- jk-rating-stars -->
+
+    <!-- Ui - Full Calendar ->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    <!-- Ui - Full Calendar -->
+
+
+	<script src="colecionavel.module.js"></script>
+    <script src="modules/common/constants/apiurl.constant.js"></script>         
+	<script src="modules/common/constants/plataforma.constant.js"></script>
+	<script src="modules/common/constants/regiao.constant.js"></script>
+	<script src="modules/common/constants/situacao.constant.js"></script>
+	<script src="modules/common/constants/tipo.constant.js"></script>   
+	<script src="modules/common/constants/genero.constant.js"></script>	
+    <script src="modules/common/filter/lpad.filter.js"></script>
+    <script src="modules/common/directives/alerts.directive.js"></script>    
+    <script src="modules/common/service/scrollto.service.js"></script>    
+    <script src="routerHelperProvider.js"></script>
+    <script src="colecionavel.routes.js"></script>
+    <script src="colecionavel.controller.js"></script>   	
+	
+</body>
+</html>
+<script type="text/javascript">
+  function preloader(time){
+  	  $('#status').show();	
+  	  $('#preloader').show();	
+	  $('#status').fadeOut(); // will first fade out the loading animation 
+	  $('#preloader').delay(time).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  	  $('body').delay(time).css({'overflow':'visible'});  	  
+  }
+
+  function addloader(){
+	$('#status').show();	
+  	$('#preloader').show();	
+  }	
+
+  function removeloader(){
+  	$('#status').fadeOut(); 
+	$('#preloader').fadeOut('slow');
+  	$('body').css({'overflow':'visible'});
+  }
+$(window).on('load', function() {
+	preloader(350);
+})
+</script>

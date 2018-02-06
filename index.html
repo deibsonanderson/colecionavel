@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" class="fullscreen-bg" ng-app='colecionavel.login'>
+
+<head>
+	<title>Login | Colecionável - Sistema de cadastro itens colecionáveis</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<!-- GOOGLE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body ng-controller="loginController as loginCtrl">
+	
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle">
+				<div class="auth-box ">
+					<div class="left">
+						<div class="content">
+							<div class="header">
+								<div class="logo text-center"><!--img src="assets/img/logo-dark.png" alt="Klorofil Logo"-->
+									<h2 class="heading"><i class="fa fa-gamepad"></i>&nbsp;&nbsp;Colecionável</h2>
+									<h4 class="heading">Sistema de cadastro itens colecionáveis</h4>
+								</div>
+								<br />
+								<p class="lead" ng-class="{'error-font': loginCtrl.isError === true}">{{loginCtrl.titulo}}</p>
+							</div>
+							<form name="loginForm" class="form-auth-small">
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">E-mail</label>
+									<input type="email" required ng-model="loginCtrl.user.username" class="form-control mgs_alerta" id="signin-email" value="" placeholder="Email">
+								</div>
+								<div class="form-group">
+									<label for="signin-password" class="control-label sr-only">Senha</label>
+									<input ng-model="loginCtrl.user.password" required type="password" class="form-control mgs_alerta" id="signin-password" value="" placeholder="Password">
+								</div>
+								<!--div class="form-group clearfix">
+									<label class="fancy-checkbox element-left">
+										<input type="checkbox">
+										<span>Lembre-me</span>
+									</label>
+								</div-->
+								<button type="bottom" ng-click="loginCtrl.login(loginForm)" id="btn-acesso"  class="btn btn-primary btn-lg btn-block">Acesso</button>
+								<!--div class="bottom">
+									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Esqueceu a senha?</a></span>
+								</div-->
+							</form>
+						</div>
+					</div>
+					<div class="right">
+						<div class="overlay"></div>
+						<div class="content text">
+							<h1 class="heading">Colecionável - Sistema de cadastro itens colecionável</h1>
+							<p>Desevolvido por Deibson Anderson</p>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WRAPPER -->
+		<script src="assets/vendor/jquery/jquery.min.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+        <script>
+           $(document).ready(function(){
+		      $('#btn-acesso').on('click',function(){
+		         $('.mgs_alerta').each(function(){            
+		            if($(this).val() == '' || $(this).val() == null){               
+		               $(this).addClass('error'); 
+		            }else{
+		               $(this).removeClass('error');
+		            }        
+		         });   
+		      }); 
+		   });   
+
+
+        angular.module('colecionavel.login', [])
+                .controller('loginController', ['$scope', '$http',function ($scope, $http) {
+                	var vm = this;
+                	var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
+                	//var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';
+                	vm.user = {
+                		username : 'deibson.januario@gmail.com',
+                		password : 'dajdaj'
+                	};
+                	vm.login = login;
+                	vm.logout = logout;
+                	vm.titulo = 'Informe seus dados de acesso.';
+                	vm.isError = false;
+                    
+                    function login (form) {
+                    	if (form.$valid) {
+				            $http.post(_baseUrl + '?op=1',vm.user).then(function onSuccess(response) {
+				                console.log(response.data);
+				                if(!angular.isUndefined(response.data) && 
+				                	!angular.isUndefined(response.data[0]) && 
+				                	response.data[0] === "correct"
+				                	){
+					                window.location.href = './home.html';
+					                vm.isError = false;				                
+				                }else{
+				                	vm.titulo = 'E-Mail ou Senha Inválidos!';
+				                	vm.isError = true;	
+				                }
+				            }).catch(function onError(response) {
+				                console.log(response);
+				                vm.isError = true;
+				            });               
+			            }else{
+			            	vm.isError = true;
+							vm.titulo = 'Preencha os campos obrigatórios!';
+			            }                                 
+			        };
+
+
+                    function logout() {
+                        return $http.get(_baseUrl);
+                    };
+                    
+                    this.logout();			        
+
+                }]);
+        </script>	
+</body>
+
+</html>

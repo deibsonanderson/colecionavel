@@ -1,0 +1,522 @@
+<div class="main">
+   <!-- MAIN CONTENT -->
+   <div class="main-content">
+      <div class="container-fluid">
+         <form name="itemForm">
+         <h3 class="page-title">{{ItemManterCtrl.titulo}} </h3>
+
+        <div ng-repeat="alert in ItemManterCtrl.alerts" class="row">
+          <div class="col-md-12">      
+            <div class="alert alert-dismissible" ng-class="alert.type" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="ItemManterCtrl.closeAlert($index)"><span aria-hidden="true">&times;</span></button>
+               <i class="fa fa-times-circle"></i> {{alert.msg}}
+            </div>
+          </div>
+        </div>
+         <div class="row">
+            <div class="col-md-6">
+               <!-- INPUTS -->
+               <div class="panel">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Imagens de capa e screenshots</h3>
+                  </div>
+                  <div class="panel-body">
+                     <div class="custom-tabs-line tabs-line-bottom left-aligned">
+                        <ul class="nav" role="tablist">
+                           <li class="active"><a href="#tab-image-left1" role="tab" data-toggle="tab">Capa</a></li>
+                           <li><a href="#tab-image-left2" role="tab" data-toggle="tab">Screenshots</a></li>                           
+                        </ul>
+                     </div>
+                     <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-image-left1">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="input-group">
+                                    <input   value="" 
+                                             class="form-control" 
+                                             placeholder="Search dashboard..."
+                                             name="image" 
+                                             accept="image/*" 
+                                             required="false" 
+                                             id="fileinput" 
+                                             type="file"
+                                             onchange="angular.element(this).scope().uploadFile(this,99)"
+                                             ng-disabled="ItemManterCtrl.isView">
+                                    <span class="input-group-btn"><button type="button" ng-disabled="ItemManterCtrl.isView" ng-click="ItemManterCtrl.removerImagem(itemForm,99)" class="btn btn-primary">Remover</button></span>
+                                 </div>
+                              </div>
+                           </div>                       
+                           <div class="row">
+                              <div class="col-md-12 text-center">
+                                 <a href="{{ItemManterCtrl.item.imagem || './assets/img/default.jpg'}}" data-lightbox="image-1" data-title="{{ItemManterCtrl.item.titulo}}">
+                                    <img src="{{ItemManterCtrl.item.imagem || './assets/img/default.jpg'}}"                                  
+                                     alt="..." class="img-thumbnail">
+                                 </a>
+                              </div>
+                           </div>                           
+                        </div>
+                        <div class="tab-pane fade" id="tab-image-left2">
+                           <div class="row" >
+                              <div class="col-md-6 form-group">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="input-group">
+                                          <input   value="" 
+                                             class="form-control" 
+                                             placeholder="Search dashboard..."
+                                             name="screenshot1" 
+                                             accept="image/*" 
+                                             required="false" 
+                                             id="fileinput" 
+                                             type="file"
+                                             onchange="angular.element(this).scope().uploadFile(this,1)"
+                                             ng-disabled="ItemManterCtrl.isView">
+                                             <span class="input-group-btn"><button type="button" ng-disabled="ItemManterCtrl.isView" ng-click="ItemManterCtrl.removerImagem(itemForm,1)" class="btn btn-primary">Remover</button></span>
+                                       </div>
+                                    </div>
+                                 </div>                       
+                                 <div class="row">
+                                    <div class="col-md-12 text-center">
+                                       <a href="{{ItemManterCtrl.item.screenshot1 || './assets/img/default.jpg'}}" data-lightbox="image-2" data-title="{{ItemManterCtrl.item.titulo}}">
+                                          <img src="{{ItemManterCtrl.item.screenshot1 || './assets/img/default.jpg'}}" alt="..." class="img-thumbnail">
+                                       </a>                                       
+                                    </div>
+                                 </div>    
+
+                              </div>
+                              <div class="col-md-6 form-group">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="input-group">
+                                          <input   value="" 
+                                             class="form-control" 
+                                             placeholder="Search dashboard..."
+                                             name="screenshot2" 
+                                             accept="image/*" 
+                                             required="false" 
+                                             id="fileinput" 
+                                             type="file"
+                                             onchange="angular.element(this).scope().uploadFile(this,2)"
+                                             ng-disabled="ItemManterCtrl.isView">
+                                             <span class="input-group-btn"><button type="button" ng-disabled="ItemManterCtrl.isView" ng-click="ItemManterCtrl.removerImagem(itemForm,2)" class="btn btn-primary">Remover</button></span>
+                                       </div>
+                                    </div>
+                                 </div>                       
+                                 <div class="row">
+                                    <div class="col-md-12 text-center">
+                                       <a href="{{ItemManterCtrl.item.screenshot2 || './assets/img/default.jpg'}}" data-lightbox="image-3" data-title="{{ItemManterCtrl.item.titulo}}">
+                                          <img src="{{ItemManterCtrl.item.screenshot2 || './assets/img/default.jpg'}}" alt="..." class="img-thumbnail">
+                                       </a>                                                                              
+                                    </div>
+                                 </div>    
+
+                              </div>
+                           </div>  
+                           <div class="row ">
+                              <div class="col-md-6 form-group">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="input-group">
+                                          <input   value="" 
+                                             class="form-control" 
+                                             placeholder="Search dashboard..."
+                                             name="screenshot3" 
+                                             accept="image/*" 
+                                             required="false" 
+                                             id="fileinput" 
+                                             type="file"
+                                             onchange="angular.element(this).scope().uploadFile(this,3)"
+                                             ng-disabled="ItemManterCtrl.isView">
+                                             <span class="input-group-btn"><button type="button" ng-disabled="ItemManterCtrl.isView" ng-click="ItemManterCtrl.removerImagem(itemForm,3)" class="btn btn-primary">Remover</button></span>
+                                       </div>
+                                    </div>
+                                 </div>                       
+                                 <div class="row">
+                                    <div class="col-md-12 text-center">
+                                       <a href="{{ItemManterCtrl.item.screenshot3 || './assets/img/default.jpg'}}" data-lightbox="image-4" data-title="{{ItemManterCtrl.item.titulo}}">
+                                          <img src="{{ItemManterCtrl.item.screenshot3 || './assets/img/default.jpg'}}" alt="..." class="img-thumbnail">
+                                       </a>                                                                              
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="input-group">
+                                          <input   value="" 
+                                             class="form-control" 
+                                             placeholder="Search dashboard..."
+                                             name="screenshot4" 
+                                             accept="image/*" 
+                                             required="false" 
+                                             id="fileinput" 
+                                             type="file"
+                                             onchange="angular.element(this).scope().uploadFile(this,4)"
+                                             ng-disabled="ItemManterCtrl.isView">
+                                             <span class="input-group-btn"><button type="button" ng-disabled="ItemManterCtrl.isView" ng-click="ItemManterCtrl.removerImagem(itemForm,4)" class="btn btn-primary">Remover</button></span>
+                                       </div>
+                                    </div>
+                                 </div>                       
+                                 <div class="row">
+                                    <div class="col-md-12 text-center">
+                                       <a href="{{ItemManterCtrl.item.screenshot4 || './assets/img/default.jpg'}}" data-lightbox="image-5" data-title="{{ItemManterCtrl.item.titulo}}">
+                                          <img src="{{ItemManterCtrl.item.screenshot4 || './assets/img/default.jpg'}}" alt="..." class="img-thumbnail">
+                                       </a>                                                                              
+                                    </div>
+                                 </div>    
+
+                              </div>
+                           </div>                             
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- END INPUTS -->
+            </div>
+            <div class="col-md-6">
+               <!-- INPUTS -->
+               <div class="panel">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Informações e descrição</h3>
+                  </div>
+                  <div class="panel-body">
+                     <div class="custom-tabs-line tabs-line-bottom left-aligned">
+                        <ul class="nav" role="tablist">
+                           <li class="active">
+                               <a href="#tab-bottom-left1" role="tab" data-toggle="tab">Descrição</a></li>
+                           <li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Características</a></li>
+                           <li><a href="#tab-bottom-left3" role="tab" data-toggle="tab">Complementos</a></li>
+                           <li><a href="#tab-bottom-left4" role="tab" data-toggle="tab">Avaliação</a></li>
+                           <li><a href="#tab-bottom-left5" role="tab" data-toggle="tab">Armazenagem</a></li>
+                        </ul>
+                     </div>
+                     <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-bottom-left1">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Código</label>
+                                    {{ItemManterCtrl.item.id | lpad : 5}}
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Data de cadastro</label>
+                                    {{ItemManterCtrl.item.data_cadastro}}
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Título</label>
+                                    <input type="text" required class="form-control mgs_alerta" ng-disabled="ItemManterCtrl.isView" placeholder=""  ng-model="ItemManterCtrl.item.titulo">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Descrição</label>
+                                    <textarea class="form-control" ng-disabled="ItemManterCtrl.isView" placeholder="" ng-model="ItemManterCtrl.item.descricao" rows="4"></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Situação Atual</label>
+                                    <select class="form-control" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.situacao" ng-options="valor as valor for valor in ItemManterCtrl.situacoes track by valor">
+                                       <option value=""></option>                                
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Possui o Item ?</label>
+                                    <select class="form-control" ng-change="ItemManterCtrl.checarPropriedade()" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.possui">
+                                       <option value="1" selected>Sim</option>
+                                       <option value="0">Não</option>                                       
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-bottom-left2">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Procedência</label>
+                                    <select class="form-control mgs_alerta" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.procedencia">
+                                       <option value="" class="" selected="selected"></option>
+                                       <option value="Original" >Original</option>
+                                       <option value="Pirata">Pirata</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Plataforma</label>
+                                    <select class="form-control mgs_alerta"  required ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.plataforma" ng-options="valor as valor for valor in ItemManterCtrl.plataformas track by valor">
+                                       <option value="" class="" selected="selected"></option>                                      
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Região</label>
+                                    <select class="form-control mgs_alerta" required ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.regiao" ng-options="valor as valor for valor in ItemManterCtrl.regioes track by valor">
+                                       <option value=""  class=""  selected="selected"></option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Tipo</label>
+                                    <select required class="form-control mgs_alerta" ng-change="ItemManterCtrl.checarDigital()" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.tipo" ng-options="valor as valor for valor in ItemManterCtrl.tipos track by valor" >
+                                       <option value="" class="" selected="selected"></option>
+                                    </select>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Valor Pago</label>
+                                    <input class="form-control" ui-money-mask ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.valor_pago" >
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Valor Atual</label>
+                                    <input class="form-control" ui-money-mask ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.valor_atual">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Gênero</label>
+                                    <select class="form-control" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.genero" ng-options="valor as valor for valor in ItemManterCtrl.generos track by valor">
+                                       <option value="" class="" selected="selected"></option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Código do Usuário</label>
+                                    <input class="form-control" ng-disabled="ItemManterCtrl.isView"  ng-model="ItemManterCtrl.item.codigo" placeholder="Exemplo: SNS-001, GBA-002">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Produtora</label>
+                                    <input class="form-control " ng-disabled="ItemManterCtrl.isView"  ng-model="ItemManterCtrl.item.produtora" placeholder="Exemplo: Capcom, Nintendo">
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Publicadora</label>
+                                    <input class="form-control " ng-disabled="ItemManterCtrl.isView"  ng-model="ItemManterCtrl.item.publicadora" placeholder="Exemplo: Sega, Square">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-bottom-left3">
+                           <div class="row">
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade || ItemManterCtrl.isPropriedade"  ng-model="ItemManterCtrl.item.flag_cartucho_disco" class="">Cartucho/Disco
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade || ItemManterCtrl.isPropriedade"  ng-model="ItemManterCtrl.item.flag_nota_fiscal" class="">NF
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade"  ng-model="ItemManterCtrl.item.flag_panfleto" class="">Panfleto
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_cd_dvd" class="">CD/DVD/GD/BD
+                                    </label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_caixa" class="">Caixa
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_manual" class="">Manual
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_berco" class="">Berço
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_protetor" class="">Protetores/Cases
+                                    </label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_poster" class="">Poster
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_luva" class="">Luva
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_lacrado" class="">Lacrado
+                                    </label>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3">
+                                 <div class="checkbox">
+                                    <label style="font-weight:lighter">
+                                    <input type="checkbox" value="" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.flag_replica" class="">Replica/ActionFigure
+                                    </label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Status</label>
+                                    <select class="form-control " ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.status"
+                                     ng-change="ItemManterCtrl.montarLog(1);">
+                                       <option value="" class="" selected="selected"></option>
+                                       <option value="C">Concluído</option>
+                                       <option value="P">Pendente</option>
+                                       <option value="E">Em Progresso</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Progressão {{ItemManterCtrl.item.progressao}}%</label>
+                                    <div class="input-group">
+                                       <span class="input-group-addon" ng-click="ItemManterCtrl.removeValue(ItemManterCtrl.item.progressao,1)"  style="cursor: pointer;"><i class="fa fa-minus"></i></span>
+                                       <input ng-change="ItemManterCtrl.montarLog(2);" type="range" min="0" max="100" class="form-control" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.progressao" placeholder="Exemplo: 0, 100">
+                                       <span class="input-group-addon" ng-click="ItemManterCtrl.addValue(ItemManterCtrl.item.progressao,1)"  style="cursor: pointer;"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Total de {{ItemManterCtrl.item.tempo}} hora(s) jagada(s)</label>
+                                    <div class="input-group">
+                                       <span class="input-group-addon"  ng-click="ItemManterCtrl.removeValue(ItemManterCtrl.item.tempo,2)" style="cursor: pointer;"><i class="fa fa-minus"></i></span>
+                                       <input type="range" min="0" max="100" class="form-control" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.tempo" placeholder="Exemplo: 0, 100">
+                                       <span class="input-group-addon" ng-click="ItemManterCtrl.addValue(ItemManterCtrl.item.tempo,2)"  style="cursor: pointer;"><i class="fa fa-plus"></i></span>
+                                    </div>                                    
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group ">
+                                    <label style="font-weight:lighter">Jogado mais de {{ItemManterCtrl.item.num_jogadas}} veze(s)</label>
+                                    <div class="input-group">
+                                       <span class="input-group-addon" ng-click="ItemManterCtrl.removeValue(ItemManterCtrl.item.num_jogadas,3)" style="cursor: pointer;"><i class="fa fa-minus"></i></span>
+                                       <input type="range" min="0" max="100" class="form-control" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.num_jogadas" placeholder="Exemplo: 0, 100"> 
+                                       <span class="input-group-addon" ng-click="ItemManterCtrl.addValue(ItemManterCtrl.item.num_jogadas,3)"  style="cursor: pointer;"><i class="fa fa-plus"></i></span>
+                                    </div> 
+                                 </div>
+                              </div>
+                           </div>                           
+                        </div>
+                        <div class="tab-pane fade" id="tab-bottom-left4">
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Selecione a sua avaliação de 1 à 100, a avaliação atual é de {{ItemManterCtrl.item.avaliacao}} estrela(s).</label>
+                                    <jk-rating-stars max-rating="100" rating="ItemManterCtrl.item.avaliacao" ></jk-rating-stars>                                    
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-bottom-left5">
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Local Principal</label>
+                                    <input class="form-control " ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.local_primeiro" placeholder="Exemplo: Sala, Armario">                                
+                                 </div>
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Local Secundário</label>
+                                    <input class="form-control " ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.local_segundo" placeholder="Exemplo: Prateleira,Guaveta">                                
+                                 </div>
+                                 <div class="form-group">
+                                    <label style="font-weight:lighter">Local Terciário</label>
+                                    <input class="form-control"  ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isDigital || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.local_terceiro" placeholder="Exemplo: Caixa, Posição">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END INPUTS -->
+         </div>
+         <div class="row hidden-xs">
+            <div class="col-md-12">
+               <p class="demo-button">
+                  <button ng-click="ItemManterCtrl.cadastrar(itemForm)" id="btn-salvar" ng-disabled="ItemManterCtrl.isView" type="button" class="btn btn-primary">Salvar</button>
+                  <button ui-sref='item-listar' type="button" class="btn btn-danger">Cancelar</button>
+               </p>               
+            </div>
+         </div>  
+         <div class="row visible-xs">
+            <div class="col-md-12">
+               <p class="demo-button">
+                  <button ng-click="ItemManterCtrl.cadastrar(itemForm)" id="btn-salvar" ng-disabled="ItemManterCtrl.isView" type="button" class="btn btn-primary col-xs-12 ">Salvar</button>
+                  <button ui-sref='item-listar' type="button" class="btn btn-danger col-xs-12"  style="margin-bottom:40px; ">Cancelar</button>
+               </p>               
+            </div>
+         </div>            
+         </form>
+      </div>
+   </div>
+</div>
