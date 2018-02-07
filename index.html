@@ -54,6 +54,8 @@
 									</label>
 								</div-->
 								<button type="bottom" ng-click="loginCtrl.login(loginForm)" id="btn-acesso"  class="btn btn-primary btn-lg btn-block">Acesso</button>
+								<br/>
+								<button type="bottom" style="margin-top:0px" ng-click="loginCtrl.convidado()" id="btn-convidado"  class="btn btn-danger btn-sm">Convidado</button>
 								<!--div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Esqueceu a senha?</a></span>
 								</div-->
@@ -92,8 +94,8 @@
         angular.module('colecionavel.login', [])
                 .controller('loginController', ['$scope', '$http',function ($scope, $http) {
                 	var vm = this;
-                	var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
-                	//var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';
+                	//var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
+                	var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';
                 	vm.user = {
                 		username : 'deibson.januario@gmail.com',
                 		password : 'dajdaj'
@@ -102,7 +104,22 @@
                 	vm.logout = logout;
                 	vm.titulo = 'Informe seus dados de acesso.';
                 	vm.isError = false;
-                    
+                    vm.convidado = convidado;
+
+                    function convidado(){
+                    	var convidado = {
+                    		username: 'convidado',
+                    		password: 'convidado'
+                    	}
+                    	$http.post(_baseUrl + '?op=1',convidado).then(function onSuccess(response) {
+				                window.location.href = './home.html';
+					            vm.isError = false;				                
+				            }).catch(function onError(response) {
+				            	vm.titulo = 'Erro ao acessar modo convidado!';
+				                vm.isError = true;
+				            });                  
+                    }
+
                     function login (form) {
                     	if (form.$valid) {
 				            $http.post(_baseUrl + '?op=1',vm.user).then(function onSuccess(response) {

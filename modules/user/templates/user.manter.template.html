@@ -151,14 +151,32 @@
             </div>
             <!-- END INPUTS -->
          </div>
-         <div class="row">
+         <!--div class="row">
             <div class="col-md-12">
                <p class="demo-button">
                   <button ng-click="UserManterCtrl.cadastrar(userForm)" id="btn-salvar"  ng-disabled="UserManterCtrl.isView" type="button" class="btn btn-primary">Salvar</button>
                   <button ui-sref='home' type="button" class="btn btn-danger">Cancelar</button>
                </p>
             </div>
-         </div>   
+         </div-->
+
+
+         <div class="row hidden-xs">
+            <div class="col-md-12">
+               <p class="demo-button">
+                  <button ng-click="UserManterCtrl.cadastrar(userForm)" id="btn-salvar" ng-disabled="UserManterCtrl.isView" type="button" class="btn btn-primary">Salvar</button>
+                  <button ui-sref='home' type="button" class="btn btn-danger">Cancelar</button>
+               </p>               
+            </div>
+         </div>  
+         <div class="row visible-xs">
+            <div class="col-md-12">
+               <p class="demo-button">
+                  <button ng-click="UserManterCtrl.cadastrar(userForm)" id="btn-salvar2" ng-disabled="UserManterCtrl.isView" type="button" class="btn btn-primary col-xs-12 ">Salvar</button>
+                  <button ui-sref='home' type="button" class="btn btn-danger col-xs-12"  style="margin-bottom:40px; ">Cancelar</button>
+               </p>               
+            </div>
+         </div>             
          </form>
       </div>
    </div>
@@ -174,5 +192,14 @@
             }        
          });   
       }); 
+      $('#btn-salvar2').on('click',function(){
+         $('.mgs_alerta').each(function(){            
+            if($(this).val() == '' || $(this).val() == null){               
+               $(this).addClass('error'); 
+            }else{
+               $(this).removeClass('error');
+            }        
+         });   
+      });       
    });   
 </script>

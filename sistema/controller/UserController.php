@@ -15,12 +15,24 @@ class UserController {
         $retorno = null;
         $objeto = null;
         if ($this->validarCampoUser($user->getEmail(),$user->getSenha())) {
-            $objeto = $this->findUserByFilter($user->getEmail(), $user->getSenha());
-            if($objeto->email == $user->getEmail() && $objeto->senha == $user->getSenha()){
-                $retorno = array(0 => 'correct' ,1 => $objeto);
-                $_SESSION['userItem'] = $objeto;                
+            if($user->getEmail() === 'convidado' && $user->getSenha() === 'convidado'){
+                $convidado = new stdClass();
+                $convidado->id = 1;
+                $convidado->nome = 'Convidado' ;
+                $convidado->email =  'convidado@email.com';
+                $convidado->site =  'http://dicaseprogramacao.com.br';
+                $convidado->senha =  'convidado';
+
+                $retorno = array(0 => 'correct' ,1 => $convidado);
+                $_SESSION['userItem'] = $convidado;                
             }else{
-                $retorno = array(0 => 'wrong' );
+                $objeto = $this->findUserByFilter($user->getEmail(), $user->getSenha());
+                if($objeto->email == $user->getEmail() && $objeto->senha == $user->getSenha()){
+                    $retorno = array(0 => 'correct' ,1 => $objeto);
+                    $_SESSION['userItem'] = $objeto;                
+                }else{
+                    $retorno = array(0 => 'wrong' );
+                }
             }
         } else {
             $retorno = array(0 => 'wrong' );
@@ -147,7 +159,7 @@ class UserController {
         $user->setTelefone($data->telefone);
         $user->setSite($data->site);
         
-        if($this->validarUser($user)){
+        if($this->validarUser($user) && isset($_SESSION['userItem']) && $_SESSION['userItem']->id !== null && $_SESSION['userItem']->id != 1){
             $userDao->updateUser($user);
             http_response_code();
             $arr = array('id' => $user->getId(), 'message' => 'Dados do usuário atualizado com sucesso!'); 
