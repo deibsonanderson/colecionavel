@@ -275,48 +275,48 @@ class ItemController {
     }
 
     //USADO
-    public function pagination($request){
+    public function pagination($data){
         $pagina = 0;
         $totalPagina = 5;
-        if($request !== null && $request["skip"] !== null && $request["skip"] !== '' && $request["take"] !== null && $request["take"] !== ''){
-            $pagina = $request["skip"];
-            $totalPagina = $request["take"];
+        if($data !== null && $data->skip !== null && $data->skip !== '' && $data->take !== null && $data->take !== ''){
+            $pagina = $data->skip;
+            $totalPagina = $data->take;
         }
         return ' LIMIT ' . $pagina . ' , ' . $totalPagina;
     }
 
     //USADO
-    public function findItemByFilter($request) {
+    public function findItemByFilter($data) {
         $itemDao = new ItemDao();
         $filter = ' WHERE gi.id_user = '.$_SESSION['userItem']->id;
-        $filter .= ($request["procedencia"] != null || $request["procedencia"] != '') ? " AND gi.procedencia = '" . $request["procedencia"] . "'" : "";
-        $filter .= ($request["regiao"] != null || $request["regiao"] != '') ? " AND gi.regiao = '" . $request["regiao"] . "'" : "";
-        $filter .= ($request["plataforma"] != null || $request["plataforma"] != '') ? " AND gi.plataforma = '" . $request["plataforma"] . "'" : "";
-        $filter .= ($request["tipo"] != null || $request["tipo"] != '') ? " AND gi.tipo = '" . $request["tipo"] . "'" : "";
-        $filter .= ($request["status"] != null || $request["status"] != '') ? " AND gi.status = '" . $request["status"] . "'" : "";
-        $filter .= ($request["publicadora"] != null || $request["publicadora"] != '') ? " AND gi.publicadora LIKE '%" . $this->catacterRemove($request["publicadora"]) . "%'" : "";
-        $filter .= ($request["produtora"] != null || $request["produtora"] != '') ? " AND gi.produtora LIKE '%" . $this->catacterRemove($request["produtora"]) . "%'" : "";
-        $filter .= ($request["genero"] != null || $request["genero"] != '') ? " AND gi.genero LIKE '%" . $request["genero"] . "%'" : "";
-        $filter .= ($request["possui"] != null || $request["possui"] != '') ? " AND gi.possui = '" . $request["possui"] . "'" : "";
-        $filter .= ($request["situacao"] != null || $request["situacao"] != '') ? " AND gi.situacao LIKE '%" . $request["situacao"] . "%'" : "";
+        $filter .= ($data->procedencia != null || $data->procedencia != '') ? " AND gi.procedencia = '" . $data->procedencia . "'" : "";
+        $filter .= ($data->regiao != null || count($data->regiao) > 0) ? " AND gi.regiao IN (" . $this->arrayToString($data->regiao) . ")" : "";
+        $filter .= ($data->plataforma != null || count($data->plataforma) > 0) ? " AND gi.plataforma IN (" . $this->arrayToString($data->plataforma) . ")" : "";
+        $filter .= ($data->tipo != null || count($data->tipo) > 0) ? " AND gi.tipo IN (" . $this->arrayToString($data->tipo) . ")" : "";
+        $filter .= ($data->status != null || count($data->status) > 0) ? " AND gi.status IN (" . $this->arrayToString($data->status) . ")" : "";
+        $filter .= ($data->publicadora != null || $data->publicadora != '') ? " AND gi.publicadora LIKE '%" . $this->catacterRemove($data->publicadora) . "%'" : "";
+        $filter .= ($data->produtora != null || $data->produtora != '') ? " AND gi.produtora LIKE '%" . $this->catacterRemove($data->produtora) . "%'" : "";
+        $filter .= ($data->genero != null || count($data->genero) > 0) ? " AND gi.genero IN (" . $this->arrayToString($data->genero) . ")" : "";
+        $filter .= ($data->possui != null || $data->possui != '') ? " AND gi.possui = '" . $data->possui . "'" : "";
+        $filter .= ($data->situacao != null || count($data->situacao) > 0) ? " AND gi.situacao IN (" . $this->arrayToString($data->situacao) . ")" : "";
         
-        if($request["titulo"] != null || $request["titulo"] != ''){
-          $sqlFilter = " AND ( gi.titulo LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
-          $sqlFilter .= " OR gi.genero LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
-          $sqlFilter .= " OR gi.descricao LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
-          $sqlFilter .= " OR gi.procedencia LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";
-          $sqlFilter .= " OR gi.regiao LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";
-          $sqlFilter .= " OR gi.plataforma LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";
-          $sqlFilter .= " OR gi.tipo LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";
-          $sqlFilter .= " OR gi.situacao LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";
-          $sqlFilter .= " OR gi.publicadora LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ) "; 
+        if($data->titulo != null || $data->titulo != ''){
+          $sqlFilter = " AND ( gi.titulo LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";  
+          $sqlFilter .= " OR gi.genero LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";  
+          $sqlFilter .= " OR gi.descricao LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";  
+          $sqlFilter .= " OR gi.procedencia LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";
+          $sqlFilter .= " OR gi.regiao LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";
+          $sqlFilter .= " OR gi.plataforma LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";
+          $sqlFilter .= " OR gi.tipo LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";
+          $sqlFilter .= " OR gi.situacao LIKE '%" . $this->catacterRemove($data->titulo) . "%' ";
+          $sqlFilter .= " OR gi.publicadora LIKE '%" . $this->catacterRemove($data->titulo) . "%' ) "; 
           $filter .= $sqlFilter;  
         }                
 
         header('X-Total-Registros: '.$itemDao->getTotalItens($filter)->totalItens);
-        $filter .= ($request["ordem"] != null || $request["ordem"] != '') ? " ORDER BY gi." . $request["ordem"] . " ASC " : "";
+        $filter .= ($data->ordem != null || $data->ordem != '') ? " ORDER BY gi." . $data->ordem . " ASC " : "";
         
-        $filter .= $this->pagination($request);
+        $filter .= $this->pagination($data);
 
         return $itemDao->findItemByFilter($filter);
     }
@@ -373,6 +373,14 @@ class ItemController {
         }
 
     }
+	
+	public function arrayToString($array){
+		$string = "";
+		foreach ($array as $texto) {
+			$string .= "'".$texto."',";
+		}		
+		return substr($string,0,-1);
+	}
 
     //USADO
     function validarLogin(){

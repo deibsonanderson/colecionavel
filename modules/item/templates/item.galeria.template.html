@@ -124,7 +124,7 @@
                         </select>
                      </div>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                      <div class="form-group">
                         <label style="font-weight:lighter">Gênero</label>
                         <select class="form-control" ng-model="ItemGaleriaCtrl.item.genero" ng-options="valor as valor for valor in ItemGaleriaCtrl.generos track by valor">
@@ -132,7 +132,7 @@
                         </select>
                      </div>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                      <div class="form-group">
                         <label style="font-weight:lighter">Possui o item?</label>
                         <select class="form-control" ng-model="ItemGaleriaCtrl.item.possui">
@@ -142,7 +142,7 @@
                         </select>
                      </div>
                   </div>                  
-                  <div class="col-lg-4">
+                  <div class="col-lg-3">
                      <div class="form-group">
                         <label style="font-weight:lighter">Situação Atual</label>
                         <select class="form-control" ng-model="ItemGaleriaCtrl.item.situacao" ng-options="valor as valor for valor in ItemGaleriaCtrl.situacoes track by valor">
@@ -150,6 +150,16 @@
                         </select>
                      </div>
                   </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Modo Exibição</label>
+                        <select class="form-control" ng-model="ItemGaleriaCtrl.item.modo">
+                           <option value="" selected>Todas</option>
+                           <option value="1">Imagem principal</option>
+                           <option value="2">Imagens secundaria</option>       						   
+                        </select>
+                     </div>
+                  </div>     				  
                </div>
                <div class="row">
                   <div class="col-lg-12">

@@ -1,6 +1,6 @@
 {
-  "name": "cdmsystem",
-  "description": "sistema de codominio",
+  "name": "colecionavel",
+  "description": "sistema de catalogo de jogos",
   "main": "module.js",
   "authors": [
     "deibson.januario"

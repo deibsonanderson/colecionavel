@@ -23,7 +23,9 @@
             limparItem:limparItem,
             checarImagem:checarImagem,
             checarStatus:checarStatus,
-            checarValorNumerico:checarValorNumerico 
+            checarValorNumerico:checarValorNumerico,
+			montarObjetoDropdown:montarObjetoDropdown,
+            objetoDropdownToListString:objetoDropdownToListString			
         };
 
         return exports;
@@ -243,7 +245,25 @@
         function limparItem(){
             this.item = undefined;
         }
+		
+		function objetoDropdownToListString(objetos){
+			var lista = [];
+			if(objetos !== null && !angular.isUndefined(objetos) && objetos.length > 0){
+				for (var i = 0; i < objetos.length; ++i) {
+					lista.push(objetos[i].id);
+				}
+			}
+			return lista;
+		}
 
-
+		function montarObjetoDropdown(textos){
+			var lista = [];
+			if(textos !== null && !angular.isUndefined(textos) && textos.length > 0){
+				for (var i = 0; i < textos.length; ++i) {
+					lista.push({id: textos[i], label: textos[i]});
+				}
+			}
+			return lista;
+		}
     }
 })();

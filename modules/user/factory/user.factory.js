@@ -146,6 +146,5 @@
             this.user = undefined;
         }
 
-
     }
 })();

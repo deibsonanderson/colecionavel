@@ -45,7 +45,7 @@
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Senha</label>
-									<input ng-model="loginCtrl.user.password" required type="password" class="form-control mgs_alerta" id="signin-password" value="" placeholder="Password">
+									<input ng-model="loginCtrl.user.password" required type="password" class="form-control mgs_alerta" id="signin-password" value="123456" placeholder="Password">
 								</div>
 								<!--div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
@@ -93,11 +93,11 @@
         angular.module('colecionavel.login', [])
                 .controller('loginController', ['$scope', '$http',function ($scope, $http) {
                 	var vm = this;
-                	//var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
-                	var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';
+                	var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
+                	//var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';
                 	vm.user = {
                 		username : 'deibson.januario@gmail.com',
-                		password : 'dajdaj'
+                		password : '123456'
                 	};
                 	vm.login = login;
                 	vm.logout = logout;

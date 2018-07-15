@@ -13,7 +13,6 @@ function getStates() {
             state: 'index',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'HomeController',
                 controllerAs: 'HomeCtrl',
                 templateUrl: 'modules/home/templates/home.template.html',
@@ -42,7 +41,6 @@ function getStates() {
             state: 'home',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'HomeController',
                 controllerAs: 'HomeCtrl',
                 templateUrl: 'modules/home/templates/home.template.html',
@@ -71,7 +69,6 @@ function getStates() {
             state: 'item-manter',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'ItemManterController',
                 controllerAs: 'ItemManterCtrl',
                 templateUrl: 'modules/item/templates/item.manter.template.html',
@@ -95,7 +92,6 @@ function getStates() {
             state: 'item-listar',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'ItemListarController',
                 controllerAs: 'ItemListarCtrl',
                 templateUrl: 'modules/item/templates/item.listar.template.html',
@@ -119,7 +115,6 @@ function getStates() {
             state: 'item-galeria',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'ItemGaleriaController',
                 controllerAs: 'ItemGaleriaCtrl',
                 templateUrl: 'modules/item/templates/item.galeria.template.html',
@@ -143,7 +138,6 @@ function getStates() {
             state: 'user-manter',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'UserManterController',
                 controllerAs: 'UserManterCtrl',
                 templateUrl: 'modules/user/templates/user.manter.template.html',
@@ -165,7 +159,6 @@ function getStates() {
             state: 'user-senha',
             config: {
                 url: 'colecionavel/',
-                cache: false,
                 controller: 'UserSenhaController',
                 controllerAs: 'UserSenhaCtrl',
                 templateUrl: 'modules/user/templates/user.senha.template.html',

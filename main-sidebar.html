@@ -3,7 +3,7 @@
 				<nav>
 					<ul class="nav">
 						<li><a ui-sref='home' onclick="fecharBarraLateral();" class=""><i class="lnr lnr-home"></i> <span>Home</span></a></li>
-						<li><a ui-sref='item-manter' onclick="fecharBarraLateral();" class=""><i class="lnr lnr-plus-circle"></i> <span>Novo Item</span></a></li>
+						<li><a ui-sref='item-manter' onclick="fecharBarraLateral();preloader(300);" class=""><i class="lnr lnr-plus-circle"></i> <span>Novo Item</span></a></li>
 						<li><a ui-sref='item-listar' onclick="fecharBarraLateral();" class=""><i class="lnr lnr-list"></i> <span>Listagem dos Itens</span></a></li>
 						<li><a ui-sref='item-galeria' onclick="fecharBarraLateral();" class=""><i class="lnr lnr-picture"></i> <span>Galeria de Imagens</span></a></li>
 						<!--li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
@@ -30,5 +30,4 @@ function fecharBarraLateral(){
 	$('body').removeClass('layout-default');
 	$('body').removeClass('offcanvas-active');
 }
-
 </script>

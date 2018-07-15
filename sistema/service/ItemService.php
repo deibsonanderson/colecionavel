@@ -9,7 +9,11 @@ if($itemControll->validarLogin()){
 
 switch ($_GET["op"]) {
 	case '1':
-		echo $itemControll->findItemByFilter($_GET);
+		//echo '<pre>';
+		$data = json_decode(file_get_contents("php://input"));
+		//var_dump($data);
+		//die();
+		echo $itemControll->findItemByFilter($data);
 		break;
 	case '2':
 		echo $itemControll->findItemById($_GET["id"],false);

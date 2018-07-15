@@ -1807,4 +1807,8 @@ body {
   /* is width and height divided by two */
 }
 
+.dropdown-multiselect .dropdown-toggle {
+	background-color: #fcfcfc
+}
+
 /*# sourceMappingURL=main.css.map */

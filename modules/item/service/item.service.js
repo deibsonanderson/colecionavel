@@ -5,9 +5,9 @@
     .module('colecionavel.module.item')
     .service('ItemService', ItemService);
 
-    ItemService.$inject = ['$http'];
+    ItemService.$inject = ['$http','ItemFactory'];
 
-    function ItemService($http) {
+    function ItemService($http,ItemFactory) {
 
         var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/ItemService.php';
         //var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/ItemService.php';
@@ -58,23 +58,23 @@
                 'op': '1',
                 'produtora' : item.produtora,
                 'publicadora':item.publicadora,
-                'status':item.status,
+                'status':ItemFactory.objetoDropdownToListString(item.status),
                 'titulo':item.titulo,
                 'skip': skip,
                 'take': take,
                 'procedencia': item.procedencia,
-                'regiao': item.regiao,
-                'plataforma': item.plataforma,
-                'tipo': item.tipo,
+                'regiao': ItemFactory.objetoDropdownToListString(item.regiao),
+                'plataforma': ItemFactory.objetoDropdownToListString(item.plataforma),
+                'tipo': ItemFactory.objetoDropdownToListString(item.tipo),
                 'ordem': item.ordem,
-                'genero': item.genero,
+                'genero': ItemFactory.objetoDropdownToListString(item.genero),
                 'possui': item.possui,
-                'situacao': item.situacao,
+                'situacao': ItemFactory.objetoDropdownToListString(item.situacao),
                 'order': order,
                 'sort': (sort === false)?'desc':'asc',
                 'timestamp':timestamp
             };            
-            return $http.get(_baseUrl, { params: _params });
+            return $http.post(_baseUrl + '?op=1', _params);
         };
 
 
