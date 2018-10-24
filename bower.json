@@ -1,6 +1,6 @@
 {
-  "name": "colecionavel",
-  "description": "sistema de catalogo de jogos",
+  "name": "cdmsystem",
+  "description": "sistema de codominio",
   "main": "module.js",
   "authors": [
     "deibson.januario"
@@ -22,8 +22,6 @@
     "angular-input-masks": "^2.6.0",
     "angular-bootstrap": "^2.5.0",
     "bootstrap": "https://github.com/angular-ui/bootstrap.git#^2.5.6",
-    "angular-ui-calendar": "https://github.com/angular-ui/ui-calendar.git#^1.0.2",
-    "lightbox2": "lightbox#^2.10.0",
-    "angular-jk-rating-stars": "^1.0.8"
+    "angular-ui-calendar": "https://github.com/angular-ui/ui-calendar.git#^1.0.2"
   }
 }

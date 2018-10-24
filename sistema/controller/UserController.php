@@ -207,55 +207,10 @@ class UserController {
 
     }    
 
-	public function tamanhoImagem($imagem, $largura) {
-		$tam_img = getimagesize($imagem);
-		if ($tam_img[0] > $largura) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public function redimensionaImg($path, $imagem, $largura) {
-		$arquivo_origem = $path . '/' . $imagem;
-		$arquivo_destino = $arquivo_origem;
-		$nome_arquivo_destino = $imagem;
-		$ext = exif_imagetype($arquivo_origem);
-		
-		if ($ext === 2) {
-			$img_origem = imagecreatefromjpeg($arquivo_origem);
-		}
-		if ($ext === 1) {
-			$img_origem = imagecreatefromgif($arquivo_origem);
-		}
-		if ($ext === 3) {
-			$img_origem = imagecreatefrompng($arquivo_origem);
-		}
-
-		if (imagesx($img_origem) > $largura) {
-			$nova_largura = $largura;
-			$nova_altura = $nova_largura * imagesy($img_origem) / imagesx($img_origem);
-			$img_destino = imagecreatetruecolor($nova_largura, $nova_altura);
-			imagecopyresampled($img_destino, $img_origem, 0, 0, 0, 0, $nova_largura, $nova_altura, imagesx($img_origem), imagesy($img_origem));
-
-			if ($ext === 2) {
-				imageJPEG($img_destino, $arquivo_destino, 85);
-			}
-			if ($ext === 1) {
-				imageGIF($img_destino, $arquivo_destino);
-			}
-			if ($ext === 3) {
-				imagePNG($img_destino, $arquivo_destino);
-			}
-		}
-
-		return $nome_arquivo_destino;
-	}	
-	
 
     //Old
     public function setImagemFile($imagem) {
-		$path = "../uploads/";
+
         if (strstr($imagem, 'data:image/jpeg;base64,') || strstr($imagem, 'data:image/jpg;base64,')) {
             $base64 = str_replace('data:image/jpeg;base64,', '', $imagem);
             $filename_path = md5(time() . uniqid()) . ".jpg";
@@ -264,10 +219,7 @@ class UserController {
             $filename_path = md5(time() . uniqid()) . ".png";
         }
         $decoded = base64_decode($base64);
-        file_put_contents($path . $filename_path, $decoded);
-		if (!$this->tamanhoImagem($path.$filename_path, 640)) {
-			$this->redimensionaImg($path, $filename_path, 640);
-		}			
+        file_put_contents("../uploads/" . $filename_path, $decoded);
         return $filename_path;
     }
 

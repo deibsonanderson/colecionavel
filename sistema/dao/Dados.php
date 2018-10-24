@@ -1,7 +1,7 @@
 <?php
-
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
 class Dados{
-
+	/*
 	private $local = "localhost";
 	private $usuario = "root";
 	private $senha  = "";

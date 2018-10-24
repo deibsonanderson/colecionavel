@@ -5,9 +5,9 @@
     .module('colecionavel.module.item')
     .service('ItemService', ItemService);
 
-    ItemService.$inject = ['$http','ItemFactory'];
+    ItemService.$inject = ['$http'];
 
-    function ItemService($http,ItemFactory) {
+    function ItemService($http) {
 
         var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/ItemService.php';
         //var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/ItemService.php';
@@ -22,7 +22,8 @@
         this.findItemByVideoGame = findItemByVideoGame;
         this.findItemByProgressos = findItemByProgressos;
         this.findItemByCountGames = findItemByCountGames;
-        this.findItemByAwards = findItemByAwards;
+        this.findItemByAwards = findItemByAwards
+		this.getTotalValor = getTotalValor;
 
 
         function findAll() {
@@ -58,23 +59,23 @@
                 'op': '1',
                 'produtora' : item.produtora,
                 'publicadora':item.publicadora,
-                'status':ItemFactory.objetoDropdownToListString(item.status),
+                'status':item.status,
                 'titulo':item.titulo,
                 'skip': skip,
                 'take': take,
                 'procedencia': item.procedencia,
-                'regiao': ItemFactory.objetoDropdownToListString(item.regiao),
-                'plataforma': ItemFactory.objetoDropdownToListString(item.plataforma),
-                'tipo': ItemFactory.objetoDropdownToListString(item.tipo),
+                'regiao': item.regiao,
+                'plataforma': item.plataforma,
+                'tipo': item.tipo,
                 'ordem': item.ordem,
-                'genero': ItemFactory.objetoDropdownToListString(item.genero),
+                'genero': item.genero,
                 'possui': item.possui,
-                'situacao': ItemFactory.objetoDropdownToListString(item.situacao),
+                'situacao': item.situacao,
                 'order': order,
                 'sort': (sort === false)?'desc':'asc',
                 'timestamp':timestamp
             };            
-            return $http.post(_baseUrl + '?op=1', _params);
+            return $http.get(_baseUrl, { params: _params });
         };
 
 
@@ -138,6 +139,14 @@
             return $http.get(_baseUrl , {params:_params});
         };                  
 
+		function getTotalValor() {
+            var timestamp = new Date().getTime();
+            var _params = {
+                'op': '18',                
+                'timestamp':timestamp
+            };
+            return $http.get(_baseUrl , {params:_params});
+        }; 
 
 
 

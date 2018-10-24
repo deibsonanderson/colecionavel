@@ -422,6 +422,21 @@ class ItemDao extends Dados {
             http_response_code(500);
         }
     }
+	
+    public function getTotalValor($idUser) {
+        try {
+			
+            $sql = "SELECT SUM(valor_pago) as total_pago, SUM(valor_atual) as total_atual FROM `tb_game_item` WHERE id_user = ".$idUser;
+            
+            return $this->carregarDados($sql,false);         
+        } catch (Exception $e) {
+            $arr = array('message' => 'Erro durante a execução da Base de Dados!'); //etc
+            header('HTTP/1.1 201 Created');
+            echo json_encode($arr);
+            http_response_code(500);
+        }
+    }
+
     
     //USADO
     public function getTotalItens($filter = null) {
@@ -445,7 +460,7 @@ class ItemDao extends Dados {
             http_response_code(500);
         }
     }
-
+	
     //USADO
     public function carregarDados($sql, $isObject){
             $conexao = $this->ConectarBanco();

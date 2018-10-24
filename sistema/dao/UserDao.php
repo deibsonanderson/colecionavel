@@ -31,16 +31,13 @@ class UserDao extends Dados {
                             FROM `tb_game_user` us WHERE " . $filter;
 
             
-            $query = mysqli_query($conexao,$sql);
+            $query = mysqli_query($conexao,$sql) or die('Erro na execução do listar com filtro!');
             $html = $this->montarRetornoObjeto($query);
             $this->FecharBanco($conexao);
 
             return $html;
         } catch (Exception $e) {
-            $arr = array('message' => 'Erro durante a execução da Base de Dados!'); //etc
-            header('HTTP/1.1 201 Created');
-            echo json_encode($arr);
-            http_response_code(500);
+            return $e;
         }
     }  
 
@@ -61,16 +58,13 @@ class UserDao extends Dados {
                             FROM `tb_game_user` us WHERE us.`id` = " . $idUser;
 
             
-            $query = mysqli_query($conexao,$sql);
+            $query = mysqli_query($conexao,$sql) or die('Erro na execução do listar com filtro!');
             $html = $this->montarRetornoObjetoJson($query);
             $this->FecharBanco($conexao);
 
             return $html;
         } catch (Exception $e) {
-            $arr = array('message' => 'Erro durante a execução da Base de Dados!'); //etc
-            header('HTTP/1.1 201 Created');
-            echo json_encode($arr);
-            http_response_code(500);
+            return $e;
         }
     }       
 
@@ -114,7 +108,7 @@ class UserDao extends Dados {
                             WHERE  log.`id_user` = ".$idUser."
                              ORDER BY log.`data` DESC
                             LIMIT 0, 10";
-            $query = mysqli_query($conexao,$sql);
+            $query = mysqli_query($conexao,$sql) or die('Erro na execução do listar com filtro!');
             $html = $this->montarRetornoArrayJson($query);
             $this->FecharBanco($conexao);
 

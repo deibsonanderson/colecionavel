@@ -26,6 +26,7 @@
         vm.awardsVideoGameAvaliado = {};
         vm.awardsCompletado = {};
         vm.awardsAdaptadorAvaliado = {};
+		vm.totalValor = {};
         vm.percent = [];        
 
         //Instancia Metodos
@@ -48,6 +49,7 @@
         vm.checkStatus = checkStatus;
         vm.montarGraficoPie = montarGraficoPie;
         vm.tratarTextoAwards = tratarTextoAwards;
+		vm.getTotalValor = getTotalValor;
 
         //Metodos
         function activate() {
@@ -72,6 +74,7 @@
             vm.findVideoGameByAvaliado();
             vm.findAdaptadorByAvaliado();
             vm.findItemByCompletado();
+			vm.getTotalValor();
             removeloader();            
         }
 
@@ -92,6 +95,16 @@
             ItemFactory.setItem(objeto);
             $state.go('item-manter');              
         }
+		
+		function getTotalValor(){
+            ItemService.getTotalValor().then(function onSuccess(response) {
+				vm.totalValor.totalPago = 'R$ '+response.data[0].total_pago;
+				vm.totalValor.totalAtual = 'R$ '+response.data[0].total_atual; 
+            }).catch(function onError(response) {
+                console.log(response);
+                checkStatus(response); 
+            });
+		}
         
 
         function findItemByVideoGame() {
@@ -255,9 +268,9 @@
         }   
 
         function tratarTextoAwards(texto){
-            if(!angular.isUndefined(texto) && texto.length >= 35){
-                return texto.substring(0, 35)+'...';
-            }else if(!angular.isUndefined(texto) && texto.length < 35){
+            if(!angular.isUndefined(texto) && texto.length >= 20){
+                return texto.substring(0, 20)+'...';
+            }else if(!angular.isUndefined(texto) && texto.length < 20){
                 return texto;
             }else{
                 return "-";

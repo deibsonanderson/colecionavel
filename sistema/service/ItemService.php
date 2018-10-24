@@ -9,11 +9,7 @@ if($itemControll->validarLogin()){
 
 switch ($_GET["op"]) {
 	case '1':
-		//echo '<pre>';
-		$data = json_decode(file_get_contents("php://input"));
-		//var_dump($data);
-		//die();
-		echo $itemControll->findItemByFilter($data);
+		echo $itemControll->findItemByFilter($_GET);
 		break;
 	case '2':
 		echo $itemControll->findItemById($_GET["id"],false);
@@ -64,7 +60,10 @@ switch ($_GET["op"]) {
 		break;	
 	case '17':
 	    echo $itemControll->findAdaptadorByAvaliado();
-		break;				
+		break;
+    case '18':
+		echo $itemControll->getTotalValor();
+		break;
 	default:
 		echo $itemControll->findAllItem($_GET);
 		break;

@@ -13,14 +13,7 @@
         var vm = this;
         vm.titulo = "Listagem do Proprietário";  
         vm.itens = [];
-        vm.item = {
-			plataforma : [],
-			genero : [], 
-            regiao : [], 
-            tipo : [], 
-            situacao : [],			
-			status: []			
-		};
+        vm.item = {};
         vm.maxSize = 3;
         vm.totalItems = 0;
         vm.currentPage = 1;
@@ -33,18 +26,7 @@
         vm.plataformas = [];
         vm.regioes = [];
         vm.situacoes = [];
-        vm.tipos = [];      
-		vm.dropdownSettings = { 
-				checkBoxes: true, 
-				dynamicTitle: true, 
-				showUncheckAll: true, 
-				showCheckAll: false 
-		};
-		
-		vm.statusList = [ {id: "C", label: "Completo"},
-							  {id: "P", label: "Pendente"}, 
-							  {id: "E", label: "Em Progressão"}]; 		
-		
+        vm.tipos = [];        
         
         //Instancia Metodos
         vm.findByFilter = findByFilter;
@@ -211,11 +193,11 @@
                             vm.tipos.push(response.data[i].tipo);
                          }
                     };
-                    vm.plataformas = ItemFactory.montarObjetoDropdown(ordenar(vm.plataformas)); 
-                    vm.generos = ItemFactory.montarObjetoDropdown(ordenar(vm.generos)); 
-                    vm.regioes = ItemFactory.montarObjetoDropdown(ordenar(vm.regioes)); 
-                    vm.tipos = ItemFactory.montarObjetoDropdown(ordenar(vm.tipos)); 
-                    vm.situacoes = ItemFactory.montarObjetoDropdown(ordenar(vm.situacoes)); 
+                    vm.plataformas = ordenar(vm.plataformas); 
+                    vm.generos = ordenar(vm.generos); 
+                    vm.regioes = ordenar(vm.regioes); 
+                    vm.tipos = ordenar(vm.tipos); 
+                    vm.situacoes = ordenar(vm.situacoes); 
                 }                
             }).catch(function onError(response) {
                 UserService.checkStatus(response);            
@@ -261,6 +243,6 @@
         };
 
         activate();
-		
+
     }
 })();
