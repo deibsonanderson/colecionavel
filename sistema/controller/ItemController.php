@@ -317,7 +317,7 @@ class ItemController {
         }                
 
         header('X-Total-Registros: '.$itemDao->getTotalItens($filter)->totalItens);
-        $filter .= ($request["ordem"] != null || $request["ordem"] != '') ? " ORDER BY gi." . $request["ordem"] . " ASC " : "";
+        $filter .= ($request["ordem"] != null || $request["ordem"] != '') ? " ORDER BY gi." . $request["ordem"] . " ASC " : " ORDER BY gi.titulo ASC ";
         
         $filter .= $this->pagination($request);
 

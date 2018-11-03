@@ -5,10 +5,10 @@
     .module('colecionavel.module.item')
     .controller('ItemGaleriaController', ItemGaleriaController);
 
-    ItemGaleriaController.$inject = ['$scope','ItemService','ItemFactory','$state','UserService', 'GENERO', 'PLATAFORMA', 'REGIAO', 'SITUACAO', 'TIPO','ScrollToService'];
+    ItemGaleriaController.$inject = ['$scope','ItemService','ItemFactory','$state','UserService', 'GENERO', 'PLATAFORMA', 'REGIAO', 'SITUACAO', 'TIPO','ScrollToService', 'ORDEM'];
 
 
-    function ItemGaleriaController($scope, ItemService,ItemFactory,$state,UserService, GENERO, PLATAFORMA, REGIAO, SITUACAO, TIPO, ScrollToService) {
+    function ItemGaleriaController($scope, ItemService,ItemFactory,$state,UserService, GENERO, PLATAFORMA, REGIAO, SITUACAO, TIPO, ScrollToService, ORDEM) {
         //Atributos
         var vm = this;
         vm.titulo = "Listagem do Proprietário";  
@@ -19,7 +19,7 @@
         vm.item = {};
         vm.item.registrosPorPagina = "12";
         vm.selectTop = ["6","12","18","24"];
-        vm.order = 'titulo';
+        vm.order = 'deprecated';
         vm.sort = true;
         vm.itensMobile = [];
         vm.itens = [];
@@ -88,7 +88,10 @@
         
         function activate() {
             var objeto = ItemFactory.getPesquisa();
-            if (!angular.isUndefined(objeto)) {
+            if(angular.isUndefined(objeto) && angular.isUndefined(vm.item.ordem)){
+				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  ItemFactory.setPesquisa(vm.item);
+			} else if (!angular.isUndefined(objeto)) {
               vm.item = objeto;
               switch(vm.item.registrosPorPagina){
                  case '5':
@@ -107,7 +110,14 @@
                     vm.item.registrosPorPagina = "9999";
                  break;
               }
-            } 
+			  
+			  if(angular.isUndefined(vm.item.ordem)){
+				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  ItemFactory.setPesquisa(vm.item);
+			  }
+			  
+            }
+			  			
            vm.findByFilter(vm.currentPage,vm.item.registrosPorPagina,vm.item,vm.order,vm.sort);
            vm.montarFiltro();
         }

@@ -71,7 +71,7 @@
                 'genero': item.genero,
                 'possui': item.possui,
                 'situacao': item.situacao,
-                'order': order,
+                //'order': order, deprecated
                 'sort': (sort === false)?'desc':'asc',
                 'timestamp':timestamp
             };            

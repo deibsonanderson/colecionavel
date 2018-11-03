@@ -5,10 +5,10 @@
     .module('colecionavel.module.item')
     .controller('ItemListarController', ItemListarController);
 
-    ItemListarController.$inject = ['$scope','ItemService','ItemFactory','$state','UserService','$uibModal', 'GENERO', 'PLATAFORMA', 'REGIAO', 'SITUACAO', 'TIPO', 'ScrollToService'];
+    ItemListarController.$inject = ['$scope','ItemService','ItemFactory','$state','UserService','$uibModal', 'GENERO', 'PLATAFORMA', 'REGIAO', 'SITUACAO', 'TIPO', 'ScrollToService','ORDEM'];
 
 
-    function ItemListarController($scope, ItemService,ItemFactory,$state,UserService,$uibModal, GENERO, PLATAFORMA, REGIAO, SITUACAO, TIPO, ScrollToService) {
+    function ItemListarController($scope, ItemService,ItemFactory,$state,UserService,$uibModal, GENERO, PLATAFORMA, REGIAO, SITUACAO, TIPO, ScrollToService, ORDEM) {
         //Atributos
         var vm = this;
         vm.titulo = "Listagem do Proprietário";  
@@ -19,7 +19,7 @@
         vm.currentPage = 1;
         vm.item.registrosPorPagina = "5";
         vm.selectTop = ["5","10","30","50"];
-        vm.order = 'titulo';
+        vm.order = 'deprecated';
         vm.sort = true;
         vm.animationsEnabled = true;
         vm.generos = [];
@@ -88,26 +88,35 @@
         
         function activate() {
             var objeto = ItemFactory.getPesquisa();
-            if (!angular.isUndefined(objeto)) {
-              vm.item = objeto;  
+            if(angular.isUndefined(objeto) && angular.isUndefined(vm.item.ordem)){
+				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  ItemFactory.setPesquisa(vm.item);
+			} else if (!angular.isUndefined(objeto)) {
+              vm.item = objeto;
               switch(vm.item.registrosPorPagina){
-                 case '12':
-                    vm.item.registrosPorPagina = "5";
+                 case '5':
+                    vm.item.registrosPorPagina = "12";
                  break;
-                 case '18':
-                    vm.item.registrosPorPagina = "10";
+                 case '10':
+                    vm.item.registrosPorPagina = "18";
                  break;
-                 case '24':
-                    vm.item.registrosPorPagina = "30";
+                 case '30':
+                    vm.item.registrosPorPagina = "24";
                  break;
-                 case '48':
-                    vm.item.registrosPorPagina = "50";
+                 case '50':
+                    vm.item.registrosPorPagina = "48";
                  break;
                  case '9999':
                     vm.item.registrosPorPagina = "9999";
                  break;
-              }                            
-            } 
+              }
+			  
+			  if(angular.isUndefined(vm.item.ordem)){
+				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  ItemFactory.setPesquisa(vm.item);
+			  }
+			  
+            }			
             vm.findByFilter(vm.currentPage,vm.item.registrosPorPagina,vm.item,vm.order,vm.sort);
             vm.montarFiltro();
         }
