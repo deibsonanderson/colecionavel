@@ -31,7 +31,7 @@ class UserDao extends Dados {
                             FROM `tb_game_user` us WHERE " . $filter;
 
             
-            $query = mysqli_query($conexao,$sql) or die('Erro na execução do listar com filtro!');
+            $query = mysqli_query($conexao,$sql) or die('Erro na execução do login com filtro!');
             $html = $this->montarRetornoObjeto($query);
             $this->FecharBanco($conexao);
 

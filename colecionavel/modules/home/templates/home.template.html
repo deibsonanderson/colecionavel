@@ -179,8 +179,9 @@
 									<ul class="nav" role="tablist"
 >										<li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Gráfico</a></li>
 										<li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Útimos Progressos &nbsp;&nbsp; <span class="badge">{{HomeCtrl.progressos.length}}</span></a></li>
-										<li><a href="#tab-bottom-left3" role="tab" data-toggle="tab">Meus Video Games &nbsp;&nbsp; <span class="badge">{{HomeCtrl.videogames.length}}</span></a></li>
+										<!--li><a href="#tab-bottom-left3" role="tab" data-toggle="tab">Meus Video Games &nbsp;&nbsp; <span class="badge">{{HomeCtrl.videogames.length}}</span></a></li-->
 										<li><a href="#tab-bottom-left4" role="tab" data-toggle="tab">Atividades Recentes</a></li>
+										<li><a href="#tab-bottom-left5" ng-click="HomeCtrl.montarGraficoBar()" role="tab" data-toggle="tab">Custos</a></li>
 									</ul>
 								</div>
 								<div class="tab-content">
@@ -230,7 +231,7 @@
 											<div class="margin-top-30 text-center"><a id="progresso-plus" class="btn btn-default">Ver mais</a></div>
 										</div>
 									</div>
-									<div class="tab-pane fade" id="tab-bottom-left3">
+									<!--div class="tab-pane fade" id="tab-bottom-left3">
 										<div class="table-responsive">
 											<table class="table project-table">
 												<thead>
@@ -253,7 +254,7 @@
 											</table>
 											<div class="margin-top-30 text-center"><a id="videogame-plus" class="btn btn-default">Ver mais</a></div>
 										</div>
-									</div>
+									</div-->
 									<div class="tab-pane fade" id="tab-bottom-left4">
 										<ul class="list-unstyled activity-timeline">
 											<li ng-repeat="objeto in HomeCtrl.logs" ng-class="{'timeline': $index > 3}">
@@ -262,7 +263,14 @@
 											</li>
 										</ul>
 										<div class="margin-top-30 text-center"><a id="timeline-plus" class="btn btn-default">Ver mais</a></div>
-									</div>																	
+									</div>
+									<div class="tab-pane fade" id="tab-bottom-left5">
+										<div class="panel">
+											<div class="panel-body">
+												<div id="bar-simple-chart" class="ct-chart"></div>
+											</div>
+										</div>
+									</div>										
 								</div>
 								<!-- END TABBED CONTENT -->
 							</div>
@@ -321,7 +329,7 @@ $(document).ready(function(){
 			$("#videogame-plus").html('Ver mais');
 		}
 		isVideoGame = !isVideoGame;
-    });	        
+    });	
 });
 </script>
 <style type="text/css">

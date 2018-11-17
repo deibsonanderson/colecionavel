@@ -5,10 +5,10 @@
             .module('colecionavel.module.home')
             .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope','ItemService','$rootScope','ItemFactory','UserService','$state','UserFactory'];
+    HomeController.$inject = ['$scope','ItemService','$rootScope','ItemFactory','UserService','$state','UserFactory', '$timeout'];
 
 
-    function HomeController($scope, ItemService, $rootScope,ItemFactory,UserService, $state,UserFactory) {
+    function HomeController($scope, ItemService, $rootScope,ItemFactory,UserService, $state,UserFactory, $timeout) {
         //Atributos
         var vm = this;
         vm.titulo = "home";
@@ -50,6 +50,7 @@
         vm.montarGraficoPie = montarGraficoPie;
         vm.tratarTextoAwards = tratarTextoAwards;
 		vm.getTotalValor = getTotalValor;
+		vm.montarGraficoBar = montarGraficoBar;
 
         //Metodos
         function activate() {
@@ -99,7 +100,8 @@
 		function getTotalValor(){
             ItemService.getTotalValor().then(function onSuccess(response) {
 				vm.totalValor.totalPago = 'R$ '+response.data[0].total_pago;
-				vm.totalValor.totalAtual = 'R$ '+response.data[0].total_atual; 
+				vm.totalValor.totalAtual = 'R$ '+response.data[0].total_atual;
+				vm.montarGraficoBar();				
             }).catch(function onError(response) {
                 console.log(response);
                 checkStatus(response); 
@@ -248,7 +250,6 @@
             });
         };
 
-
         function montarGraficoPie(countGame){
             var data = {
               series: [parseInt(countGame.concluido), 
@@ -257,15 +258,40 @@
             };            
             
             var sum = function(a, b) { return a + b };
-            new Chartist.Pie('#pie-simple-chart', data, {
-              labelInterpolationFnc: function(value) {
-                var retorno = Math.round(value / data.series.reduce(sum) * 100) + '%'; 
-                vm.percent.push(retorno);
-                return retorno;
-              }
-            });  
+			$timeout( function(){
+				new Chartist.Pie('#pie-simple-chart', data, {
+				  labelInterpolationFnc: function(value) {
+					var retorno = Math.round(value / data.series.reduce(sum) * 100) + '%'; 
+					vm.percent.push(retorno);
+					return retorno;
+				  }
+				});  
+			}, 1000 );	
 
-        }   
+        }
+		
+		function montarGraficoBar(){
+			var totalPago = vm.totalValor.totalPago.replace("R$ ", "");
+			var totalAtual = vm.totalValor.totalAtual.replace("R$ ", "");
+			
+			var dataBar = {
+				labels: ['Valor Total Pago', 'Valor Total Atual'],
+				series: [
+					[parseFloat(totalPago), parseFloat(totalAtual)],
+				]
+			};
+			var sum = function(a, b) { return a + b };		
+			
+			$timeout( function(){
+				new Chartist.Bar('#bar-simple-chart', dataBar, {
+				  labelInterpolationFnc: function(value) {
+					var retorno = Math.round(value / data.series.reduce(sum) * 100) + '%'; 
+					vm.percent.push(retorno);
+					return retorno;
+				  }
+				}); 
+			}, 500 );		
+		}	
 
         function tratarTextoAwards(texto){
             if(!angular.isUndefined(texto) && texto.length >= 20){
