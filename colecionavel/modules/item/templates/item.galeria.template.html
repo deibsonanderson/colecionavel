@@ -194,24 +194,24 @@
                            <div class="hidden-xs">
                               <div class="row " ng-repeat="linha in ItemGaleriaCtrl.itens">
                                  <div class="col-md-2" ng-repeat="objeto in linha">
-                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
-                                       <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
-                                    </a>
+                                    <!--a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip"-->
+                                       <img ng-click="ItemGaleriaCtrl.visualizar(objeto.item)" src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
+                                    <!--/a-->
                                  </div>
                               </div>   
                            </div>                 
                            <div class="visible-xs">       
                               <div class="row" ng-repeat="linha in ItemGaleriaCtrl.itensMobile">
-                                <div ng-repeat="objeto in linha">
-                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+                                <div ng-repeat="objeto in linha" ng-click="ItemGaleriaCtrl.visualizar(objeto.item)">
+                                    <!--a href="{{objeto.imagem || './assets/img/default.jpg'}}" -->
                                        <div class="someDiv" id="{{$index}}-div" style="cursor:pointer;margin:0px;width:33%;float:left;
                                        background-image:url({{objeto.imagem}});background-repeat: no-repeat;background-position:center;">                                     
                                        <!--img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" 
                                             style="width:100%;height:100%"-->                                     
                                        </div>
-                                    </a>
-                                   <img src="{{objeto.imagem || './assets/img/default.jpg'}}" id="{{$index}}-img" alt="{{objeto.titulo}}" 
-                                        onload="redimencionar(this);" style="display:none;">
+                                    <!--/a-->
+                                   <!--img src="{{objeto.imagem || './assets/img/default.jpg'}}" id="{{$index}}-img" alt="{{objeto.titulo}}" 
+                                        onload="redimencionar(this);" style="display:none;"-->
                                 </div> 
                               </div>                           
                            </div>

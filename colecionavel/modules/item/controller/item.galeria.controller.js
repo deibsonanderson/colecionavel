@@ -199,11 +199,12 @@
         };   
 
 
-        function checarImagem(imagem,titulo,colunas){
+        function checarImagem(imagem,titulo,colunas,item){
             if(!angular.isUndefined(imagem) && imagem !== '' && imagem !== null && imagem !== './sistema/uploads/default.jpg' && imagem !== './assets/img/default.jpg' ){
                 var objeto = {
                     'titulo': titulo,
-                    'imagem': imagem
+                    'imagem': imagem,
+					'item': item
                 }
                 colunas.push(objeto);
             }
@@ -216,13 +217,13 @@
                 var list = [];
                 for (var x = 0; x < itens.length; x++) {
                     if(vm.item.modo == '1' || vm.item.modo == '' || vm.item.modo == undefined){    
-                        checarImagem(itens[x].imagem,itens[x].titulo,list);                    
+                        checarImagem(itens[x].imagem,itens[x].titulo,list,itens[x]);                    
                     }
                     if(vm.item.modo == '2' || vm.item.modo == '' || vm.item.modo == undefined){
-                        checarImagem(itens[x].screenshot1,itens[x].titulo,list);                    
-                        checarImagem(itens[x].screenshot2,itens[x].titulo,list);                    
-                        checarImagem(itens[x].screenshot3,itens[x].titulo,list);                    
-                        checarImagem(itens[x].screenshot4,itens[x].titulo,list);                    
+                        checarImagem(itens[x].screenshot1,itens[x].titulo,list,itens[x]);                    
+                        checarImagem(itens[x].screenshot2,itens[x].titulo,list,itens[x]);                    
+                        checarImagem(itens[x].screenshot3,itens[x].titulo,list,itens[x]);                    
+                        checarImagem(itens[x].screenshot4,itens[x].titulo,list,itens[x]);                    
                     }              
                 };
                 
