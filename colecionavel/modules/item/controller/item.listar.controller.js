@@ -26,7 +26,8 @@
         vm.plataformas = [];
         vm.regioes = [];
         vm.situacoes = [];
-        vm.tipos = [];        
+        vm.tipos = [];     
+		vm.alerts = [];		
         
         //Instancia Metodos
         vm.findByFilter = findByFilter;
@@ -41,7 +42,9 @@
         vm.modalExcluir = modalExcluir;   
         vm.montarFiltro = montarFiltro; 
         vm.topoPagina = topoPagina;
-
+		vm.addAlert = addAlert;
+		vm.closeAlert = closeAlert;
+		
         function limparCampos(){
             vm.item = {
                 registrosPorPagina : "5"
@@ -87,6 +90,11 @@
 
         
         function activate() {
+			
+			if(!angular.isUndefined($state.params) && !angular.isUndefined($state.params.obj)){
+				vm.addAlert($state.params.obj.classe, $state.params.obj.message);
+			}
+			
             var objeto = ItemFactory.getPesquisa();
             if(angular.isUndefined(objeto) && angular.isUndefined(vm.item.ordem)){
 				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
@@ -123,6 +131,7 @@
 
         function visualizar (objeto) {
         objeto.isView = true;
+		objeto.isListar = true;
         ItemFactory.setItem(objeto);
             $state.go('item-manter');              
         }    
@@ -134,13 +143,14 @@
         }
 
         function remover(codigo){
-            //console.log('Voce excluiu o '+codigo)
             addloader();
             ItemService.remove(codigo).then(function onSuccess(response) {
                 console.log(response.data);
                 removeloader();
                 activate();
+				vm.addAlert('alert-success', response.data.message);
             }).catch(function onError(response) {
+				vm.addAlert('alert-danger', response.data.message);
                 removeloader();
                 console.log(response);
             });
@@ -250,6 +260,17 @@
                 }
             });
         };
+		
+		function addAlert(type, message) {
+            vm.alerts.push({
+                "type": type,
+                "msg": message
+            });
+        }
+
+        function closeAlert(index) {
+            vm.alerts.splice(index, 1);
+        }		
 
         activate();
 

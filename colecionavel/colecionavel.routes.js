@@ -95,6 +95,9 @@ function getStates() {
                 controller: 'ItemListarController',
                 controllerAs: 'ItemListarCtrl',
                 templateUrl: 'modules/item/templates/item.listar.template.html',
+			    params: {
+					obj: undefined
+				},
                 resolve: {
                     loadDeps: ['$ocLazyLoad', function($ocLazyLoad) {
                         return $ocLazyLoad.load({

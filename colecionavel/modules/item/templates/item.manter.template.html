@@ -504,7 +504,7 @@
             <div class="col-md-12">
                <p class="demo-button">
                   <button ng-click="ItemManterCtrl.cadastrar(itemForm)" id="btn-salvar" ng-disabled="ItemManterCtrl.isView" type="button" class="btn btn-primary">Salvar</button>
-                  <button ui-sref='item-listar' type="button" class="btn btn-danger">Cancelar</button>
+                  <button ng-click="ItemManterCtrl.cancelar()" type="button" class="btn btn-danger">Voltar</button>
                </p>               
             </div>
          </div>  
@@ -512,7 +512,7 @@
             <div class="col-md-12">
                <p class="demo-button">
                   <button ng-click="ItemManterCtrl.cadastrar(itemForm)" id="btn-salvar" ng-disabled="ItemManterCtrl.isView" type="button" class="btn btn-primary col-xs-12 ">Salvar</button>
-                  <button ui-sref='item-listar' type="button" class="btn btn-danger col-xs-12"  style="margin-bottom:40px; ">Cancelar</button>
+                  <button ng-click="ItemManterCtrl.cancelar()" type="button" class="btn btn-danger col-xs-12"  style="margin-bottom:40px; ">Voltar</button>
                </p>               
             </div>
          </div>            

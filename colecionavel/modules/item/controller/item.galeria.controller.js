@@ -124,6 +124,7 @@
 
         function visualizar (objeto) {
         objeto.isView = true;
+		objeto.isListar = false;
         ItemFactory.setItem(objeto);
             $state.go('item-manter');              
         }    

@@ -24,7 +24,7 @@
         vm.regioes = REGIAO.lista;
         vm.situacoes = SITUACAO.lista;
         vm.tipos = TIPO.lista;
-
+		vm.isListar = undefined;
 
         //Instancia Metodos
         vm.cadastrar = cadastrar;
@@ -39,7 +39,7 @@
         vm.removeValue = removeValue;
         vm.checarDigital = checarDigital;
         vm.checarPropriedade = checarPropriedade;
-
+		vm.cancelar = cancelar;
         //Metodos
         function addValue(objeto,atributo){
             var valor = 100;
@@ -130,7 +130,8 @@
                 removeloader();
             } else {
                 vm.isView = objeto.isView;
-                vm.findById(objeto.id);                
+                vm.findById(objeto.id);
+				vm.isListar = objeto.isListar;                
             }
             ItemFactory.limparItem();
             ScrollToService.scrollToTop( 0, 600);
@@ -216,7 +217,11 @@
                         vm.addAlert('alert-success', response.data.message);
                         vm.createLog(itemConverted);
                         removeloader();
-                        //$state.go('item-listar');
+						var objUpdate = {
+							       classe: 'alert-success',
+								   message: response.data.message
+								   };
+                        $state.go('item-listar',{obj:objUpdate});
                     }).catch(function onError(response) {
                         vm.addAlert('alert-danger', response.data.message);
                         UserService.checkStatus(response);
@@ -321,7 +326,13 @@
             $scope.$apply();            
         };
 
-
+        function cancelar (objeto) {
+			if(vm.isListar === false){
+				$state.go('item-galeria');
+			}else{
+				$state.go('item-listar');
+			}
+        }  
 
         activate();
 
