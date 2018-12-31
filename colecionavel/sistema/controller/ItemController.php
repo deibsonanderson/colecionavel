@@ -22,7 +22,7 @@ class ItemController {
     public function validarItem($item) {
         $retorno = true;
         if ($item->getTitulo() == '' ||
-                $item->getImagem() == '' ||
+                //$item->getImagem() == '' ||
                 $item->getRegiao() == '' ||
                 $item->getPlataforma() == '' ||
                 $item->getTipo() == '' ||
@@ -107,7 +107,7 @@ class ItemController {
             if ($this->validarImagem($data->imagem)) {
                 $item->setImagem($this->setImagemFile($data->imagem));
             }
-        }
+        }else
 
         $item->setProcedencia($data->procedencia);
         $item->setRegiao($data->regiao);
@@ -168,9 +168,9 @@ class ItemController {
             echo json_encode($arr);
         } else {
             $arr = array('message' => 'Campos Obrigatorios devem ser preenchidos!'); //etc
-            header('HTTP/1.1 201 Created');
+            header('HTTP/1.1 400 Bad Request');
             echo json_encode($arr);
-            http_response_code(500);
+            http_response_code(400);
         }
     }
 
@@ -262,9 +262,9 @@ class ItemController {
             echo json_encode($arr);      
         }else{
             $arr = array('id' => $item->getId(), 'message' => 'Campos Obrigatorios devem ser preenchidos!'); //etc
-            header('HTTP/1.1 201 Created');
+            header('HTTP/1.1 400 Bad Request');
             echo json_encode($arr);
-            http_response_code(500);
+            http_response_code(400);
         }
     }    
 
@@ -362,9 +362,9 @@ class ItemController {
         $item->setId($data);
         if($item->getId() == '' || $item->getId() == null){
             $arr = array('id' => $item->getId(), 'message' => 'Campo obrigatorio não foi passado!'); //etc
-            header('HTTP/1.1 201 Created');
+            header('HTTP/1.1 400 Bad Request');
             echo json_encode($arr);
-            http_response_code(500);
+            http_response_code(400);
         }else{
             $this->deleteImagemAll($item->getId());
             $itemDao->deleteItem($item);            
