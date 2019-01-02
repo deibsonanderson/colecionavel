@@ -32,7 +32,7 @@
 
         //Instancia Metodos
         vm.findByFilter = findByFilter;
-        vm.visualizar = visualizar;
+        vm.atualizar = atualizar;
         vm.registrosPorPaginaAlterados = registrosPorPaginaAlterados;
         vm.pesquisar = pesquisar;
         vm.sorter = sorter;
@@ -122,8 +122,8 @@
            vm.montarFiltro();
         }
 
-        function visualizar (objeto) {
-        objeto.isView = true;
+        function atualizar (objeto) {
+        objeto.isView = false;
 		objeto.isListar = false;
         ItemFactory.setItem(objeto);
             $state.go('item-manter');              

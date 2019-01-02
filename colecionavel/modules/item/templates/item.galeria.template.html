@@ -194,7 +194,7 @@
                            <div class="hidden-xs">
                               <div class="row " ng-repeat="linha in ItemGaleriaCtrl.itens">
                                  <div class="col-md-2" ng-repeat="objeto in linha">
-								   <img ng-click="ItemGaleriaCtrl.visualizar(objeto.item)" src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
+								   <img ng-click="ItemGaleriaCtrl.atualizar(objeto.item)" src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
                                  </div>
                               </div>   
                            </div>                 
@@ -202,7 +202,7 @@
                               <div class="row" ng-repeat="linha in ItemGaleriaCtrl.itensMobile">
                                 <div ng-repeat="objeto in linha">
                                     <a href="#" >
-                                       <div  ng-click="ItemGaleriaCtrl.visualizar(objeto.item)" class="someDiv" id="{{$index}}-div" style="cursor:pointer;margin:0px;width:33%;float:left;
+                                       <div  ng-click="ItemGaleriaCtrl.atualizar(objeto.item)" class="someDiv" id="{{$index}}-div" style="cursor:pointer;margin:0px;width:33%;float:left;
                                        background-image:url({{objeto.imagem}});background-repeat: no-repeat;background-position:center;"></div>
                                     </a>
                                    <img src="{{objeto.imagem || './assets/img/default.jpg'}}" id="{{$index}}-img" alt="{{objeto.titulo}}" 
