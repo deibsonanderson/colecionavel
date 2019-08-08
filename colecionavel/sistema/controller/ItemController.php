@@ -507,6 +507,70 @@ class ItemController {
         }
         
     }
+	
+	public function findAllItemNewItem($id) {
+        $itemDao = new ItemDao();
+		$filter = ' WHERE gi.id_user = '.$_SESSION['userItem']->id;
+        if($id != '' && $id != null){
+			$filter .= ' AND gi.id = '.$id;
+		}
+		$filter .= " ORDER BY gi.titulo ASC ";
+		$itens = json_decode($itemDao->findItemByFilter($filter));
+        $array = array();
+		foreach(json_decode($itemDao->findItemByFilter($filter)) as $data){
+			$item = new stdClass();
+			$item->number = (integer)$data->id;
+			$item->title = $data->titulo;
+			$item->createDate = $data->data_cadastro;
+			$item->description = $data->descricao;
+			$item->image = $data->imagem;
+			$item->provenance = $data->procedencia;
+			$item->region = $data->regiao;
+			$item->pricePaid = (double)$data->valor_pago;
+			$item->currentPrice = (double)$data->valor_atual;
+			$item->platform = $data->plataforma;
+			$item->type = $data->tipo;
+			$item->code = $data->codigo;
+			$item->complement = (integer) $data->complemento;
+			$item->evaluation = (integer) $data->avaliacao;			
+			$item->localStorage = array($data->local_primeiro,$data->local_segundo,$data->local_terceiro);
+			
+			$item->flagDiscCartridge = (boolean) $this->booleanConverter($data->flag_cartucho_disco);
+			$item->flagReplica = (boolean) $this->booleanConverter($data->flag_replica);
+			$item->flagProtector = (boolean) $this->booleanConverter($data->flag_protetor);
+			$item->flagCdDvdGdBd = (boolean) $this->booleanConverter($data->flag_cd_dvd);
+			$item->flagBox = (boolean) $this->booleanConverter($data->flag_caixa);
+			$item->flagManual = (boolean) $this->booleanConverter($data->flag_manual);
+			$item->flagCrib = (boolean) $this->booleanConverter($data->flag_berco);
+			$item->flagPaintpamphlet = (boolean) $this->booleanConverter($data->flag_panfleto);
+			$item->flagPoster = (boolean) $this->booleanConverter($data->flag_poster);
+			$item->flagInvoice = (boolean) $this->booleanConverter($data->flag_nota_fiscal);
+			$item->flagSealed = (boolean) $this->booleanConverter($data->flag_lacrado);
+			$item->flagGlover = (boolean) $this->booleanConverter($data->flag_luva);
+			
+			$item->timeOfPlays = (integer) $data->tempo;
+			$item->numberOfPlays = (integer) $data->num_jogadas;
+			$item->status = $data->status;
+			$item->progression = (integer) $data->progressao;
+			$item->isHaveGame = (boolean) $this->booleanConverter($data->possui);
+			$item->situation = $data->situacao;
+			$item->genre = $data->genero;
+			$item->producer = $data->produtora;
+			$item->publisher = $data->publicadora;
+			$item->active = (boolean) true; 
+			$item->screenshots = array($data->screenshot1,$data->screenshot2,$data->screenshot3,$data->screenshot4);
+			$array[] = $item;
+		}
+        return json_encode($array);
+    }
+	
+	public function booleanConverter($value){
+		if($value == "0"){
+			return false;
+		}else{
+			return true;
+		}
+	}
 
     public function catacterRemove($string){
         /* matriz de entrada

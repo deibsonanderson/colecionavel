@@ -3,7 +3,7 @@
 $url = '../';
 require $url . 'controller/ItemController.php';
 $itemControll = new ItemController();
-
+header('Content-type: application/json');
 if($itemControll->validarLogin()){
 
 
@@ -63,6 +63,9 @@ switch ($_GET["op"]) {
 		break;
     case '18':
 		echo $itemControll->getTotalValor();
+		break;
+	case '19':
+		echo $itemControll->findAllItemNewItem($_GET["id"]);
 		break;
 	default:
 		echo $itemControll->findAllItem($_GET);
