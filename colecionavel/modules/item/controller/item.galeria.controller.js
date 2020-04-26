@@ -18,6 +18,8 @@
         vm.currentPage = 1;
         vm.item = {};
         vm.item.registrosPorPagina = "12";
+        vm.item.acao = "E";
+        vm.item.exibicao = "S";
         vm.selectTop = ["6","12","18","24"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -44,7 +46,9 @@
 
         function limparCampos(){
             vm.item = {
-                registrosPorPagina:"12"
+                registrosPorPagina:"12",
+                exibicao:"S",
+                acao:"E"
             };
             ItemFactory.setPesquisa(undefined);
             activate();

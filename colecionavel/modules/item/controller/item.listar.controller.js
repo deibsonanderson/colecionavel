@@ -18,6 +18,8 @@
         vm.totalItems = 0;
         vm.currentPage = 1;
         vm.item.registrosPorPagina = "5";
+        vm.item.exibicao = "S";
+        vm.item.acao = "E";
         vm.selectTop = ["5","10","30","50"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -43,11 +45,17 @@
         vm.montarFiltro = montarFiltro; 
         vm.topoPagina = topoPagina;
 		vm.addAlert = addAlert;
-		vm.closeAlert = closeAlert;
+        vm.closeAlert = closeAlert;
+        vm.traducaoFlag = traducaoFlag;
+        vm.checarStatus = ItemFactory.checarStatus;
+        vm.campoVazio = campoVazio;
+        vm.checkLength = checkLength;
 		
         function limparCampos(){
             vm.item = {
-                registrosPorPagina : "5"
+                registrosPorPagina : "5",
+                exibicao:"S",
+                acao:"E"
             };
             ItemFactory.setPesquisa(undefined);
             activate();
@@ -268,9 +276,32 @@
             });
         }
 
+        function traducaoFlag(value){
+            return (value == true)?'Sim':'Não';
+        }
+
+        function campoVazio(value){
+            return (!angular.isUndefined(value) && value != '')?value:'-';
+        }
+
         function closeAlert(index) {
             vm.alerts.splice(index, 1);
-        }		
+        }
+        
+        function checkLength(len,value){
+            if(!angular.isUndefined(value)){
+                var fieldLength = value.length;
+                if(fieldLength <= len){
+                    return value;
+                } else {
+                    var str = value;
+                    str = str.substring(0, len);
+                    return str+"...";
+                }
+            }else{
+                return '-';
+            }
+        }
 
         activate();
 

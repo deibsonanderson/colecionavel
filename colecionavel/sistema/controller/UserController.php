@@ -1,6 +1,7 @@
 <?php
-
-session_start();
+if(!isset($_SESSION)){ 
+    session_start(); 
+} 
 $url = '../';
 require $url . 'dao/UserDao.php';
 require $url . 'class/Log.php';

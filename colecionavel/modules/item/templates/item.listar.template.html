@@ -161,12 +161,21 @@
                   </div>
                </div>
                <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-lg-10">
                      <div class="form-group">
                         <label style="font-weight:lighter">Titulo, Descrição, Informações Gerais</label>
                         <input ng-model="ItemListarCtrl.item.titulo" type="text" class="form-control">                    
                      </div>
                   </div>
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Exibição</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.exibicao">
+                           <option value="S" selected="selected" >Simples</option>
+                           <option value="C">Completa</option>
+                        </select>
+                     </div>
+                  </div>                     
                </div>
                <div class="row hidden-xs" style="margin-top:10px">
                   <div class="col-lg-12">
@@ -190,43 +199,143 @@
                      <h3 class="panel-title">Geleria</h3>
                   </div>
                   <div class="panel-body">
-                     <table class="table table-striped">
-                        <thead>
-                           <tr>
-                              <th class="hidden-xs">Identificador</th>
-                              <th class="hidden-xs">Data de Cadastro</th>
-                              <th class="hidden-xs">Título</th>
-                              <th class="hidden-xs hidden-sm">Procedencia</th>
-                              <th class="hidden-xs hidden-sm">Plataforma</th>
-                              <th class="hidden-xs hidden-sm">Gênero</th>
-                              <th class="hidden-xs">Tipo</th>
-                              <th class="hidden-xs">&nbsp;</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr ng-repeat="objeto in ItemListarCtrl.itens">
-                              <td class="hidden-xs">{{objeto.id | lpad : 5 }}</td>
-                              <td class="hidden-xs">{{objeto.data_cadastro}}</td>
-                              <td>{{objeto.titulo}}</td>
-                              <td class="hidden-xs hidden-sm">{{objeto.procedencia}}</td>
-                              <td class="hidden-xs hidden-sm">{{objeto.plataforma}}</td>
-                              <td class="hidden-xs hidden-sm">{{objeto.genero}}</td>
-                              <td class="hidden-xs">{{objeto.tipo}}</td>
-                              <td>
-                                 <div class="btn-group hidden-xs" style="width:190px">
-                                    <a class="btn btn-primary" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
-                                    <a class="btn btn-warning" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
-                                    <a class="btn btn-danger" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
-                                 </div>
-                                 <div class="btn-group visible-xs">
-                                    <a class="btn btn-primary" style="border-top-right-radius:3px;border-bottom-right-radius:3px;width:66px;" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
-                                    <a class="btn btn-warning" style="border-radius:3px;width:66px;" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
-                                    <a class="btn btn-danger" style="border-top-left-radius:3px; border-bottom-left-radius:3px;width:66px;" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
-                                 </div>
-                              </td>
-                           </tr>                           
-                        </tbody>
-                     </table>
+                     <div id="div-table" style="overflow-x: auto;">
+                        <table class="table table-striped">
+                           <thead>
+                              <tr>
+                                 <!-- inicio exibicao Simplificado -->
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Identificador</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Data de Cadastro</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" >Título</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Procedencia</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Plataforma</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Gênero</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Tipo</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">&nbsp;</th>
+                                 <!-- final exibicao Simplificado -->
+
+                                 <!-- inicio exibicao Completo-->
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Imagem</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Identificador</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Data de Cadastro</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Título</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Tipo</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Descrição</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Procedencia</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Região</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor pago</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor atual</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Plataforma</th>                                 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Código</th> 
+                                 <!--th ng-if="ItemListarCtrl.item.exibicao == 'C'">Complemento</th--> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Avaliação</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-primário</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-secundário</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-terciário</th>                                 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Cartucho/disco</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Replica</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Protetor</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">CD/DVD</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Caixa</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Manual</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Berço</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Panfleto</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Pôster</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Nota-fiscal</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Lacrado</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Luva</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Status</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Progressão</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Situação</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Possui</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Gênero</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Produtora</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Publicadora</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Tempo</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Jogadas</th>                                 
+                                 <!-- final exibicao Completo -->
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="objeto in ItemListarCtrl.itens">
+                                 <!-- inicio exibicao Simplificado -->
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">
+                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+                                       <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;width: 100px;" class="img-thumbnail">
+                                    </a> 
+                                 </td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.id | lpad : 5 }}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.data_cadastro}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" >{{objeto.titulo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.procedencia}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.plataforma}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.genero}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.tipo}}</td>
+                                 <!-- final exibicao Simplificado -->
+
+                                 <!-- inicio exibicao Completo-->
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">
+                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+                                       <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;" class="img-thumbnail">
+                                    </a> 
+                                 </td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.id | lpad : 5 }}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.data_cadastro}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.titulo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.tipo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checkLength(100,objeto.descricao)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.procedencia}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.regiao}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_pago}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_atual}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.plataforma}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.codigo)}}</td> 
+                                 <!--td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.complemento}}</td--> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.avaliacao | lpad : 5 }}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_primeiro)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_segundo)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_terceiro)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_cartucho_disco)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_replica)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_protetor)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_cd_dvd)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_caixa)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_manual)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_berco)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_panfleto)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_poster)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_nota_fiscal)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_lacrado)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_luva)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checarStatus(objeto.status)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.progressao}}%</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.situacao)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{(objeto.possui == '1')?"Sim":"Não"}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.genero}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.produtora)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.publicadora)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.tempo}}Hs.</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.num_jogadas | lpad : 5 }}</td>                                    
+                                 <!-- final exibicao Completo -->
+                                 
+                                 
+                                 
+                                 <td>
+                                    <div class="btn-group hidden-xs" style="width:190px">
+                                       <a class="btn btn-primary" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
+                                       <a class="btn btn-warning" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
+                                       <a class="btn btn-danger" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
+                                    </div>
+                                    <div class="btn-group visible-xs">
+                                       <a class="btn btn-primary" style="border-top-right-radius:3px;border-bottom-right-radius:3px;width:66px;" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
+                                       <a class="btn btn-warning" style="border-radius:3px;width:66px;" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
+                                       <a class="btn btn-danger" style="border-top-left-radius:3px; border-bottom-left-radius:3px;width:66px;" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
+                                    </div>
+                                 </td>
+                              </tr>                           
+                           </tbody>
+                        </table>
+                     </div>
                      <div class="row hidden-xs" style="margin-top:10px">
                         <div class="col-lg-12">
                            <button type="reset" class="btn btn-danger btn-closed" ng-click="ItemListarCtrl.topoPagina()">Topo da página</button>

@@ -5,13 +5,12 @@
     .module('colecionavel.module.user')
     .service('UserService', UserService);
 
-    UserService.$inject = ['$http'];
+    UserService.$inject = ['$http','API_URL'];
 
-    function UserService($http) {
+    function UserService($http, API_URL) {
 
-        var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/UserService.php';
-        //var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/UserService.php';        
-
+        var _baseUrl = API_URL+'sistema/service/UserService.php';
+        
         // Methods
         this.create = create;
         this.createLog = createLog;

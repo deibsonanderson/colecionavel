@@ -5,13 +5,12 @@
     .module('colecionavel.module.item')
     .service('ItemService', ItemService);
 
-    ItemService.$inject = ['$http'];
+    ItemService.$inject = ['$http', 'API_URL'];
 
-    function ItemService($http) {
+    function ItemService($http, API_URL) {
 
-        var _baseUrl = 'http://localhost:8091/colecionavel/sistema/service/ItemService.php';
-        //var _baseUrl = 'http://dicaseprogramacao.com.br/colecionavel/sistema/service/ItemService.php';
-
+        var _baseUrl = API_URL+'sistema/service/ItemService.php';
+        
         // Methods
         this.create = create;
         this.update = update;
