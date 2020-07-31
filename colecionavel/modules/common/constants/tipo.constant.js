@@ -22,7 +22,15 @@ angular.module('colecionavel.module').constant("TIPO",{
 					"Televisor",
 					"Pistola",
 					"Tapete",
-					"Instrumento musical"        		
+					"Instrumento musical" 
+		                        "Livro",
+		                        "Livro Jogo",
+		                        "RPG - Livro",
+		                        "Board Game",
+		                        "HQ",
+		                        "Manga",
+		                        "CD Musical",
+		                        "DVD Musical"
 				]
 });
 })();
