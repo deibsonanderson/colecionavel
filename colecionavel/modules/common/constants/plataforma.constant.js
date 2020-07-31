@@ -147,7 +147,8 @@ angular.module('colecionavel.module').constant("PLATAFORMA",{
 				"Xbox",
 				"Xbox 360",
 				"Xbox One",
-				"Zeebo"
+				"Zeebo",
+		                "Outros" 
 			]
 });
 })();
