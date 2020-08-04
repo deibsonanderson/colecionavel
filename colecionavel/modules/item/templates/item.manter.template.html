@@ -236,7 +236,7 @@
                                  <div class="form-group ">
                                     <label style="font-weight:lighter">Possui o Item ?</label>
                                     <select class="form-control" ng-change="ItemManterCtrl.checarPropriedade()" ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.possui">
-                                       <option value="1" selected>Sim</option>
+                                       <option value="1" selected="selected">Sim</option>
                                        <option value="0">Não</option>                                       
                                     </select>
                                  </div>
@@ -249,8 +249,7 @@
                                  <div class="form-group ">
                                     <label style="font-weight:lighter">Procedência</label>
                                     <select class="form-control mgs_alerta" ng-disabled="ItemManterCtrl.isView || ItemManterCtrl.isPropriedade" ng-model="ItemManterCtrl.item.procedencia">
-                                       <option value="" class="" selected="selected"></option>
-                                       <option value="Original" >Original</option>
+                                       <option value="Original" selected="selected" >Original</option>
                                        <option value="Pirata">Pirata</option>
                                     </select>
                                  </div>
@@ -424,7 +423,7 @@
                                     <label style="font-weight:lighter">Status</label>
                                     <select class="form-control " ng-disabled="ItemManterCtrl.isView" ng-model="ItemManterCtrl.item.status"
                                      ng-change="ItemManterCtrl.montarLog(1);">
-                                       <option value="" class="" selected="selected"></option>
+                                       <option value="" class="" selected="selected">Não se aplica</option>
                                        <option value="C">Concluído</option>
                                        <option value="P">Pendente</option>
                                        <option value="E">Em Progresso</option>
