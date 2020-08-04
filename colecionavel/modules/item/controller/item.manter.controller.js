@@ -125,7 +125,11 @@
                     progressao:0,
                     num_jogadas:0,
                     tempo:0,
-                    possui:'1'
+                    possui:'1',
+					situacao: 'Comprado',
+					regiao: 'BRA',
+					procedencia: 'Original'
+					
                 };
                 removeloader();
             } else {
