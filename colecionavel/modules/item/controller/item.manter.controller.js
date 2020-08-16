@@ -225,7 +225,8 @@
 							       classe: 'alert-success',
 								   message: response.data.message
 								   };
-                        $state.go('item-listar',{obj:objUpdate});
+                        //$state.go('item-listar',{obj:objUpdate});
+						cancelar ({obj:objUpdate});
                     }).catch(function onError(response) {
                         vm.addAlert('alert-danger', response.data.message);
                         UserService.checkStatus(response);
@@ -332,9 +333,11 @@
 
         function cancelar (objeto) {
 			if(vm.isListar === false){
-				$state.go('item-galeria');
+				$state.go('item-galeria',objeto);
+			}else if(vm.isListar === true){
+				$state.go('item-listar',objeto);
 			}else{
-				$state.go('item-listar');
+				$state.go('home',objeto);
 			}
         }  
 

@@ -30,7 +30,7 @@
         vm.regioes = [];
         vm.situacoes = [];
         vm.tipos = [];        
-    
+		vm.alerts = [];	
 
         //Instancia Metodos
         vm.findByFilter = findByFilter;
@@ -43,6 +43,8 @@
         vm.limparCampos = limparCampos;
         vm.montarFiltro = montarFiltro;
         vm.topoPagina = topoPagina;
+		vm.addAlert = addAlert;
+        vm.closeAlert = closeAlert;
 
         function limparCampos(){
             vm.item = {
@@ -91,6 +93,11 @@
 
         
         function activate() {
+			
+			if(!angular.isUndefined($state.params) && !angular.isUndefined($state.params.obj)){
+				vm.addAlert($state.params.obj.classe, $state.params.obj.message);
+			}
+			
             var objeto = ItemFactory.getPesquisa();
             if(angular.isUndefined(objeto) && angular.isUndefined(vm.item.ordem)){
 				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
@@ -246,6 +253,17 @@
                 
             }
             return linhas;
+        }
+		
+		function addAlert(type, message) {
+            vm.alerts.push({
+                "type": type,
+                "msg": message
+            });
+        }
+		
+		function closeAlert(index) {
+            vm.alerts.splice(index, 1);
         }
 
 

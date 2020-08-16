@@ -146,6 +146,7 @@
 
         function atualizar(objeto){
             objeto.isView = false;
+			objeto.isListar = true;
             ItemFactory.setItem(objeto);
             $state.go('item-manter');
         }
