@@ -20,6 +20,7 @@
         vm.item.registrosPorPagina = "5";
         vm.item.exibicao = "S";
         vm.item.acao = "E";
+		vm.item.modo = "1";
         vm.selectTop = ["5","10","30","50"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -55,7 +56,9 @@
             vm.item = {
                 registrosPorPagina : "5",
                 exibicao:"S",
-                acao:"E"
+                acao:"E",
+				modo: "1"
+				
             };
             ItemFactory.setPesquisa(undefined);
             activate();
