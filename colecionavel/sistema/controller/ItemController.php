@@ -107,7 +107,7 @@ class ItemController {
             if ($this->validarImagem($data->imagem)) {
                 $item->setImagem($this->setImagemFile($data->imagem));
             }
-        }else
+        }
 
         $item->setProcedencia($data->procedencia);
         $item->setRegiao($data->regiao);
