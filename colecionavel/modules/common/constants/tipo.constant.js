@@ -30,7 +30,8 @@ angular.module('colecionavel.module').constant("TIPO",{
 		                        "HQ",
 		                        "Manga",
 		                        "CD Musical",
-		                        "DVD Musical"
+		                        "DVD Musical",
+					"Board Game"
 				]
 });
 })();
