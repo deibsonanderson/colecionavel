@@ -15,7 +15,13 @@ angular.module('colecionavel.module').constant("GENERO",{
 									"Puzzler",
 									"RPG",
 									"RTS",
-									"Sobrevivência"
+									"Sobrevivência",
+									"Terror",  
+									"Drama",  
+									"Sci-Fi",  
+									"Fantasia",  
+									"Suspense",  
+									"Medieval"
 								]
 });
 })();

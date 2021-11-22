@@ -2,6 +2,7 @@
     'use strict';
 angular.module('colecionavel.module').constant("PLATAFORMA",{ 
 	lista : [
+				"Outros",
 				"3DO",
 				"Action Max",
 				"Alienware Alpha",
@@ -147,8 +148,7 @@ angular.module('colecionavel.module').constant("PLATAFORMA",{
 				"Xbox",
 				"Xbox 360",
 				"Xbox One",
-				"Zeebo",
-		                "Outros" 
+				"Zeebo"
 			]
 });
 })();

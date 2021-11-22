@@ -23,15 +23,19 @@ angular.module('colecionavel.module').constant("TIPO",{
 					"Pistola",
 					"Tapete",
 					"Instrumento musical", 
-		                        "Livro",
-		                        "Livro Jogo",
-		                        "RPG - Livro",
-		                        "Board Game",
-		                        "HQ",
-		                        "Manga",
-		                        "CD Musical",
-		                        "DVD Musical",
-					"Board Game"
+					"Livro",
+					"Livro Jogo",
+					"RPG - Livro",
+					"Board Game",
+					"HQ",
+					"Manga",
+					"CD Musical",
+					"DVD Musical",
+					"Board Game",
+					"Card Game",
+					"Ferramenta",
+					"Manual",
+					"Memory Card"
 				]
 });
 })();
