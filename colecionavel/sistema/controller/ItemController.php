@@ -142,7 +142,7 @@ class ItemController {
         $item->setGenero($data->genero);
         $item->setProdutora($data->produtora);
         $item->setPublicadora($data->publicadora);
-
+		$item->setQuantidade($data->quantidade);
         $item->setScreenshot1($this->checarImagemUpdate($data->screenshot1,null,1));
         $item->setScreenshot2($this->checarImagemUpdate($data->screenshot2,null,2));
         $item->setScreenshot3($this->checarImagemUpdate($data->screenshot3,null,3));
@@ -249,6 +249,7 @@ class ItemController {
         $item->setProdutora($data->produtora);
         $item->setPublicadora($data->publicadora);  
         $item->setIdUser($_SESSION['userItem']->id);
+		$item->setQuantidade($data->quantidade);
         $item->setScreenshot1($this->checarImagemUpdate($data->screenshot1,$item->getId(),1));
         $item->setScreenshot2($this->checarImagemUpdate($data->screenshot2,$item->getId(),2));
         $item->setScreenshot3($this->checarImagemUpdate($data->screenshot3,$item->getId(),3));
@@ -547,7 +548,7 @@ class ItemController {
 			$item->flagInvoice = (boolean) $this->booleanConverter($data->flag_nota_fiscal);
 			$item->flagSealed = (boolean) $this->booleanConverter($data->flag_lacrado);
 			$item->flagGlover = (boolean) $this->booleanConverter($data->flag_luva);
-			
+			$item->quantidade = (integer) $data->quantidade;
 			$item->timeOfPlays = (integer) $data->tempo;
 			$item->numberOfPlays = (integer) $data->num_jogadas;
 			$item->status = $data->status;

@@ -55,6 +55,7 @@ class ItemDao extends Dados {
                                                 `possui`,
                                                 `genero`,
                                                 `produtora`,
+												`quantidade`,												
                                                 `tempo`,
                                                 `num_jogadas`,    
                                                 `publicadora`) 
@@ -96,6 +97,7 @@ class ItemDao extends Dados {
                                                 '" . $item->getPossui() . "',   
                                                 '" . $item->getGenero() . "',   
                                                 '" . $item->getProdutora() . "', 
+												'" . $item->getQuantidade() . "', 
                                                 '" . $item->getTempo() . "',
                                                 '" . $item->getNumJogadas() . "', 
                                                 '" . $item->getPublicadora() . "')";
@@ -158,6 +160,7 @@ class ItemDao extends Dados {
                             gi.`situacao`,
                             gi.`genero`,
                             gi.`produtora`,
+							gi.`quantidade`,	
                             gi.`publicadora`,
                             gi.`screenshot1`,
                             gi.`screenshot2`,
@@ -214,7 +217,8 @@ class ItemDao extends Dados {
                                                 `progressao`  =  " . $item->getProgressao() . ",    
                                                 `situacao`  =  '" . $item->getSituacao() . "',    
                                                 `genero`  =  '" . $item->getGenero() . "',    
-                                                `publicadora`  =  '" . $item->getPublicadora() . "',    
+                                                `quantidade`  =  '" . $item->getQuantidade() . "',
+                                                `publicadora`  =  '" . $item->getPublicadora() . "',												
                                                 `produtora`  =  '" . $item->getProdutora() . "',
                                                 `tempo`  =  '" . $item->getTempo() . "',
                                                 `num_jogadas`  =  '" . $item->getNumJogadas() . "',
@@ -293,6 +297,7 @@ class ItemDao extends Dados {
                             gi.`publicadora`,
                             gi.`tempo`,
                             gi.`num_jogadas`,
+							gi.`quantidade`,
                             gi.`screenshot1`,
                             gi.`screenshot2`,
                             gi.`screenshot3`,
@@ -348,6 +353,7 @@ class ItemDao extends Dados {
                             gi.`situacao`,
                             gi.`genero`,
                             gi.`produtora`,
+							gi.`quantidade`,
                             gi.`publicadora`,
                             gi.`screenshot1`,
                             gi.`screenshot2`,
@@ -386,6 +392,7 @@ class ItemDao extends Dados {
                             gi.`situacao`,
                             gi.`regiao`,
                             gi.`produtora`,
+							gi.`quantidade`,
                             gi.`publicadora`,                           
                             gi.`possui`
                             FROM `tb_game_item` gi 

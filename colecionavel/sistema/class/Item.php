@@ -42,7 +42,7 @@ class Item {
     private $publicadora;
     private $numJogadas;
     private $tempo;
-
+	private $quantidade;
     private $screenshot1;
     private $screenshot2;
     private $screenshot3;
@@ -66,7 +66,13 @@ class Item {
         $this->numJogadas = $numJogadas;
     }
 
+    function getQuantidade() {
+        return $this->quantidade;
+    }
 
+    function setQuantidade($quantidade) {
+        $this->quantidade = $quantidade;
+    }
 
     function getGenero() {
         return $this->genero;

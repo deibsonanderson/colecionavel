@@ -65,7 +65,7 @@
         }
 
 
-        function Item(id,data_cadastro,titulo,descricao,imagem,procedencia,regiao,valor_pago,valor_atual,plataforma,tipo,codigo,complemento,avaliacao,local_primeiro,local_segundo,local_terceiro,flag_cartucho_disco,flag_replica,flag_protetor,flag_cd_dvd,flag_caixa,flag_manual,flag_berco,flag_panfleto,flag_poster,flag_nota_fiscal,flag_lacrado,flag_luva,id_user,status,progressao,situacao,possui,genero,produtora,publicadora,screenshot1,screenshot2,screenshot3,screenshot4,tempo,num_jogadas) {
+        function Item(id,data_cadastro,titulo,descricao,imagem,procedencia,regiao,valor_pago,valor_atual,plataforma,tipo,codigo,complemento,avaliacao,local_primeiro,local_segundo,local_terceiro,flag_cartucho_disco,flag_replica,flag_protetor,flag_cd_dvd,flag_caixa,flag_manual,flag_berco,flag_panfleto,flag_poster,flag_nota_fiscal,flag_lacrado,flag_luva,id_user,status,progressao,situacao,possui,genero,produtora,publicadora,screenshot1,screenshot2,screenshot3,screenshot4,tempo,num_jogadas,quantidade) {
             this.id = id; 
             this.data_cadastro = data_cadastro; 
             this.titulo = titulo; 
@@ -98,6 +98,7 @@
             this.id_user    = id_user;   
             this.status = status;
             this.progressao = checarValorNumerico(progressao);
+			this.quantidade = checarValorNumerico(quantidade);
             this.situacao = situacao;
             this.possui = possui;
             this.genero = genero;
@@ -156,12 +157,13 @@
                 item.genero,
                 item.produtora,
                 item.publicadora,
-                item.screenshot1,
+				item.screenshot1,
                 item.screenshot2,
                 item.screenshot3,
                 item.screenshot4,
                 item.tempo,
-                item.num_jogadas);
+                item.num_jogadas,
+				item.quantidade);
         }
 
 
@@ -219,6 +221,7 @@
                 converted.screenshot3 = item.screenshot3;
                 converted.screenshot4 = item.screenshot4;               
                 converted.tempo = item.tempo;
+				converted.quantidade = item.quantidade;
                 converted.num_jogadas = item.num_jogadas;
 
             return converted;

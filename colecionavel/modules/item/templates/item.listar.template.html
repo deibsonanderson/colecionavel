@@ -204,6 +204,7 @@
                            <thead>
                               <tr>
                                  <!-- inicio exibicao Simplificado -->
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Imagem</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Identificador</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Data de Cadastro</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" >Título</th>
@@ -211,6 +212,7 @@
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Plataforma</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Gênero</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Tipo</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Qtd</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">&nbsp;</th>
                                  <!-- final exibicao Simplificado -->
 
@@ -222,7 +224,8 @@
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Tipo</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Descrição</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Procedencia</th> 
-                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Região</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Região</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Quantidade</th>								 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor pago</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor atual</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Plataforma</th>                                 
@@ -233,7 +236,7 @@
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-secundário</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-terciário</th>                                 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Cartucho/disco</th>
-                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Replica</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Replica</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Protetor</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">CD/DVD</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Caixa</th>
@@ -271,6 +274,7 @@
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.plataforma}}</td>
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.genero}}</td>
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.tipo}}</td>
+								 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.quantidade}}</td>
                                  <!-- final exibicao Simplificado -->
 
                                  <!-- inicio exibicao Completo-->
@@ -286,6 +290,7 @@
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checkLength(100,objeto.descricao)}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.procedencia}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.regiao}}</td> 
+								 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.quantidade}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_pago}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_atual}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.plataforma}}</td> 

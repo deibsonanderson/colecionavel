@@ -123,6 +123,7 @@
                     screenshot3:urlImgDefault,
                     screenshot4:urlImgDefault,
                     progressao:0,
+					quantidade:1,
                     num_jogadas:0,
                     tempo:0,
                     possui:'1',
