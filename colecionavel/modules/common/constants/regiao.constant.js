@@ -6,7 +6,8 @@ angular.module('colecionavel.module').constant("REGIAO",{
 				"JAP",
 				"USA",
 				"PAL",
-				"CHI"
+				"CHI",
+				"ITA"
 			   ]
 });
 })();

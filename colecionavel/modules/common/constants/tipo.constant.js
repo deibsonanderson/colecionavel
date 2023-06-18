@@ -35,7 +35,8 @@ angular.module('colecionavel.module').constant("TIPO",{
 					"Card Game",
 					"Ferramenta",
 					"Manual",
-					"Memory Card"
+					"Memory Card",
+					"EverDrive"
 				]
 });
 })();

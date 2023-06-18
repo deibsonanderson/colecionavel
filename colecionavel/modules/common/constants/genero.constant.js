@@ -20,7 +20,10 @@ angular.module('colecionavel.module').constant("GENERO",{
 									"Drama",  
 									"Sci-Fi",  
 									"Fantasia",  
-									"Suspense",  
+									"Suspense",
+									"Battle Royale",
+									"RTS",
+									"MOBA",									
 									"Medieval"
 								]
 });

@@ -104,6 +104,7 @@ angular.module('colecionavel.module').constant("PLATAFORMA",{
 				"PlayStation 2",
 				"PlayStation 3",
 				"PlayStation 4",
+				"PlayStation 5",
 				"PlayStation Vita",
 				"PlayStation Vita TV",
 				"PocketStation",
@@ -148,6 +149,8 @@ angular.module('colecionavel.module').constant("PLATAFORMA",{
 				"Xbox",
 				"Xbox 360",
 				"Xbox One",
+				"Xbox Series S",
+				"Xbox Series X",
 				"Zeebo"
 			]
 });
