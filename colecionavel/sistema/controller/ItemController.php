@@ -352,6 +352,7 @@ class ItemController {
         $objeto->concluido = $itemDao->getTotalItens($filter." AND (gi.`tipo` = 'Jogo Digital' OR gi.`tipo` = 'Jogo Físico') AND gi.status = 'C' AND gi.id_user = ".$_SESSION['userItem']->id)->totalItens;
         $objeto->pendente = $itemDao->getTotalItens($filter." AND (gi.`tipo` = 'Jogo Digital' OR gi.`tipo` = 'Jogo Físico') AND gi.status = 'P' AND gi.id_user = ".$_SESSION['userItem']->id)->totalItens;
         $objeto->andamento = $itemDao->getTotalItens($filter." AND (gi.`tipo` = 'Jogo Digital' OR gi.`tipo` = 'Jogo Físico') AND gi.status = 'E' AND gi.id_user = ".$_SESSION['userItem']->id)->totalItens;
+		$objeto->abandonado = $itemDao->getTotalItens($filter." AND (gi.`tipo` = 'Jogo Digital' OR gi.`tipo` = 'Jogo Físico') AND gi.status = 'A' AND gi.id_user = ".$_SESSION['userItem']->id)->totalItens;
         return json_encode($objeto);
     }    
 

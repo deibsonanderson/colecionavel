@@ -84,14 +84,14 @@
         }
 
         function visualizar (objeto) {
-            objeto.isView = true;
+            objeto.isView = false;
             ItemFactory.setItem(objeto);
             $state.go('item-manter');              
         }   
 
         function visualizarLog (id) {
             var objeto = {};
-            objeto.isView = true;
+            objeto.isView = false;
             objeto.id = id;
             ItemFactory.setItem(objeto);
             $state.go('item-manter');              
@@ -254,7 +254,8 @@
             var data = {
               series: [parseInt(countGame.concluido), 
                        parseInt(countGame.pendente), 
-                       parseInt(countGame.andamento)]
+                       parseInt(countGame.andamento),
+					   parseInt(countGame.abandonado)]
             };            
             
             var sum = function(a, b) { return a + b };
