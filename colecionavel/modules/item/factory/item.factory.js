@@ -44,6 +44,9 @@
                 case 'E':
                 statusExtenso = 'Em Progresso';
                 break;
+				case 'A':
+                statusExtenso = 'Abandonado';
+                break;
             }
             return statusExtenso;
         } 
