@@ -1,1 +1,1 @@
-var app = angular.module('colecionavel.module.item', ['colecionavel.module']);
+var app = angular.module('colecionavel.module.item', ['colecionavel.module', 'checklist-model']);
