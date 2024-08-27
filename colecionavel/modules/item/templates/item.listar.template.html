@@ -17,8 +17,41 @@
                <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up" style="cursor:pointer;"></span></h3>
             </div>
             <div class="panel-body" >
-               <div class="row" id="panel-body" style="display:none;">
-                  <div class="col-lg-2">
+               <div class="row slide-up-class" id="panel-body" style="display:none;">
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Plataformas&nbsp;&nbsp;</label><span id="order-ico-plataforma" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-plataforma" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="plataforma in ItemListarCtrl.plataformas" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.plataforma" checklist-value="plataforma"> 
+							<span>{{plataforma}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>						  
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Tipo&nbsp;&nbsp;</label><span id="order-ico-tipo" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-tipo" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="tipo in ItemListarCtrl.tipos" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.tipo" checklist-value="tipo"> 
+							<span>{{tipo}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>						  
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Gênero&nbsp;&nbsp;</label><span id="order-ico-genero" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-genero" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="genero in ItemListarCtrl.generos" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.genero" checklist-value="genero"> 
+							<span>{{genero}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>				   
+			      <div class="col-lg-2">
                      <div class="form-group">
                         <label style="font-weight:lighter">Procedencia</label>
                         <select class="form-control" ng-model="ItemListarCtrl.item.procedencia">
@@ -34,24 +67,6 @@
                         <label style="font-weight:lighter">Região</label>
                         <select class="form-control" ng-model="ItemListarCtrl.item.regiao" ng-options="valor as valor for valor in ItemListarCtrl.regioes track by valor">
                            <option value=""></option>
-                        </select>
-                     </div>
-                  </div>
-                  <!-- /.col-lg-3 -->
-                  <div class="col-lg-3">
-                     <div class="form-group">
-                        <label style="font-weight:lighter">Plataforma</label>
-                        <select class="form-control" ng-model="ItemListarCtrl.item.plataforma" ng-options="valor as valor for valor in ItemListarCtrl.plataformas track by valor">
-                           <option value="" class="" selected="selected"></option>
-                        </select>
-                     </div>
-                  </div>
-                  <!-- /.col-lg-3 -->
-                  <div class="col-lg-3">
-                     <div class="form-group">
-                        <label style="font-weight:lighter">Tipo</label>
-                        <select class="form-control" ng-model="ItemListarCtrl.item.tipo" ng-options="valor as valor for valor in ItemListarCtrl.tipos track by valor">
-                           <option value="" class="" selected="selected"></option>
                         </select>
                      </div>
                   </div>
@@ -131,14 +146,6 @@
                            <option value="P">Pendente</option>
                            <option value="E">Em Progressão</option>
 						   <option value="A">Abandonado</option>
-                        </select>
-                     </div>
-                  </div>
-                  <div class="col-lg-4">
-                     <div class="form-group">
-                        <label style="font-weight:lighter">Gênero</label>
-                        <select class="form-control" ng-model="ItemListarCtrl.item.genero" ng-options="valor as valor for valor in ItemListarCtrl.generos track by valor">
-                           <option value="" class="" selected="selected"></option>
                         </select>
                      </div>
                   </div>
@@ -407,26 +414,65 @@
    <!-- END MAIN CONTENT -->
 </div>
 <script> 
-   var isOrder = true;
-   $(document).ready(function(){
-       $("#order-ico").click(function(){
-           if(isOrder === true){
-               $("#order-ico").removeClass("lnr-chevron-up");
-               $("#order-ico").addClass("lnr-chevron-down");
-               $("#panel-body").slideDown("slow");
-           }else if(isOrder === false){
-               $("#order-ico").addClass("lnr-chevron-up");
-               $("#order-ico").removeClass("lnr-chevron-down");        
-               $("#panel-body").slideUp("slow");
-           }
-           isOrder = !isOrder;
-       });
-       
-      $(".btn-closed").click(function(){
-         $("#order-ico").addClass("lnr-chevron-up");
-         $("#order-ico").removeClass("lnr-chevron-down");      
-         $("#panel-body").slideUp("slow");
-         isOrder = false;
-      });
+var isOrder = true;
+var isPlataformaOrder = true;
+var isTipoOrder = true;
+var isGeneroOrder = true;
+
+$(document).ready(function(){
+
+	isOrder = slideUpAndDown('order-ico','panel-body',isOrder);
+	isPlataformaOrder = slideUpAndDown('order-ico-plataforma','div-plataforma',isPlataformaOrder);
+	isTipoOrder = slideUpAndDown('order-ico-tipo','div-tipo',isTipoOrder);
+	isGeneroOrder = slideUpAndDown('order-ico-genero','div-genero',isGeneroOrder);
+
+	// TODO criar um metodo que seja generico para todos elementos por class
+    $(".btn-closed").click(function(){
+      $(".order-ico").addClass("lnr-chevron-up");
+      $(".order-ico").removeClass("lnr-chevron-down");      
+      $(".slide-up-class").slideUp("slow");
+      isOrder = true;
+	  isPlataformaOrder = true;
+	  isTipoOrder = true;
+      isGeneroOrder = true;
+    });
+
+   /*	
+   $("#order-ico").click(function(){
+	   if(isOrder === true){
+		   $("#order-ico").removeClass("lnr-chevron-up");
+		   $("#order-ico").addClass("lnr-chevron-down");
+		   $("#panel-body").slideDown("slow");
+	   }else if(isOrder === false){
+		   $("#order-ico").addClass("lnr-chevron-up");
+		   $("#order-ico").removeClass("lnr-chevron-down");        
+		   $("#panel-body").slideUp("slow");
+	   }
+	   isOrder = !isOrder;
    });
+   
+  $(".btn-closed").click(function(){
+	 $("#order-ico").addClass("lnr-chevron-up");
+	 $("#order-ico").removeClass("lnr-chevron-down");      
+	 $("#panel-body").slideUp("slow");
+	 isOrder = false;
+  });
+  */
+});
+   
+function slideUpAndDown(trigger, element, order ){
+    $('#'+trigger).click(function(){
+      if(order === true){
+         $('#'+trigger).removeClass("lnr-chevron-up");
+         $('#'+trigger).addClass("lnr-chevron-down");
+         $('#'+element).slideDown("slow");
+      }else if(order === false){
+         $('#'+trigger).addClass("lnr-chevron-up");
+         $('#'+trigger).removeClass("lnr-chevron-down");      
+         $('#'+element).slideUp("slow");
+      }
+      order = !order;
+    });
+	return order;
+}   
 </script>

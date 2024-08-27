@@ -21,6 +21,9 @@
         vm.item.exibicao = "S";
         vm.item.acao = "E";
 		vm.item.modo = "1";
+		vm.item.plataforma = [];
+		vm.item.tipo = [];
+		vm.item.genero = [];
         vm.selectTop = ["5","10","30","50"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -57,7 +60,10 @@
                 registrosPorPagina : "5",
                 exibicao:"S",
                 acao:"E",
-				modo: "1"
+				modo: "1",
+				plataforma: [],
+				tipo: [],
+				genero: []
 				
             };
             ItemFactory.setPesquisa(undefined);

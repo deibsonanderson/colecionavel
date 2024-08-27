@@ -11,7 +11,7 @@
     function ItemGaleriaController($scope, ItemService,ItemFactory,$state,UserService, GENERO, PLATAFORMA, REGIAO, SITUACAO, TIPO, ScrollToService, ORDEM) {
         //Atributos
         var vm = this;
-        vm.titulo = "Listagem do Proprietário";  
+		vm.titulo = "Listagem do Proprietário";  
         vm.itens = [];
         vm.maxSize = 3;
         vm.totalItems = 0;
