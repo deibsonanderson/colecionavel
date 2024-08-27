@@ -65,9 +65,9 @@
                 'procedencia': item.procedencia,
                 'regiao': item.regiao,
                 'plataforma[]': item.plataforma,
-                'tipo': item.tipo,
+                'tipo[]': item.tipo,
                 'ordem': item.ordem,
-                'genero': item.genero,
+                'genero[]': item.genero,
                 'possui': item.possui,
                 'situacao': item.situacao,
                 //'order': order, deprecated

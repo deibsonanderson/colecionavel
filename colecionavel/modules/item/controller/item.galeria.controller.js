@@ -22,6 +22,8 @@
         vm.item.exibicao = "S";
 		vm.item.modo = "1";
 		vm.item.plataforma = [];
+		vm.item.tipo = [];
+		vm.item.genero = [];
         vm.selectTop = ["6","12","18","24"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -54,7 +56,9 @@
                 exibicao:"S",
                 acao:"E",
 				modo: "1",
-				plataforma: []
+				plataforma: [],
+				tipo: [],
+				genero: []
             };
             ItemFactory.setPesquisa(undefined);
             activate();
