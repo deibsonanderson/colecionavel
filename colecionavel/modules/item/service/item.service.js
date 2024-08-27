@@ -64,7 +64,7 @@
                 'take': take,
                 'procedencia': item.procedencia,
                 'regiao': item.regiao,
-                'plataforma': item.plataforma,
+                'plataforma[]': item.plataforma,
                 'tipo': item.tipo,
                 'ordem': item.ordem,
                 'genero': item.genero,

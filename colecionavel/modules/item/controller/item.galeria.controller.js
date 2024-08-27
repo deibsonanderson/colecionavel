@@ -21,6 +21,7 @@
         vm.item.acao = "E";
         vm.item.exibicao = "S";
 		vm.item.modo = "1";
+		vm.item.plataforma = [];
         vm.selectTop = ["6","12","18","24"];
         vm.order = 'deprecated';
         vm.sort = true;
@@ -52,7 +53,8 @@
                 registrosPorPagina:"24",
                 exibicao:"S",
                 acao:"E",
-				modo: "1"
+				modo: "1",
+				plataforma: []
             };
             ItemFactory.setPesquisa(undefined);
             activate();

@@ -295,7 +295,6 @@ class ItemController {
         $filter = ' WHERE gi.id_user = '.$_SESSION['userItem']->id;
         $filter .= ($request["procedencia"] != null || $request["procedencia"] != '') ? " AND gi.procedencia = '" . $request["procedencia"] . "'" : "";
         $filter .= ($request["regiao"] != null || $request["regiao"] != '') ? " AND gi.regiao = '" . $request["regiao"] . "'" : "";
-        $filter .= ($request["plataforma"] != null || $request["plataforma"] != '') ? " AND gi.plataforma = '" . $request["plataforma"] . "'" : "";
         $filter .= ($request["tipo"] != null || $request["tipo"] != '') ? " AND gi.tipo = '" . $request["tipo"] . "'" : "";
         $filter .= ($request["status"] != null || $request["status"] != '') ? " AND gi.status = '" . $request["status"] . "'" : "";
         $filter .= ($request["publicadora"] != null || $request["publicadora"] != '') ? " AND gi.publicadora LIKE '%" . $this->catacterRemove($request["publicadora"]) . "%'" : "";
@@ -304,6 +303,8 @@ class ItemController {
         $filter .= ($request["possui"] != null || $request["possui"] != '') ? " AND gi.possui = '" . $request["possui"] . "'" : "";
         $filter .= ($request["situacao"] != null || $request["situacao"] != '') ? " AND gi.situacao LIKE '%" . $request["situacao"] . "%'" : "";
         
+		$filter .= $this->mountArrayByFilter($request["plataforma"],'gi.plataforma');
+		
         if($request["titulo"] != null || $request["titulo"] != ''){
           $sqlFilter = " AND ( gi.titulo LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
           $sqlFilter .= " OR gi.genero LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
@@ -324,6 +325,17 @@ class ItemController {
 
         return $itemDao->findItemByFilter($filter);
     }
+	
+	public function mountArrayByFilter($array, $field){
+		$filter = '';
+		if($array != null && count($array) > 0){
+			foreach ($array as $objeto) {
+				$sqlFilter .= "'".$objeto."',";
+			}
+			$filter .= ' AND '.$field.' IN (' .substr($sqlFilter,0,-1).') ';
+		}
+		return $filter;
+	}
 
     //USADO
     public function findItemById($id,$isJson) {
