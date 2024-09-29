@@ -2,13 +2,13 @@
     'use strict';
 angular.module('colecionavel.module').constant("SITUACAO",{ 
         lista : [	
-        			"Comprado",
-					"Vendido",
-					"Emprestado",
 					"Alugado",
-					"Emulado",
+					"Comprado",
 					"Doado",
-					"Presenteado"
+					"Emprestado",
+					"Emulado",
+					"Presenteado",
+					"Vendido"
 				]
 });
 })();

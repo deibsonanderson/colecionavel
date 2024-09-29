@@ -3,11 +3,11 @@
 angular.module('colecionavel.module').constant("REGIAO",{ 
         lista: [
                 "BRA",
-				"JAP",
-				"USA",
-				"PAL",
 				"CHI",
-				"ITA"
+				"ITA",
+				"JAP",
+				"PAL",
+				"USA"
 			   ]
 });
 })();

@@ -112,6 +112,12 @@
         }
 
         function activate() {
+			if(!angular.isUndefined($state) && 
+                !angular.isUndefined($state.$current) && 
+                !angular.isUndefined($state.$current.data) && 
+                $state.$current.data.firstAccess === true){
+                ItemFactory.limparItem();
+            }
             var objeto = ItemFactory.getItem();
             verificarTitulo(objeto);
             if (angular.isUndefined(objeto)) {
