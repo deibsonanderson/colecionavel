@@ -65,6 +65,32 @@ function getStates() {
                 }  
             }
         },
+		{
+            state: 'item-created',
+            config: {
+                url: 'colecionavel/',
+                controller: 'ItemManterController',
+                controllerAs: 'ItemManterCtrl',
+                templateUrl: 'modules/item/templates/item.manter.template.html',
+				data:{
+                    firstAccess: true
+                },
+                resolve: {
+                    loadDeps: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            serie: true,
+                            files: [
+                            'modules/user/user.module.js',
+                            'modules/user/service/user.service.js',                             
+                            'modules/item/item.module.js',
+                            'modules/item/service/item.service.js',
+                            'modules/item/factory/item.factory.js',
+                            'modules/item/controller/item.manter.controller.js'
+                            ]});
+                    }]
+                }                                
+            }
+        }, 
         {
             state: 'item-manter',
             config: {
