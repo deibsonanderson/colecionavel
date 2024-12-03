@@ -17,14 +17,14 @@
         vm.maxSize = 3;
         vm.totalItems = 0;
         vm.currentPage = 1;
-        vm.item.registrosPorPagina = "5";
+        vm.item.registrosPorPagina = "12";
         vm.item.exibicao = "S";
         vm.item.acao = "E";
 		vm.item.modo = "1";
 		vm.item.plataforma = [];
 		vm.item.tipo = [];
 		vm.item.genero = [];
-        vm.selectTop = ["5","10","30","50"];
+        vm.selectTop = ["6","12","18","24"];
         vm.order = 'deprecated';
         vm.sort = true;
         vm.animationsEnabled = true;
