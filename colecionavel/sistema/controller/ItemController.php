@@ -304,6 +304,7 @@ class ItemController {
 		$filter .= $this->mountArrayByFilter($request["plataforma"],'gi.plataforma');
 		$filter .= $this->mountArrayByFilter($request["genero"],'gi.genero');
 		$filter .= $this->mountArrayByFilter($request["tipo"],'gi.tipo');
+		$filter .= $this->mountComplementFilter($request["complemento"]);
 		
         if($request["titulo"] != null || $request["titulo"] != ''){
           $sqlFilter = " AND ( gi.titulo LIKE '%" . $this->catacterRemove($request["titulo"]) . "%' ";  
@@ -334,6 +335,16 @@ class ItemController {
 			}
 			$filter .= ' AND '.$field.' IN (' .substr($sqlFilter,0,-1).') ';
 		}
+		return $filter;
+	}
+	
+	public function mountComplementFilter($array){
+		$filter = '';
+		if($array != null && count($array) > 0){
+			foreach ($array as $objeto) {
+				$filter .= " AND gi.".$objeto." = '1' ";
+			}			
+		}		
 		return $filter;
 	}
 

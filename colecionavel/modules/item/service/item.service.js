@@ -68,6 +68,7 @@
                 'tipo[]': item.tipo,
                 'ordem': item.ordem,
                 'genero[]': item.genero,
+				'complemento[]': item.complemento,
                 'possui': item.possui,
                 'situacao': item.situacao,
                 //'order': order, deprecated

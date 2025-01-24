@@ -14,7 +14,7 @@
          <div class="panel" id="filtro">
 		 
             <div class="panel-heading">
-               <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up" style="cursor:pointer;"></span></h3>
+               <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span></h3>
             </div>
             <div class="panel-body" >
                <div class="row slide-up-class" id="panel-body" style="display:none;">
@@ -50,7 +50,18 @@
 						</label>
 						</div>
 					 </div>
-				  </div>				   
+				  </div>
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Complemento&nbsp;&nbsp;</label><span id="order-ico-complemento" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-complemento" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="complemento in ItemListarCtrl.complementos" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.complemento" checklist-value="complemento[1]"> 
+							<span>{{complemento[0]}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>				  
 			      <div class="col-lg-2">
                      <div class="form-group">
                         <label style="font-weight:lighter">Procedencia</label>
@@ -414,50 +425,30 @@
    <!-- END MAIN CONTENT -->
 </div>
 <script> 
+$(document).ready(function(){
 var isOrder = true;
 var isPlataformaOrder = true;
 var isTipoOrder = true;
 var isGeneroOrder = true;
-
-$(document).ready(function(){
+var isComplementoOrder = true;
 
 	isOrder = slideUpAndDown('order-ico','panel-body',isOrder);
 	isPlataformaOrder = slideUpAndDown('order-ico-plataforma','div-plataforma',isPlataformaOrder);
 	isTipoOrder = slideUpAndDown('order-ico-tipo','div-tipo',isTipoOrder);
 	isGeneroOrder = slideUpAndDown('order-ico-genero','div-genero',isGeneroOrder);
+	isComplementoOrder = slideUpAndDown('order-ico-complemento','div-complemento',isComplementoOrder);
 
 	// TODO criar um metodo que seja generico para todos elementos por class
     $(".btn-closed").click(function(){
-      $(".order-ico").addClass("lnr-chevron-up");
       $(".order-ico").removeClass("lnr-chevron-down");      
-      $(".slide-up-class").slideUp("slow");
+      $(".order-ico").addClass("lnr-chevron-up");
+	  $(".slide-up-class").slideUp("slow");
       isOrder = true;
 	  isPlataformaOrder = true;
 	  isTipoOrder = true;
       isGeneroOrder = true;
+	  isComplementoOrder = true;
     });
-
-   /*	
-   $("#order-ico").click(function(){
-	   if(isOrder === true){
-		   $("#order-ico").removeClass("lnr-chevron-up");
-		   $("#order-ico").addClass("lnr-chevron-down");
-		   $("#panel-body").slideDown("slow");
-	   }else if(isOrder === false){
-		   $("#order-ico").addClass("lnr-chevron-up");
-		   $("#order-ico").removeClass("lnr-chevron-down");        
-		   $("#panel-body").slideUp("slow");
-	   }
-	   isOrder = !isOrder;
-   });
-   
-  $(".btn-closed").click(function(){
-	 $("#order-ico").addClass("lnr-chevron-up");
-	 $("#order-ico").removeClass("lnr-chevron-down");      
-	 $("#panel-body").slideUp("slow");
-	 isOrder = false;
-  });
-  */
 });
    
 function slideUpAndDown(trigger, element, order ){
