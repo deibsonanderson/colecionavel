@@ -54,9 +54,11 @@
 							 <div class="form-group">
 								<label style="font-weight:lighter">Complemento&nbsp;&nbsp;</label><span id="order-ico-complemento" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
 								<div id="div-complemento" class="slide-up-class" style="display:none;">
-								<label class="fancy-checkbox" ng-repeat="complemento in ItemGaleriaCtrl.complementos" >
-									<input type="checkbox" checklist-model="ItemGaleriaCtrl.item.complemento" checklist-value="complemento[1]"> 
-									<span>{{complemento[0]}}</span>
+								<label class="fancy-checkbox" ng-repeat="complemento in ItemGaleriaCtrl.item.complementos" >
+									<input type="radio" ng-model="complemento[1][1]" value="">&nbsp;N/A&nbsp;&nbsp;|&nbsp;&nbsp;
+									<input type="radio" ng-model="complemento[1][1]" value="1">&nbsp;Sim&nbsp;&nbsp;/&nbsp;&nbsp;
+									<input type="radio" ng-model="complemento[1][1]" value="0">&nbsp;Não
+									<span>&nbsp;-&nbsp;{{complemento[0]}}</span>
 								</label>
 								</div>
 							 </div>

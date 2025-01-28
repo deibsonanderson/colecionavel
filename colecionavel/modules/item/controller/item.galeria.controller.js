@@ -35,18 +35,18 @@
         vm.situacoes = [];
         vm.tipos = [];        
 		vm.alerts = [];
-        vm.complementos = [['Cartucho/Disco','flag_cartucho_disco'],
-						['NF','flag_nota_fiscal'],
-						['Panfleto','flag_panfleto'],
-						['CD/DVD/GD/BD','flag_cd_dvd'],
-						['Caixa','flag_caixa'],
-						['Manual','flag_manual'],
-						['Berço','flag_berco'],
-						['Protetores/Cases','flag_protetor'],
-						['Poster','flag_poster'],
-						['Luva','flag_luva'],
-						['Lacrado','flag_lacrado'],
-						['Replica/ActionFigure','flag_replica']];	
+        vm.complementos = [['Cartucho/Disco',['flag_cartucho_disco','']],
+						['NF',['flag_nota_fiscal', '']],
+						['Panfleto',['flag_panfleto', '']],
+						['CD/DVD/GD/BD',['flag_cd_dvd', '']],
+						['Caixa',['flag_caixa', '']],
+						['Manual',['flag_manual', '']],
+						['Berço',['flag_berco', '']],
+						['Protetores/Cases',['flag_protetor', '']],
+						['Poster',['flag_poster', '']],
+						['Luva',['flag_luva', '']],
+						['Lacrado',['flag_lacrado', '']],
+						['Replica/ActionFigure',['flag_replica', '']]];	
         		
 
         //Instancia Metodos
@@ -149,7 +149,7 @@
 			  }
 			  
             }
-			  			
+		   vm.item.complementos = vm.complementos;  			
            vm.findByFilter(vm.currentPage,vm.item.registrosPorPagina,vm.item,vm.order,vm.sort);
            vm.montarFiltro();
         }

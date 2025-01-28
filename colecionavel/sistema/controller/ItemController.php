@@ -342,7 +342,10 @@ class ItemController {
 		$filter = '';
 		if($array != null && count($array) > 0){
 			foreach ($array as $objeto) {
-				$filter .= " AND gi.".$objeto." = '1' ";
+				$converted = json_decode($objeto);
+				if($converted[1][1] != ''){
+					$filter .= " AND gi.".$converted[1][0]." = '".$converted[1][1]."'";
+				}
 			}			
 		}		
 		return $filter;
