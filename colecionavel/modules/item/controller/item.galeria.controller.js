@@ -126,16 +126,16 @@
 			} else if (!angular.isUndefined(objeto)) {
               vm.item = objeto;
               switch(vm.item.registrosPorPagina){
-                 case '5':
+                 case '12':
                     vm.item.registrosPorPagina = "12";
                  break;
-                 case '10':
+                 case '18':
                     vm.item.registrosPorPagina = "18";
                  break;
-                 case '30':
+                 case '24':
                     vm.item.registrosPorPagina = "24";
                  break;
-                 case '50':
+                 case '48':
                     vm.item.registrosPorPagina = "48";
                  break;
                  case '9999':
