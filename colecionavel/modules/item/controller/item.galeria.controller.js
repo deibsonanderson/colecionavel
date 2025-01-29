@@ -35,7 +35,7 @@
         vm.situacoes = [];
         vm.tipos = [];        
 		vm.alerts = [];
-        vm.complementos = [['Cartucho/Disco',['flag_cartucho_disco','']],
+        vm.complementos = [['Cartucho/Fita',['flag_cartucho_disco','']],
 						['NF',['flag_nota_fiscal', '']],
 						['Panfleto',['flag_panfleto', '']],
 						['CD/DVD/GD/BD',['flag_cd_dvd', '']],
