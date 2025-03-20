@@ -94,6 +94,7 @@ angular.module('colecionavel.module').constant("PLATAFORMA",{
 				"Ouya",
 				"Panasonic Q",
 				"Pandora",
+				"PC/Computador",
 				"PC-FX",
 				"Phantom System",
 				"Pioneer LaserActive",
