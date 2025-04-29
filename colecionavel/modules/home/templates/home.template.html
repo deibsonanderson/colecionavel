@@ -199,7 +199,8 @@
 												<span>{{HomeCtrl.percent[0]}}&nbsp; de jogos concluído(s)</span><br/>
 												<span>{{HomeCtrl.percent[1]}}&nbsp; de jogos pendente(s)</span><br/>
 												<span>{{HomeCtrl.percent[2]}}&nbsp; de jogos em progresso(s)</span><br/>
-												<span>{{HomeCtrl.percent[3]}}&nbsp; de jogos abandonado(s)</span>
+												<span>{{HomeCtrl.percent[3]}}&nbsp; de jogos abandonado(s)</span><br/>
+												<span>{{HomeCtrl.percent[4]}}&nbsp; de jogos pausados(s)</span>
 											</div>
 										</div>
 									</div>
@@ -228,7 +229,8 @@
 															'label-success': objeto.status == 'C',
 															'label-danger': objeto.status == 'P',
 														    'label-warning': objeto.status == 'E',
-															'label-info': objeto.status == 'A',
+															'label-primary': objeto.status == 'A',
+															'label-info': objeto.status == 'W',
 															'label-default': objeto.status == ''}"
 															>{{objeto.status != '' ? objeto.statusExtenso: 'Não se aplica'}}</span></td>
 													</tr>													

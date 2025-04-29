@@ -255,7 +255,8 @@
               series: [parseInt(countGame.concluido), 
                        parseInt(countGame.pendente), 
                        parseInt(countGame.andamento),
-					   parseInt(countGame.abandonado)]
+					   parseInt(countGame.abandonado),
+					   parseInt(countGame.pausado)]
             };            
             
             var sum = function(a, b) { return a + b };
