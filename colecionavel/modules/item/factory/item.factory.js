@@ -40,7 +40,10 @@
                 break;
                 case 'C':
                 statusExtenso = 'Concluído';
-                break;
+				break;
+				case 'W': 
+				statusExtenso = 'Pausado';
+				break;
                 case 'E':
                 statusExtenso = 'Em Progresso';
                 break;
