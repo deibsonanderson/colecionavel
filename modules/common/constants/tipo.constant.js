@@ -6,7 +6,7 @@ angular.module('colecionavel.module').constant("TIPO",{
 				"Adaptador",
 				"Amiibo",
 				"Arcade",
-				"Board Game",				
+				"Board Game",
 				"Cabos",
 				"Card Game",
 				"Cart\u00f5es de mem\u00f3ria",
