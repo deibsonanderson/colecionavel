@@ -1,0 +1,394 @@
+      <div class="main">
+         <!-- MAIN CONTENT -->
+         <div class="main-content">
+            <div class="container-fluid">
+               <h3 class="page-title">Listagem de Imagens dos Itens Cadastrados</h3>
+				<div ng-repeat="alert in ItemListarCtrl.alerts" class="row">
+				  <div class="col-md-12">      
+					<div class="alert alert-dismissible" ng-class="alert.type" role="alert">
+					   <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="ItemListarCtrl.closeAlert($index)"><span aria-hidden="true">&times;</span></button>
+					   <i class="fa fa-times-circle"></i> {{alert.msg}}
+					</div>
+				  </div>
+				</div>
+				<div class="panel" id="filtro">
+					<div class="panel-heading">
+					   <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span></h3>
+					</div>
+					<div class="panel-body" >
+					   <div class="row slide-up-class" id="panel-body" style="display:none;">
+						  <div class="col-lg-12">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Plataformas&nbsp;&nbsp;</label><span id="order-ico-plataforma" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+								<div id="div-plataforma" class="slide-up-class" style="display:none;">
+								<label class="fancy-checkbox" ng-repeat="plataforma in ItemGaleriaCtrl.plataformas" >
+									<input type="checkbox" checklist-model="ItemGaleriaCtrl.item.plataforma" checklist-value="plataforma"> 
+									<span>{{plataforma}}</span>
+								</label>
+								</div>
+							 </div>
+						  </div>						  
+						  <div class="col-lg-12">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Tipo&nbsp;&nbsp;</label><span id="order-ico-tipo" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+								<div id="div-tipo" class="slide-up-class" style="display:none;">
+								<label class="fancy-checkbox" ng-repeat="tipo in ItemGaleriaCtrl.tipos" >
+									<input type="checkbox" checklist-model="ItemGaleriaCtrl.item.tipo" checklist-value="tipo"> 
+									<span>{{tipo}}</span>
+								</label>
+								</div>
+							 </div>
+						  </div>						  
+						  <div class="col-lg-12">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Gênero&nbsp;&nbsp;</label><span id="order-ico-genero" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+								<div id="div-genero" class="slide-up-class" style="display:none;">
+								<label class="fancy-checkbox" ng-repeat="genero in ItemGaleriaCtrl.generos" >
+									<input type="checkbox" checklist-model="ItemGaleriaCtrl.item.genero" checklist-value="genero"> 
+									<span>{{genero}}</span>
+								</label>
+								</div>
+							 </div>
+						  </div>
+						  <div class="col-lg-12">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Complemento&nbsp;&nbsp;</label><span id="order-ico-complemento" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+								<div id="div-complemento" class="slide-up-class" style="display:none;">
+								<label class="fancy-checkbox" ng-repeat="complemento in ItemGaleriaCtrl.item.complementos" >
+									<input type="radio" ng-model="complemento[1][1]" value="">&nbsp;N/A&nbsp;&nbsp;|&nbsp;&nbsp;
+									<input type="radio" ng-model="complemento[1][1]" value="1">&nbsp;Sim&nbsp;&nbsp;/&nbsp;&nbsp;
+									<input type="radio" ng-model="complemento[1][1]" value="0">&nbsp;Não
+									<span>&nbsp;-&nbsp;{{complemento[0]}}</span>
+								</label>
+								</div>
+							 </div>
+						  </div>						  
+						  <div class="col-lg-2">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Procedencia</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.procedencia">
+								   <option value=""></option>
+								   <option value="Original">Original</option>
+								   <option value="Pirata">Pirata</option>
+								</select>
+							 </div>
+						  </div>
+						  <!-- /.col-lg-3 -->
+						  <div class="col-lg-2">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Região</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.regiao" ng-options="valor as valor for valor in ItemGaleriaCtrl.regioes track by valor">
+								   <option value=""></option>
+								</select>
+							 </div>
+						  </div>
+						  <div class="col-lg-2">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Total por Página</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.registrosPorPagina" >
+								   <option value="12" selected="selected">12</option>
+								   <option value="18" >18</option>
+								   <option value="24">24</option>
+								   <option value="48">48</option>
+								   <option value="9999">Todos</option>
+								</select>
+							 </div>
+						  </div>
+						  <!-- /.col-lg-3 --> 
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Ordem</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.ordem" >
+								   <option value="id" selected="selected">Identificador</option>
+								   <option value="data_cadastro">Data de Cadastro</option>
+								   <option value="titulo">Titulo</option>
+								   <option value="descricao">Descrição</option>
+								   <option value="procedencia">Procedencia</option>
+								   <option value="regiao">Região</option>
+								   <option value="valor_pago">Valor Pago</option>
+								   <option value="valor_atual">Valor Atual</option>
+								   <option value="plataforma">Plataforma</option>
+								   <option value="tipo">Tipo</option>
+								   <option value="codigo">Código</option>
+								   <option value="genero">Genero</option>
+								   <option value="produtora">Produtora</option>
+								   <option value="publicadora">Publicadora</option>
+								   <option value="complemento">Complemento</option>
+								   <option value="avaliacao">Avaliacao</option>
+								   <option value="local_primeiro">Local Primeiro</option>
+								   <option value="local_segundo">Local Secundário</option>
+								   <option value="local_terceiro">Local Terciário</option>
+								   <option value="flag_cartucho_disco">Cartucho ou Fita</option>
+								   <option value="flag_replica">Réplica</option>
+								   <option value="flag_protetor">Protetor</option>
+								   <option value="flag_cd_dvd">Cd ou Dvd</option>
+								   <option value="flag_caixa">Caixa</option>
+								   <option value="flag_manual">Manual</option>
+								   <option value="flag_berco">Berço</option>
+								   <option value="flag_panfleto">Panfleto</option>
+								   <option value="flag_poster">Poster</option>
+								   <option value="flag_nota_fiscal">Nota Fiscal</option>
+								   <option value="flag_lacrado">Lacrado</option>
+								   <option value="flag_luva">Luva</option>
+								   <option value="status">Status</option>
+								   <option value="tempo">Tempo</option>
+								   <option value="num_jogadas">Número de Jogadas</option>
+								   <option value="progressao">Progressão</option>
+								</select>
+							 </div>
+						  </div>
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Produtora</label>
+								<input ng-model="ItemGaleriaCtrl.item.produtora" type="text" class="form-control">                                     
+							 </div>
+						  </div>
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Publicadora</label>
+								<input ng-model="ItemGaleriaCtrl.item.publicadora" type="text" class="form-control">                                        
+							 </div>
+						  </div>
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Status</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.status">
+								   <option value=""></option>
+								   <option value="C">Completo</option>
+								   <option value="P">Pendente</option>
+								   <option value="W">Pausado</option>
+								   <option value="E">Em Progressão</option>
+								   <option value="A">Abandonado</option>
+								</select>
+							 </div>
+						  </div>
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Possui o item?</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.possui">
+								   <option value="" selected></option>
+								   <option value="1">Sim</option>
+								   <option value="0">Não</option>       
+								</select>
+							 </div>
+						  </div>                  
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Situação Atual</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.situacao" ng-options="valor as valor for valor in ItemGaleriaCtrl.situacoes track by valor">
+								   <option value=""></option>
+								</select>
+							 </div>
+						  </div>
+						  <div class="col-lg-3">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Modo Exibição</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.modo">
+								   <option value="" >Todas</option>
+								   <option value="1" selected>Imagem principal</option>
+								   <option value="2">Imagens secundaria</option>       						   
+								</select>
+							 </div>
+						  </div>     				  
+					   </div>
+					   <div class="row">
+						  <div class="col-lg-10">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Titulo, Descrição, Informações Gerais</label>
+								<input ng-model="ItemGaleriaCtrl.item.titulo" type="text" class="form-control">                    
+							 </div>
+						  </div>
+						  <div class="col-lg-2">
+							 <div class="form-group">
+								<label style="font-weight:lighter">Ação</label>
+								<select class="form-control" ng-model="ItemGaleriaCtrl.item.acao">
+								   <option value="E" selected="selected" >Exibição</option>
+								   <option value="A">Alteração</option>
+								</select>
+							 </div>
+						  </div>
+					   </div>
+					   <div class="row hidden-xs" style="margin-top:10px">
+						  <div class="col-lg-12">
+							 <button type="submit" class="btn btn-primary btn-closed" ng-click="ItemGaleriaCtrl.pesquisar()">Pesquisar</button>
+							 <button type="reset" class="btn btn-danger btn-closed" ng-click="ItemGaleriaCtrl.limparCampos()">Limpar Campos</button>
+						  </div>
+					   </div>
+					   <div class="row visible-xs" style="margin-top:10px" id="topo">
+						  <div class="col-lg-12">
+							 <button type="submit" class="btn btn-primary col-xs-12 btn-closed"  ng-click="ItemGaleriaCtrl.pesquisar()">Pesquisar</button>
+							 <button type="reset" class="btn btn-danger col-xs-12 btn-closed" style="margin-top:10px" ng-click="ItemGaleriaCtrl.limparCampos()">Limpar Campos</button>
+						  </div>
+					   </div>                  
+					</div>
+				</div>               
+				   <div class="row">
+					  <div class="col-md-12">
+						 <!-- TABLE STRIPED -->
+						 <div class="panel">
+							<div class="panel-heading" style="margin-bottom:-20px">
+							   <h3 class="panel-title">Listagem</h3>
+							</div>
+							<div class="panel-body">
+							   <div class="hidden-xs">
+								  <div class="row " ng-repeat="linha in ItemGaleriaCtrl.itens">
+									 <div class="col-md-2" ng-repeat="objeto in linha">
+										<a ng-if="ItemGaleriaCtrl.item.acao == 'E'" href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+										   <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
+										</a>   
+										<img ng-if="ItemGaleriaCtrl.item.acao == 'A'" ng-click="ItemGaleriaCtrl.atualizar(objeto.item)" src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;margin-top:20px" class="img-thumbnail">
+									 </div>
+								  </div>   
+							   </div>                 
+							   <div class="visible-xs">       
+								  <div class="row" ng-repeat="linha in ItemGaleriaCtrl.itensMobile">
+									<div ng-repeat="objeto in linha">
+										<div ng-if="ItemGaleriaCtrl.item.acao == 'E'">
+										   <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip" >
+											  <div class="someDiv" id="{{$index}}-div" style="cursor:pointer;margin:0px;width:33%;float:left;
+											  background-image:url({{objeto.imagem}});background-repeat: no-repeat;background-position:center;"></div>
+										   </a>
+										   <img src="{{objeto.imagem || './assets/img/default.jpg'}}" id="{{$index}}-img" alt="{{objeto.titulo}}" 
+											  onload="redimencionar(this);" style="display:none;">
+										</div>
+										<div ng-if="ItemGaleriaCtrl.item.acao == 'A'">
+										   <a href="#" >
+											  <div ng-click="ItemGaleriaCtrl.atualizar(objeto.item)" class="someDiv" id="{{$index}}-div" style="cursor:pointer;margin:0px;width:33%;float:left;
+											  background-image:url({{objeto.imagem}});background-repeat: no-repeat;background-position:center;"></div>
+										   </a>
+										   <img src="{{objeto.imagem || './assets/img/default.jpg'}}" id="{{$index}}-img" alt="{{objeto.titulo}}" 
+											  onload="redimencionar(this);" style="display:none;">
+										</div>
+									</div> 
+								  </div>                           
+							   </div>
+							  <div class="row hidden-xs" style="margin-top:10px">
+								  <div class="col-lg-12">
+									 <button type="reset" class="btn btn-danger btn-closed" ng-click="ItemGaleriaCtrl.topoPagina()">Topo da página</button>
+								  </div>
+							   </div>
+							   <div class="row visible-xs" style="margin-top:10px">
+								  <div class="col-lg-12">
+									 <button type="reset" class="btn btn-danger col-xs-12 btn-closed" style="margin-top:10px" ng-click="ItemGaleriaCtrl.topoPagina()">Topo da página</button>
+								  </div>
+							   </div>                               
+							</div>
+						 </div>
+						 <!-- END TABLE STRIPED -->
+					  </div>
+				   </div>
+				<div class="row hidden-xs">
+					<div class="col-sm-5" style="margin-top: 25px; ">
+					   <div class="dataTables_info">Página <b>{{ItemGaleriaCtrl.currentPage}}</b> de <b>{{numPages}}</b> de um total de <b>{{ItemGaleriaCtrl.totalItems}}</b> registros.</div>
+					</div>
+					<div class="col-sm-7">
+					   <div class="dataTables_paginate paging_simple_numbers">
+					   <ul uib-pagination 
+						 total-items="ItemGaleriaCtrl.totalItems" 
+						 ng-model="ItemGaleriaCtrl.currentPage"
+						 items-per-page="ItemGaleriaCtrl.item.registrosPorPagina" 
+						 max-size="ItemGaleriaCtrl.maxSize" 
+						 class="dataTables_paginate paging_simple_numbers " 
+						 boundary-links="true"
+						 ng-change="ItemGaleriaCtrl.pageChanged()"                 
+						 rotate="true"
+						 boundary-link-numbers="false"
+						 force-ellipses="true" 
+						 num-pages="numPages"
+						 previous-text="Próximo" next-text="Anterior" first-text="Primeira" last-text="Útima"
+						 >
+					   </ul>            
+					   </div>
+					</div>
+				</div>
+				<div class="row visible-xs">
+					<div class="col-sm-5" style="text-align:center;">
+					   <div class="dataTables_info">Página <b>{{ItemGaleriaCtrl.currentPage}}</b> de <b>{{numPages}}</b> de um total de <b>{{ItemGaleriaCtrl.totalItems}}</b> registros.</div>
+					</div>
+					<div class="col-sm-7" style="text-align:center;">
+					   <div class="dataTables_paginate paging_simple_numbers">            
+					   <ul uib-pagination 
+					   direction-links="false"
+					   class=" dataTables_paginate paging_simple_numbers" 
+					   total-items="ItemGaleriaCtrl.totalItems" 
+					   ng-model="ItemGaleriaCtrl.currentPage"
+					   ng-change="ItemGaleriaCtrl.pageChanged()"
+					   force-ellipses="true" 
+					   max-size="ItemGaleriaCtrl.maxSize"               
+					   rotate="true" 
+					   items-per-page="ItemGaleriaCtrl.item.registrosPorPagina" 
+					   num-pages="smallnumPages">
+					   </ul>
+					   </div>
+					</div>
+				</div>                 
+            </div>
+         </div>
+         <!-- END MAIN CONTENT -->
+      </div>
+      <script> 
+var isOrder = true;
+var isPlataformaOrder = true;
+var isTipoOrder = true;
+var isGeneroOrder = true;
+var isComplementoOrder = true;
+
+$(document).ready(function(){
+    
+	isOrder = slideUpAndDown('order-ico','panel-body',isOrder);
+	isPlataformaOrder = slideUpAndDown('order-ico-plataforma','div-plataforma',isPlataformaOrder);
+	isTipoOrder = slideUpAndDown('order-ico-tipo','div-tipo',isTipoOrder);
+	isGeneroOrder = slideUpAndDown('order-ico-genero','div-genero',isGeneroOrder);
+    isComplementoOrder = slideUpAndDown('order-ico-complemento','div-complemento',isComplementoOrder);
+
+	// TODO criar um metodo que seja generico para todos elementos por class
+    $(".btn-closed").click(function(){
+      $(".order-ico").removeClass("lnr-chevron-down");     
+	  $(".order-ico").addClass("lnr-chevron-up");
+      $(".slide-up-class").slideUp("slow");
+      isOrder = true;
+	  isPlataformaOrder = true;
+	  isTipoOrder = true;
+      isGeneroOrder = true;
+	  isComplementoOrder = true;
+    });
+
+   var newNumber = $('.someDiv').width();
+   $('.someDiv').css("height", newNumber); 
+});
+
+function slideUpAndDown(trigger, element, order ){
+    $('#'+trigger).click(function(){
+      if(order === true){
+         $('#'+trigger).removeClass("lnr-chevron-up");
+         $('#'+trigger).addClass("lnr-chevron-down");
+         $('#'+element).slideDown("slow");
+      }else if(order === false){
+         $('#'+trigger).addClass("lnr-chevron-up");
+         $('#'+trigger).removeClass("lnr-chevron-down");      
+         $('#'+element).slideUp("slow");
+      }
+      order = !order;
+    });
+	return order;
+}
+
+function redimencionar(elemento){
+   var heightOriginal = $(elemento).height();
+   var widthOriginal = $(elemento).width();
+   var pai = $(elemento).parent();
+   var kid = pai.children().children();
+   var heightKid = kid.height();
+   var widthKid = kid.width();
+   var pixel = '';
+   if(widthOriginal > heightOriginal){
+      $(kid).css('background-size', ' '+Math.round((heightKid / heightOriginal)*widthOriginal)+'px '+heightKid+'px ');
+   }else if(widthOriginal < heightOriginal){
+      $(kid).css('background-size', ' '+widthKid+'px '+Math.round((widthKid / widthOriginal)*heightOriginal)+'px ')
+   }else{
+      $(kid).css('background-size', ' '+widthKid+'px '+heightKid+'px ');
+   }
+}
+   
+
+</script>

@@ -1,0 +1,472 @@
+<div class="main">
+   <!-- MAIN CONTENT -->
+   <div class="main-content">
+      <div class="container-fluid">
+        <h3 class="page-title">Listagem dos Itens Cadastrados</h3>
+		<div ng-repeat="alert in ItemListarCtrl.alerts" class="row">
+		  <div class="col-md-12">      
+			<div class="alert alert-dismissible" ng-class="alert.type" role="alert">
+			   <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="ItemListarCtrl.closeAlert($index)"><span aria-hidden="true">&times;</span></button>
+			   <i class="fa fa-times-circle"></i> {{alert.msg}}
+			</div>
+		  </div>
+		</div>
+         <div class="panel" id="filtro">
+		 
+            <div class="panel-heading">
+               <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span></h3>
+            </div>
+            <div class="panel-body" >
+               <div class="row slide-up-class" id="panel-body" style="display:none;">
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Plataformas&nbsp;&nbsp;</label><span id="order-ico-plataforma" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-plataforma" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="plataforma in ItemListarCtrl.plataformas" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.plataforma" checklist-value="plataforma"> 
+							<span>{{plataforma}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>						  
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Tipo&nbsp;&nbsp;</label><span id="order-ico-tipo" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-tipo" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="tipo in ItemListarCtrl.tipos" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.tipo" checklist-value="tipo"> 
+							<span>{{tipo}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>						  
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Gênero&nbsp;&nbsp;</label><span id="order-ico-genero" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-genero" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="genero in ItemListarCtrl.generos" >
+							<input type="checkbox" checklist-model="ItemListarCtrl.item.genero" checklist-value="genero"> 
+							<span>{{genero}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>
+				  <div class="col-lg-12">
+					 <div class="form-group">
+						<label style="font-weight:lighter">Complemento&nbsp;&nbsp;</label><span id="order-ico-complemento" class="lnr lnr-chevron-up order-ico" style="cursor:pointer;"></span>
+						<div id="div-complemento" class="slide-up-class" style="display:none;">
+						<label class="fancy-checkbox" ng-repeat="complemento in ItemListarCtrl.item.complementos" >
+							<input type="radio" ng-model="complemento[1][1]" value="">&nbsp;N/A&nbsp;&nbsp;|&nbsp;&nbsp;
+							<input type="radio" ng-model="complemento[1][1]" value="1">&nbsp;Sim&nbsp;&nbsp;|&nbsp;&nbsp;
+							<input type="radio" ng-model="complemento[1][1]" value="0">&nbsp;Não
+							<span>&nbsp;-&nbsp;{{complemento[0]}}</span>
+						</label>
+						</div>
+					 </div>
+				  </div>				  
+			      <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Procedencia</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.procedencia">
+                           <option value=""></option>
+                           <option value="Original">Original</option>
+                           <option value="Pirata">Pirata</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 -->
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Região</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.regiao" ng-options="valor as valor for valor in ItemListarCtrl.regioes track by valor">
+                           <option value=""></option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Total por Página</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.registrosPorPagina" >
+                           <option label="5" value="5" selected="selected">5</option>
+                           <option label="10" value="10" >10</option>
+                           <option label="30" value="30">30</option>
+                           <option label="50" value="50">50</option>
+						   <option value="9999">Todos</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 --> 
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Ordem</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.ordem" >
+                           <option value="id" selected="selected">Identificador</option>
+                           <option value="data_cadastro">Data de Cadastro</option>
+                           <option value="titulo">Titulo</option>
+                           <option value="descricao">Descrição</option>
+                           <option value="procedencia">Procedencia</option>
+                           <option value="regiao">Região</option>
+                           <option value="valor_pago">Valor Pago</option>
+                           <option value="valor_atual">Valor Atual</option>
+                           <option value="plataforma">Plataforma</option>
+                           <option value="tipo">Tipo</option>
+                           <option value="codigo">Código</option>
+                           <option value="genero">Genero</option>
+                           <option value="produtora">Produtora</option>
+                           <option value="publicadora">Publicadora</option>
+                           <option value="complemento">Complemento</option>
+                           <option value="avaliacao">Avaliacao</option>
+                           <option value="local_primeiro">Local Primeiro</option>
+                           <option value="local_segundo">Local Secundário</option>
+                           <option value="local_terceiro">Local Terciário</option>
+                           <option value="flag_cartucho_disco">Cartucho ou Fita</option>
+                           <option value="flag_replica">Réplica</option>
+                           <option value="flag_protetor">Protetor</option>
+                           <option value="flag_cd_dvd">Cd ou Dvd</option>
+                           <option value="flag_caixa">Caixa</option>
+                           <option value="flag_manual">Manual</option>
+                           <option value="flag_berco">Berço</option>
+                           <option value="flag_panfleto">Panfleto</option>
+                           <option value="flag_poster">Poster</option>
+                           <option value="flag_nota_fiscal">Nota Fiscal</option>
+                           <option value="flag_lacrado">Lacrado</option>
+                           <option value="flag_luva">Luva</option>
+                           <option value="status">Status</option>
+                           <option value="tempo">Tempo</option>
+                           <option value="num_jogadas">Número de Jogadas</option>
+                           <option value="progressao">Progressão</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Produtora</label>
+                        <input ng-model="ItemListarCtrl.item.produtora" type="text" class="form-control">                                     
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Publicadora</label>
+                        <input ng-model="ItemListarCtrl.item.publicadora" type="text" class="form-control">                                        
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Status</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.status">
+                           <option value=""></option>
+                           <option value="C">Completo</option>
+                           <option value="P">Pendente</option>
+						   <option value="W">Pausado</option>
+                           <option value="E">Em Progressão</option>
+						   <option value="A">Abandonado</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-4">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Possui o item?</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.possui">
+                           <option value="" selected></option>
+                           <option value="1">Sim</option>
+                           <option value="0">Não</option>       
+                        </select>
+                     </div>
+                  </div>                  
+                  <div class="col-lg-4">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Situação Atual</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.situacao" ng-options="valor as valor for valor in ItemListarCtrl.situacoes track by valor">
+                           <option value=""></option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-10">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Titulo, Descrição, Informações Gerais</label>
+                        <input ng-model="ItemListarCtrl.item.titulo" type="text" class="form-control">                    
+                     </div>
+                  </div>
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Exibição</label>
+                        <select class="form-control" ng-model="ItemListarCtrl.item.exibicao">
+                           <option value="S" selected="selected" >Simples</option>
+                           <option value="C">Completa</option>
+                        </select>
+                     </div>
+                  </div>                     
+               </div>
+               <div class="row hidden-xs" style="margin-top:10px">
+                  <div class="col-lg-12">
+                     <button type="submit" class="btn btn-primary btn-closed" ng-click="ItemListarCtrl.pesquisar()">Pesquisar</button>
+                     <button type="reset" class="btn btn-danger btn-closed" ng-click="ItemListarCtrl.limparCampos()">Limpar Campos</button>
+                  </div>
+               </div>
+               <div class="row visible-xs" style="margin-top:10px" id="topo">
+                  <div class="col-lg-12">
+                     <button type="submit" class="btn btn-primary col-xs-12 btn-closed" ng-click="ItemListarCtrl.pesquisar()">Pesquisar</button>
+                     <button type="reset" class="btn btn-danger col-xs-12 btn-closed" style="margin-top:10px" ng-click="ItemListarCtrl.limparCampos()">Limpar Campos</button>
+                  </div>
+               </div>               
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <!-- TABLE STRIPED -->
+               <div class="panel">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Geleria</h3>
+                  </div>
+                  <div class="panel-body">
+                     <div id="div-table" style="overflow-x: auto;">
+                        <table class="table table-striped">
+                           <thead>
+                              <tr>
+                                 <!-- inicio exibicao Simplificado -->
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Imagem</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Identificador</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Data de Cadastro</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" >Título</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Procedencia</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Plataforma</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">Gênero</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Tipo</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">Qtd</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">&nbsp;</th>
+                                 <!-- final exibicao Simplificado -->
+
+                                 <!-- inicio exibicao Completo-->
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Imagem</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Identificador</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Data de Cadastro</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Título</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Tipo</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Descrição</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Procedencia</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Região</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Quantidade</th>								 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor pago</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Valor atual</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Plataforma</th>                                 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Código</th> 
+                                 <!--th ng-if="ItemListarCtrl.item.exibicao == 'C'">Complemento</th--> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Avaliação</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-primário</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-secundário</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Local-terciário</th>                                 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Cartucho/Fita</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Replica</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Protetor</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">CD/DVD</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Caixa</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Manual</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Berço</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Panfleto</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Pôster</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Nota-fiscal</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Lacrado</th> 
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Luva</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Status</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Progressão</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Situação</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Possui</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Gênero</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Produtora</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Publicadora</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Tempo</th>
+                                 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Jogadas</th>                                 
+                                 <!-- final exibicao Completo -->
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="objeto in ItemListarCtrl.itens">
+                                 <!-- inicio exibicao Simplificado -->
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">
+                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+                                       <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;width: 100px;" class="img-thumbnail">
+                                    </a> 
+                                 </td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.id | lpad : 5 }}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.data_cadastro}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" >{{objeto.titulo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.procedencia}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.plataforma}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs hidden-sm">{{objeto.genero}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.tipo}}</td>
+								 <td ng-if="ItemListarCtrl.item.exibicao == 'S'" class="hidden-xs">{{objeto.quantidade}}</td>
+                                 <!-- final exibicao Simplificado -->
+
+                                 <!-- inicio exibicao Completo-->
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">
+                                    <a href="{{objeto.imagem || './assets/img/default.jpg'}}" data-lightbox="roadtrip">
+                                       <img src="{{objeto.imagem || './assets/img/default.jpg'}}" alt="{{objeto.titulo}}" style="cursor:pointer;" class="img-thumbnail">
+                                    </a> 
+                                 </td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.id | lpad : 5 }}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.data_cadastro}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.titulo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.tipo}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checkLength(100,objeto.descricao)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.procedencia}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.regiao}}</td> 
+								 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.quantidade}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_pago}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.valor_atual}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.plataforma}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.codigo)}}</td> 
+                                 <!--td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.complemento}}</td--> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.avaliacao | lpad : 5 }}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_primeiro)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_segundo)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.local_terceiro)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_cartucho_disco)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_replica)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_protetor)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_cd_dvd)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_caixa)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_manual)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_berco)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_panfleto)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_poster)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_nota_fiscal)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_lacrado)}}</td> 
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_luva)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checarStatus(objeto.status)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.progressao}}%</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.situacao)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{(objeto.possui == '1')?"Sim":"Não"}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.genero}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.produtora)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.publicadora)}}</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.tempo}}Hs.</td>
+                                 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.num_jogadas | lpad : 5 }}</td>                                    
+                                 <!-- final exibicao Completo -->
+                                 
+                                 
+                                 
+                                 <td>
+                                    <div class="btn-group hidden-xs" style="width:190px">
+                                       <a class="btn btn-primary" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
+                                       <a class="btn btn-warning" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
+                                       <a class="btn btn-danger" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
+                                    </div>
+                                    <div class="btn-group visible-xs">
+                                       <a class="btn btn-primary" style="border-top-right-radius:3px;border-bottom-right-radius:3px;width:66px;" ng-click="ItemListarCtrl.visualizar(objeto)" ><i class="fa fa-lg fa-eye"></i></a>
+                                       <a class="btn btn-warning" style="border-radius:3px;width:66px;" ng-click="ItemListarCtrl.atualizar(objeto)" ><i class="fa fa-lg fa-edit"></i></a>
+                                       <a class="btn btn-danger" style="border-top-left-radius:3px; border-bottom-left-radius:3px;width:66px;" ng-click="ItemListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
+                                    </div>
+                                 </td>
+                              </tr>                           
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="row hidden-xs" style="margin-top:10px">
+                        <div class="col-lg-12">
+                           <button type="reset" class="btn btn-danger btn-closed" ng-click="ItemListarCtrl.topoPagina()">Topo da página</button>
+                        </div>
+                     </div>
+                     <div class="row visible-xs" style="margin-top:10px">
+                        <div class="col-lg-12">
+                           <button type="reset" class="btn btn-danger col-xs-12 btn-closed" style="margin-top:10px" ng-click="ItemListarCtrl.topoPagina()">Topo da página</button>
+                        </div>
+                     </div>                      
+                  </div>
+               </div>
+               <!-- END TABLE STRIPED -->
+            </div>
+         </div>
+         <div class="row hidden-xs">
+            <div class="col-sm-5" style="margin-top: 25px; ">
+               <div class="dataTables_info">Página <b>{{ItemListarCtrl.currentPage}}</b> de <b>{{numPages}}</b> de um total de <b>{{ItemListarCtrl.totalItems}}</b> registros.</div>
+            </div>
+            <div class="col-sm-7">
+               <div class="dataTables_paginate paging_simple_numbers">
+               <ul uib-pagination 
+                 total-items="ItemListarCtrl.totalItems" 
+                 ng-model="ItemListarCtrl.currentPage"
+                 items-per-page="ItemListarCtrl.item.registrosPorPagina" 
+                 max-size="ItemListarCtrl.maxSize" 
+                 class="dataTables_paginate paging_simple_numbers " 
+                 boundary-links="true"                 
+                 ng-change="ItemListarCtrl.pageChanged()"
+                 rotate="true"
+                 boundary-link-numbers="false"
+                 force-ellipses="true" 
+                 num-pages="numPages"
+                 previous-text="Próximo" next-text="Anterior" first-text="Primeira" last-text="Útima"
+                 >
+               </ul>            
+               </div>
+            </div>
+         </div>
+         <div class="row visible-xs">
+            <div class="col-sm-5" style="text-align:center;">
+               <div class="dataTables_info">Página <b>{{ItemListarCtrl.currentPage}}</b> de <b>{{numPages}}</b> de um total de <b>{{ItemListarCtrl.totalItems}}</b> registros.</div>
+            </div>
+            <div class="col-sm-7" style="text-align:center;">
+               <div class="dataTables_paginate paging_simple_numbers">            
+               <ul uib-pagination 
+               direction-links="false"
+               class=" dataTables_paginate paging_simple_numbers" 
+               total-items="ItemListarCtrl.totalItems" 
+               ng-model="ItemListarCtrl.currentPage"               
+               ng-change="ItemListarCtrl.pageChanged()"
+               force-ellipses="true" 
+               max-size="ItemListarCtrl.maxSize"
+               rotate="true" 
+               items-per-page="ItemListarCtrl.item.registrosPorPagina" 
+               num-pages="smallnumPages">
+               </ul>
+               </div>
+            </div>
+         </div>                
+      </div>
+   </div>
+   <!-- END MAIN CONTENT -->
+</div>
+<script> 
+$(document).ready(function(){
+var isOrder = true;
+var isPlataformaOrder = true;
+var isTipoOrder = true;
+var isGeneroOrder = true;
+var isComplementoOrder = true;
+
+	isOrder = slideUpAndDown('order-ico','panel-body',isOrder);
+	isPlataformaOrder = slideUpAndDown('order-ico-plataforma','div-plataforma',isPlataformaOrder);
+	isTipoOrder = slideUpAndDown('order-ico-tipo','div-tipo',isTipoOrder);
+	isGeneroOrder = slideUpAndDown('order-ico-genero','div-genero',isGeneroOrder);
+	isComplementoOrder = slideUpAndDown('order-ico-complemento','div-complemento',isComplementoOrder);
+
+	// TODO criar um metodo que seja generico para todos elementos por class
+    $(".btn-closed").click(function(){
+      $(".order-ico").removeClass("lnr-chevron-down");      
+      $(".order-ico").addClass("lnr-chevron-up");
+	  $(".slide-up-class").slideUp("slow");
+      isOrder = true;
+	  isPlataformaOrder = true;
+	  isTipoOrder = true;
+      isGeneroOrder = true;
+	  isComplementoOrder = true;
+    });
+});
+   
+function slideUpAndDown(trigger, element, order ){
+    $('#'+trigger).click(function(){
+      if(order === true){
+         $('#'+trigger).removeClass("lnr-chevron-up");
+         $('#'+trigger).addClass("lnr-chevron-down");
+         $('#'+element).slideDown("slow");
+      }else if(order === false){
+         $('#'+trigger).addClass("lnr-chevron-up");
+         $('#'+trigger).removeClass("lnr-chevron-down");      
+         $('#'+element).slideUp("slow");
+      }
+      order = !order;
+    });
+	return order;
+}   
+</script>

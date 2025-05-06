@@ -1,0 +1,1 @@
+var app = angular.module('colecionavel.module.home', ['colecionavel.module']);

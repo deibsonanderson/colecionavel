@@ -1,0 +1,408 @@
+<div class="main">
+   <!-- MAIN CONTENT -->
+   <div class="main-content">
+      <div class="container-fluid">
+         <h3 class="page-title">Listagem dos Itens Cadastrados</h3>
+         <div class="panel" id="filtro">
+            <div class="panel-heading">
+               <h3 class="panel-title">Filtros&nbsp;&nbsp;<span id="order-ico" class="lnr lnr-chevron-up" style="cursor:pointer;"></span></h3>
+            </div>
+            <div id="panel-body" class="panel-body" style="display:none;">
+               <div class="row">
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Procedencia</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.procedencia">
+                           <option value=""></option>
+                           <option value="Original">Original</option>
+                           <option value="Pirata">Pirata</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 -->
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Região</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.regiao">
+                           <option value=""></option>
+                           <option value="BRA">BRA</option>
+                           <option value="JAP">JAP</option>
+                           <option value="USA">USA</option>
+                           <option value="PAL">PAL</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 -->
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Plataforma</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.plataforma">
+                           <option value="" class="" selected="selected"></option>
+                           <option label="3DO" value="3DO">3DO</option>
+                           <option label="Action Max" value="Action Max">Action Max</option>
+                           <option label="Alienware Alpha" value="Alienware Alpha">Alienware Alpha</option>
+                           <option label="Amiga CD32" value="Amiga CD32">Amiga CD32</option>
+                           <option label="Amstrad GX4000" value="Amstrad GX4000">Amstrad GX4000</option>
+                           <option label="APF Imagination Machine" value="APF Imagination Machine">APF Imagination Machine</option>
+                           <option label="Apple Pippin" value="Apple Pippin">Apple Pippin</option>
+                           <option label="Arcadia 2001" value="Arcadia 2001">Arcadia 2001</option>
+                           <option label="Atari 2600" value="Atari 2600">Atari 2600</option>
+                           <option label="Atari 2800" value="Atari 2800">Atari 2800</option>
+                           <option label="Atari 5200" value="Atari 5200">Atari 5200</option>
+                           <option label="Atari 7800" value="Atari 7800">Atari 7800</option>
+                           <option label="Atari Flashback" value="Atari Flashback">Atari Flashback</option>
+                           <option label="Atari Jaguar" value="Atari Jaguar">Atari Jaguar</option>
+                           <option label="Atari Jaguar CD" value="Atari Jaguar CD">Atari Jaguar CD</option>
+                           <option label="Atari Lynx" value="Atari Lynx">Atari Lynx</option>
+                           <option label="Bally Astrocade" value="Bally Astrocade">Bally Astrocade</option>
+                           <option label="Casio Loopy" value="Casio Loopy">Casio Loopy</option>
+                           <option label="Casio PV-1000" value="Casio PV-1000">Casio PV-1000</option>
+                           <option label="CD-i" value="CD-i">CD-i</option>
+                           <option label="Coleco Gemini" value="Coleco Gemini">Coleco Gemini</option>
+                           <option label="Coleco Telstar" value="Coleco Telstar">Coleco Telstar</option>
+                           <option label="ColecoVision" value="ColecoVision">ColecoVision</option>
+                           <option label="Color TV Game" value="Color TV Game">Color TV Game</option>
+                           <option label="Commodore 64GS" value="Commodore 64GS">Commodore 64GS</option>
+                           <option label="Commodore CDTV" value="Commodore CDTV">Commodore CDTV</option>
+                           <option label="Commodore MAX Machine" value="Commodore MAX Machine">Commodore MAX Machine</option>
+                           <option label="Dingoo" value="Dingoo">Dingoo</option>
+                           <option label="Dreamcast" value="Dreamcast">Dreamcast</option>
+                           <option label="Dynavision" value="Dynavision">Dynavision</option>
+                           <option label="Entex Adventure Vision" value="Entex Adventure Vision">Entex Adventure Vision</option>
+                           <option label="Epoch Cassette Vision" value="Epoch Cassette Vision">Epoch Cassette Vision</option>
+                           <option label="EVO Smart Console" value="EVO Smart Console">EVO Smart Console</option>
+                           <option label="Fairchild Channel F" value="Fairchild Channel F">Fairchild Channel F</option>
+                           <option label="FC Twin" value="FC Twin">FC Twin</option>
+                           <option label="FM Towns Marty" value="FM Towns Marty">FM Towns Marty</option>
+                           <option label="Game &amp; Watch" value="Game &amp; Watch">Game &amp; Watch</option>
+                           <option label="Game Boy" value="Game Boy">Game Boy</option>
+                           <option label="Game Boy Advance" value="Game Boy Advance">Game Boy Advance</option>
+                           <option label="Game Boy Advance SP" value="Game Boy Advance SP">Game Boy Advance SP</option>
+                           <option label="Game Boy Color" value="Game Boy Color">Game Boy Color</option>
+                           <option label="Game Boy Micro" value="Game Boy Micro">Game Boy Micro</option>
+                           <option label="Game Gear" value="Game Gear">Game Gear</option>
+                           <option label="Game Wave" value="Game Wave">Game Wave</option>
+                           <option label="Game.com" value="Game.com">Game.com</option>
+                           <option label="GameKing" value="GameKing">GameKing</option>
+                           <option label="Gizmondo" value="Gizmondo">Gizmondo</option>
+                           <option label="GP2X" value="GP2X">GP2X</option>
+                           <option label="GP2X Wiz" value="GP2X Wiz">GP2X Wiz</option>
+                           <option label="GP32" value="GP32">GP32</option>
+                           <option label="HyperScan" value="HyperScan">HyperScan</option>
+                           <option label="Intellivision" value="Intellivision">Intellivision</option>
+                           <option label="Interton VC 4000" value="Interton VC 4000">Interton VC 4000</option>
+                           <option label="iQue Player" value="iQue Player">iQue Player</option>
+                           <option label="L600" value="L600">L600</option>
+                           <option label="Magnavox Odyssey" value="Magnavox Odyssey">Magnavox Odyssey</option>
+                           <option label="Magnavox OdysseyÂ²" value="Magnavox OdysseyÂ²">Magnavox OdysseyÂ²</option>
+                           <option label="Master System" value="Master System">Master System</option>
+                           <option label="Mega Drive/Genesis" value="Mega Drive/Genesis">Mega Drive/Genesis</option>
+                           <option label="Mega Duck" value="Mega Duck">Mega Duck</option>
+                           <option label="Mi2" value="Mi2">Mi2</option>
+                           <option label="Microvision" value="Microvision">Microvision</option>
+                           <option label="Mobile iOS" value="Mobile iOS">Mobile iOS</option>
+                           <option label="Mobile Android" value="Mobile Android">Mobile Android</option>
+                           <option label="MSX" value="MSX">MSX</option>
+                           <option label="Neo Geo Pocket" value="Neo Geo Pocket">Neo Geo Pocket</option>
+                           <option label="Neo Geo Pocket Color" value="Neo Geo Pocket Color">Neo Geo Pocket Color</option>
+                           <option label="Neo Geo X" value="Neo Geo X">Neo Geo X</option>
+                           <option label="Neo-Geo" value="Neo-Geo">Neo-Geo</option>
+                           <option label="Neo-Geo CD" value="Neo-Geo CD">Neo-Geo CD</option>
+                           <option label="NES/Famicom" value="NES/Famicom">NES/Famicom</option>
+                           <option label="New Nintendo 3DS" value="New Nintendo 3DS">New Nintendo 3DS</option>
+                           <option label="New Nintendo 3DS XL" value="New Nintendo 3DS XL">New Nintendo 3DS XL</option>
+                           <option label="N-Gage" value="N-Gage">N-Gage</option>
+                           <option label="N-Gage 2.0" value="N-Gage 2.0">N-Gage 2.0</option>
+                           <option label="N-Gage QD" value="N-Gage QD">N-Gage QD</option>
+                           <option label="Nintendo 2DS" value="Nintendo 2DS">Nintendo 2DS</option>
+                           <option label="Nintendo 3DS" value="Nintendo 3DS">Nintendo 3DS</option>
+                           <option label="Nintendo 3DS XL" value="Nintendo 3DS XL">Nintendo 3DS XL</option>
+                           <option label="Nintendo 64" value="Nintendo 64">Nintendo 64</option>
+                           <option label="Nintendo 64DD" value="Nintendo 64DD">Nintendo 64DD</option>
+                           <option label="Nintendo DS" value="Nintendo DS">Nintendo DS</option>
+                           <option label="Nintendo DS Lite" value="Nintendo DS Lite">Nintendo DS Lite</option>
+                           <option label="Nintendo DSi" value="Nintendo DSi">Nintendo DSi</option>
+                           <option label="Nintendo DSi XL" value="Nintendo DSi XL">Nintendo DSi XL</option>
+                           <option label="Nintendo GameCube" value="Nintendo GameCube">Nintendo GameCube</option>
+                           <option label="Nintendo Wii U" value="Nintendo Wii U">Nintendo Wii U</option>
+                           <option label="Nvidia Shield" value="Nvidia Shield">Nvidia Shield</option>
+                           <option label="OBox" value="OBox">OBox</option>
+                           <option label="OnLive" value="OnLive">OnLive</option>
+                           <option label="Ouya" value="Ouya">Ouya</option>
+                           <option label="Panasonic Q" value="Panasonic Q">Panasonic Q</option>
+                           <option label="Pandora" value="Pandora">Pandora</option>
+                           <option label="PC-FX" value="PC-FX">PC-FX</option>
+                           <option label="PC Windows" value="PC Windows">PC Windows</option>
+                           <option label="PC Android" value="PC Android">PC Android</option>
+                           <option label="Phantom System" value="Phantom System">Phantom System</option>
+                           <option label="Pioneer LaserActive" value="Pioneer LaserActive">Pioneer LaserActive</option>
+                           <option label="Piston" value="Piston">Piston</option>
+                           <option label="PlayCable" value="PlayCable">PlayCable</option>
+                           <option label="Playdia" value="Playdia">Playdia</option>
+                           <option label="PlayStation" value="PlayStation">PlayStation</option>
+                           <option label="PlayStation 2" value="PlayStation 2">PlayStation 2</option>
+                           <option label="PlayStation 3" value="PlayStation 3">PlayStation 3</option>
+                           <option label="PlayStation 4" value="PlayStation 4">PlayStation 4</option>
+                           <option label="PlayStation Vita" value="PlayStation Vita">PlayStation Vita</option>
+                           <option label="PlayStation Vita TV" value="PlayStation Vita TV">PlayStation Vita TV</option>
+                           <option label="PocketStation" value="PocketStation">PocketStation</option>
+                           <option label="Pokémon mini" value="Pokémon mini">Pokémon mini</option>
+                           <option label="Pong" value="Pong">Pong</option>
+                           <option label="PSP 1000" value="PSP 1000">PSP 1000</option>
+                           <option label="PSP 2000" value="PSP 2000">PSP 2000</option>
+                           <option label="PSP 3000" value="PSP 3000">PSP 3000</option>
+                           <option label="PSP Go" value="PSP Go">PSP Go</option>
+                           <option label="PSX" value="PSX">PSX</option>
+                           <option label="RCA Studio II" value="RCA Studio II">RCA Studio II</option>
+                           <option label="R-Zone" value="R-Zone">R-Zone</option>
+                           <option label="Satellaview" value="Satellaview">Satellaview</option>
+                           <option label="Sega 32X" value="Sega 32X">Sega 32X</option>
+                           <option label="Sega CD" value="Sega CD">Sega CD</option>
+                           <option label="Sega Saturn" value="Sega Saturn">Sega Saturn</option>
+                           <option label="Sega SG-1000" value="Sega SG-1000">Sega SG-1000</option>
+                           <option label="Snail Mobile W3D" value="Snail Mobile W3D">Snail Mobile W3D</option>
+                           <option label="Steam Machine" value="Steam Machine">Steam Machine</option>
+                           <option label="Super A-Can" value="Super A-Can">Super A-Can</option>
+                           <option label="Super Game Boy" value="Super Game Boy">Super Game Boy</option>
+                           <option label="Super Nintendo/Super Famicom" value="Super Nintendo/Super Famicom">Super Nintendo/Super Famicom</option>
+                           <option label="Supergame VG 3000" value="Supergame VG 3000">Supergame VG 3000</option>
+                           <option label="SuperGrafx" value="SuperGrafx">SuperGrafx</option>
+                           <option label="Supervision" value="Supervision">Supervision</option>
+                           <option label="SwanCrystal" value="SwanCrystal">SwanCrystal</option>
+                           <option label="Tapwave Zodiac" value="Tapwave Zodiac">Tapwave Zodiac</option>
+                           <option label="Telejogo I e II" value="Telejogo I e II">Telejogo I e II</option>
+                           <option label="The Phantom" value="The Phantom">The Phantom</option>
+                           <option label="Top Game" value="Top Game">Top Game</option>
+                           <option label="TurboDuo" value="TurboDuo">TurboDuo</option>
+                           <option label="TurboExpress" value="TurboExpress">TurboExpress</option>
+                           <option label="TurboGrafx-16" value="TurboGrafx-16">TurboGrafx-16</option>
+                           <option label="V.Smile" value="V.Smile">V.Smile</option>
+                           <option label="Vectrex" value="Vectrex">Vectrex</option>
+                           <option label="Virtual Boy" value="Virtual Boy">Virtual Boy</option>
+                           <option label="VTech CreatiVision" value="VTech CreatiVision">VTech CreatiVision</option>
+                           <option label="Wii" value="Wii">Wii</option>
+                           <option label="WonderSwan" value="WonderSwan">WonderSwan</option>
+                           <option label="WonderSwan Color" value="WonderSwan Color">WonderSwan Color</option>
+                           <option label="XaviXPort" value="XaviXPort">XaviXPort</option>
+                           <option label="Xbox" value="Xbox">Xbox</option>
+                           <option label="Xbox 360" value="Xbox 360">Xbox 360</option>
+                           <option label="Xbox One" value="Xbox One">Xbox One</option>
+                           <option label="Zeebo" value="Zeebo">Zeebo</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 -->
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Tipo</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.tipo">
+                           <option value="" class="" selected="selected"></option>
+                           <option label="Action Figures" value="Action Figures">Action Figures</option>
+                           <option label="Adaptador" value="Adaptador">Adaptador</option>
+                           <option label="Amiibo" value="Amiibo">Amiibo</option>
+                           <option label="Arcade" value="Arcade">Arcade</option>
+                           <option label="Cabos" value="Cabos">Cabos</option>
+                           <option label="Cartões de memória" value="Cartões de memória">Cartões de memória</option>
+                           <option label="Console" value="Console">Console</option>
+                           <option label="Controle" value="Controle">Controle</option>
+                           <option label="Fonte" value="Fonte">Fonte</option>
+                           <option label="Jogo Digital" value="Jogo Digital">Jogo Digital</option>
+                           <option label="Jogo Físico" value="Jogo Físico">Jogo Físico</option>
+                           <option label="Outros Acessórios" value="Outros Acessórios">Outros Acessórios</option>
+                           <option label="Panfletos" value="Panfletos">Panfletos</option>
+                           <option label="Pôster" value="Pôster">Pôster</option>
+                           <option label="Portátil" value="Portátil">Portátil</option>
+                           <option label="Revista" value="Revista">Revista</option>
+                           <option label="Rumble pack" value="Rumble pack">Rumble pack</option>
+                           <option label="Televisor" value="Televisor">Televisor</option>
+                           <option label="Pistola" value="Pistola">Pistola</option>
+                           <option label="Tapete" value="Tapete">Tapete</option>
+                           <option label="Instrumento Musical" value="Instrumento Musical">Instrumento Musical</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-2">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Total por Página</label>
+                        <select class="form-control" ng-model="UserListarCtrl.registrosPorPagina" >
+                           <option label="5" value="5" selected="selected">5</option>
+                           <option label="10" value="10" >10</option>
+                           <option label="30" value="30">30</option>
+                           <option label="50" value="50">50</option>
+                        </select>
+                     </div>
+                  </div>
+                  <!-- /.col-lg-3 --> 
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Ordem</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.ordem" >
+                           <option value="" class="" selected="selected"></option>
+                           <option value="id">Identificador</option>
+                           <option value="data_cadastro">Data de Cadastro</option>
+                           <option value="titulo">Titulo</option>
+                           <option value="descricao">Descrição</option>
+                           <option value="procedencia">Procedencia</option>
+                           <option value="regiao">Região</option>
+                           <option value="valor_pago">Valor Pago</option>
+                           <option value="valor_atual">Valor Atual</option>
+                           <option value="plataforma">Plataforma</option>
+                           <option value="tipo">Tipo</option>
+                           <option value="codigo">Código</option>
+                           <option value="genero">Genero</option>
+                           <option value="produtora">Produtora</option>
+                           <option value="publicadora">Publicadora</option>
+                           <option value="complemento">Complemento</option>
+                           <option value="avaliacao">Avaliacao</option>
+                           <option value="local_primeiro">Local Primeiro</option>
+                           <option value="local_segundo">local Secundário</option>
+                           <option value="local_terceiro">local Terciário</option>
+                           <option value="flag_cartucho_disco">Cartucho ou Disco</option>
+                           <option value="flag_replica">Réplica</option>
+                           <option value="flag_protetor">Protetor</option>
+                           <option value="flag_cd_dvd">Cd ou Dvd</option>
+                           <option value="flag_caixa">Caixa</option>
+                           <option value="flag_manual">Manual</option>
+                           <option value="flag_berco">Berço</option>
+                           <option value="flag_panfleto">Panfleto</option>
+                           <option value="flag_poster">Poster</option>
+                           <option value="flag_nota_fiscal">Nota Fiscal</option>
+                           <option value="flag_lacrado">Lacrado</option>
+                           <option value="flag_luva">Luva</option>
+                           <option value="status">Status</option>
+                           <option value="tempo">Tempo</option>
+                           <option value="num_jogadas">Número de Jogadas</option>
+                           <option value="progressao">Progressão</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Produtora</label>
+                        <input ng-model="UserListarCtrl.user.produtora" type="text" class="form-control">                                     
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Publicadora</label>
+                        <input ng-model="UserListarCtrl.user.publicadora" type="text" class="form-control">                                        
+                     </div>
+                  </div>
+                  <div class="col-lg-3">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Status</label>
+                        <select class="form-control" ng-model="UserListarCtrl.user.status">
+                           <option value=""></option>
+                           <option value="C">Completo</option>
+                           <option value="P">Pendente</option>
+						   <option value="W">Pausado</option>
+                           <option value="E">Em Progressão</option>
+						   <option value="A">Abandonado</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-12">
+                     <div class="form-group">
+                        <label style="font-weight:lighter">Titulo</label>
+                        <input ng-model="UserListarCtrl.user.titulo" type="text" class="form-control   ">                    
+                     </div>
+                  </div>
+               </div>
+               <div class="row" style="margin-top:10px">
+                  <div class="col-lg-12">
+                     <button type="submit" class="btn btn-primary" ng-click="UserListarCtrl.pesquisar()">Pesquisar</button>
+                     <button type="reset" class="btn btn-danger" ng-click="UserListarCtrl.limparCampos()">Limpar Campos</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <!-- TABLE STRIPED -->
+               <div class="panel">
+                  <div class="panel-heading">
+                     <h3 class="panel-title">Geleria</h3>
+                  </div>
+                  <div class="panel-body">
+                     <table class="table table-striped">
+                        <thead>
+                           <tr>
+                              <th>Identificador</th>
+                              <th class="hidden-xs">Data de Cadastro</th>
+                              <th class="hidden-xs">Título</th>
+                              <th class="hidden-xs hidden-sm">Procedencia</th>
+                              <th class="hidden-xs hidden-sm">Plataforma</th>
+                              <th class="hidden-xs hidden-sm">Gênero</th>
+                              <th class="hidden-xs">Tipo</th>
+                              <th class="hidden-xs">&nbsp;</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr ng-repeat="objeto in UserListarCtrl.itens">
+                              <td>{{objeto.id}}</td>
+                              <td class="hidden-xs">{{objeto.data_cadastro}}</td>
+                              <td>{{objeto.titulo}}</td>
+                              <td class="hidden-xs hidden-sm">{{objeto.procedencia}}</td>
+                              <td class="hidden-xs hidden-sm">{{objeto.plataforma}}</td>
+                              <td class="hidden-xs hidden-sm">{{objeto.genero}}</td>
+                              <td class="hidden-xs">{{objeto.tipo}}</td>
+                              <td>
+                                 <div class="btn-group">
+                                    <a class="btn btn-primary" ng-click="UserListarCtrl.visualizar(objeto)"><i class="fa fa-lg fa-eye"></i></a>
+                                    <a class="btn btn-warning" ng-click="UserListarCtrl.atualizar(objeto)"><i class="fa fa-lg fa-edit"></i></a>
+                                    <a class="btn btn-danger" ng-click="UserListarCtrl.modalExcluir(objeto)"><i class="fa fa-lg fa-trash"></i></a>
+                                 </div>
+                              </td>
+                           </tr>                           
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <!-- END TABLE STRIPED -->
+            </div>
+         </div>
+      <div class="row">
+         <div class="col-sm-5">
+            <div class="dataTables_info">Página <b>{{UserListarCtrl.currentPage}}</b> de <b>{{numPages}}</b> de um total de <b>{{UserListarCtrl.totalUsers}}</b> registros.</div>
+         </div>
+         <div class="col-sm-7">
+            <div class="dataTables_paginate paging_simple_numbers">
+            <ul uib-pagination 
+              total-users="UserListarCtrl.totalUsers" 
+              ng-model="UserListarCtrl.currentPage"
+              users-per-page="UserListarCtrl.registrosPorPagina" 
+              max-size="UserListarCtrl.maxSize" 
+              class="dataTables_paginate paging_simple_numbers" 
+              boundary-links="true"
+              ng-change="UserListarCtrl.pageChanged()"
+              rotate="true"
+              force-ellipses="true" 
+              num-pages="numPages"
+              previous-text="Próximo" next-text="Anterior" first-text="Primeira" last-text="Útima"
+              >
+            </ul>
+            </div>
+         </div>
+      </div>         
+      </div>
+   </div>
+   <!-- END MAIN CONTENT -->
+</div>
+<script> 
+   var isOrder = true;
+   $(document).ready(function(){
+       $("#order-ico").click(function(){
+           if(isOrder === true){
+               $("#order-ico").removeClass("lnr-chevron-up");
+               $("#order-ico").addClass("lnr-chevron-down");
+               $("#panel-body").slideDown("slow");
+           }else if(isOrder === false){
+               $("#order-ico").addClass("lnr-chevron-up");
+               $("#order-ico").removeClass("lnr-chevron-down");        
+               $("#panel-body").slideUp("slow");
+           }
+           isOrder = !isOrder;
+       });
+       
+   });
+</script>
