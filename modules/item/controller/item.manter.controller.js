@@ -276,6 +276,7 @@
                 vm.item.flag_nota_fiscal = undefined; 
                 vm.item.flag_lacrado = undefined; 
                 vm.item.flag_luva = undefined;
+				vm.flag_retrocompativel = undefined;
             }else{
                 vm.isDigital = false;
             }
@@ -299,6 +300,7 @@
                 vm.item.flag_nota_fiscal = undefined; 
                 vm.item.flag_lacrado = undefined; 
                 vm.item.flag_luva = undefined;
+				vm.flag_retrocompativel = undefined;
                 vm.item.situacao = undefined;
                 vm.item.procedencia = undefined;
                 vm.item.valor_pago = undefined;

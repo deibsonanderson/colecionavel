@@ -44,6 +44,7 @@
 						['Protetores/Cases',['flag_protetor', '']],
 						['Poster',['flag_poster', '']],
 						['Luva',['flag_luva', '']],
+						['Retrocompativel',['flag_retrocompativel', '']],
 						['Lacrado',['flag_lacrado', '']],
 						['Replica/ActionFigure',['flag_replica', '']]];	
 		

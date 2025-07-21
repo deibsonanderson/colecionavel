@@ -131,6 +131,7 @@
                            <option value="flag_nota_fiscal">Nota Fiscal</option>
                            <option value="flag_lacrado">Lacrado</option>
                            <option value="flag_luva">Luva</option>
+						   <option value="flag_retrocompativel">Retrocompativel</option>
                            <option value="status">Status</option>
                            <option value="tempo">Tempo</option>
                            <option value="num_jogadas">Número de Jogadas</option>
@@ -269,6 +270,7 @@
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Nota-fiscal</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Lacrado</th> 
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Luva</th>
+								 <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Retrocompativel</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Status</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Progressão</th>
                                  <th ng-if="ItemListarCtrl.item.exibicao == 'C'">Situação</th>
@@ -334,6 +336,7 @@
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_nota_fiscal)}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_lacrado)}}</td> 
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_luva)}}</td>
+								 <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.traducaoFlag(objeto.flag_retrocompativel)}}</td>
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.checarStatus(objeto.status)}}</td>
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{objeto.progressao}}%</td>
                                  <td ng-if="ItemListarCtrl.item.exibicao == 'C'">{{ItemListarCtrl.campoVazio(objeto.situacao)}}</td>

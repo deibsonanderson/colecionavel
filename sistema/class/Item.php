@@ -31,6 +31,7 @@ class Item {
     private $flagNotaFiscal; 
     private $flagLacrado; 
     private $flagLuva;
+	private $flagRetrocompativel;
     private $idUser;
     private $status;
     private $progressao;
@@ -246,8 +247,15 @@ class Item {
     function setFlagLuva($flagLuva) {
         $this->flagLuva = $flagLuva;
     }
-
+	
+	function setFlagRetrocompativel($flagRetrocompativel) {
+        $this->flagRetrocompativel = $flagRetrocompativel;
+    }
         
+	function getFlagRetrocompativel() {
+        return $this->flagRetrocompativel;
+    }		
+		
     public function getId() {
         return $this->id;
     }
@@ -336,8 +344,6 @@ class Item {
     public function setRegiao($regiao) {
         $this->regiao = $regiao;
     }
-
- 
 
     public function setPlataforma($plataforma) {
         $this->plataforma = $plataforma;

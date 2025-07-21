@@ -71,7 +71,7 @@
         }
 
 
-        function Item(id,data_cadastro,titulo,descricao,imagem,procedencia,regiao,valor_pago,valor_atual,plataforma,tipo,codigo,complemento,avaliacao,local_primeiro,local_segundo,local_terceiro,flag_cartucho_disco,flag_replica,flag_protetor,flag_cd_dvd,flag_caixa,flag_manual,flag_berco,flag_panfleto,flag_poster,flag_nota_fiscal,flag_lacrado,flag_luva,id_user,status,progressao,situacao,possui,genero,produtora,publicadora,screenshot1,screenshot2,screenshot3,screenshot4,tempo,num_jogadas,quantidade) {
+        function Item(id,data_cadastro,titulo,descricao,imagem,procedencia,regiao,valor_pago,valor_atual,plataforma,tipo,codigo,complemento,avaliacao,local_primeiro,local_segundo,local_terceiro,flag_cartucho_disco,flag_replica,flag_protetor,flag_cd_dvd,flag_caixa,flag_manual,flag_berco,flag_panfleto,flag_poster,flag_nota_fiscal,flag_lacrado,flag_luva,flag_retrocompativel,id_user,status,progressao,situacao,possui,genero,produtora,publicadora,screenshot1,screenshot2,screenshot3,screenshot4,tempo,num_jogadas,quantidade) {
             this.id = id; 
             this.data_cadastro = data_cadastro; 
             this.titulo = titulo; 
@@ -101,6 +101,7 @@
             this.flag_nota_fiscal = checarFlagFront(flag_nota_fiscal); 
             this.flag_lacrado = checarFlagFront(flag_lacrado); 
             this.flag_luva = checarFlagFront(flag_luva);
+			this.flag_retrocompativel = checarFlagFront(flag_retrocompativel);
             this.id_user    = id_user;   
             this.status = status;
             this.progressao = checarValorNumerico(progressao);
@@ -155,6 +156,7 @@
                 item.flag_nota_fiscal, 
                 item.flag_lacrado, 
                 item.flag_luva,
+				item.flag_retrocompativel,
                 item.id_user,   
                 item.status,
                 item.progressao,
@@ -214,6 +216,7 @@
                 converted.flag_nota_fiscal = item.flag_nota_fiscal;
                 converted.flag_lacrado = item.flag_lacrado;
                 converted.flag_luva = item.flag_luva;
+				converted.flag_retrocompativel = item.flag_retrocompativel;
                 converted.id_user = item.id_user;
                 converted.status = item.status;
                 converted.progressao = item.progressao;

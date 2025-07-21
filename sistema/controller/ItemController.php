@@ -133,6 +133,7 @@ class ItemController {
         $item->setFlagNotaFiscal($data->flag_nota_fiscal);
         $item->setFlagLacrado($data->flag_lacrado);
         $item->setFlagLuva($data->flag_luva);
+		$item->setFlagRetrocompativel($data->flag_retrocompativel);
         $item->setTempo($data->tempo);
         $item->setNumJogadas($data->num_jogadas);
         $item->setStatus($data->status);
@@ -239,6 +240,7 @@ class ItemController {
         $item->setFlagNotaFiscal($data->flag_nota_fiscal);
         $item->setFlagLacrado($data->flag_lacrado);
         $item->setFlagLuva($data->flag_luva);
+		$item->setFlagRetrocompativel($data->flag_retrocompativel);
         $item->setTempo($data->tempo);
         $item->setNumJogadas($data->num_jogadas);
         $item->setStatus($data->status);
@@ -576,6 +578,7 @@ class ItemController {
 			$item->flagInvoice = (boolean) $this->booleanConverter($data->flag_nota_fiscal);
 			$item->flagSealed = (boolean) $this->booleanConverter($data->flag_lacrado);
 			$item->flagGlover = (boolean) $this->booleanConverter($data->flag_luva);
+			$item->flagRetrocompativel = (boolean) $this->booleanConverter($data->flag_retrocompativel);
 			$item->quantidade = (integer) $data->quantidade;
 			$item->timeOfPlays = (integer) $data->tempo;
 			$item->numberOfPlays = (integer) $data->num_jogadas;
