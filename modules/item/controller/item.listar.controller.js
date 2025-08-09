@@ -127,7 +127,7 @@
 			
             var objeto = ItemFactory.getPesquisa();
             if(angular.isUndefined(objeto) && angular.isUndefined(vm.item.ordem)){
-				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  //vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
 				  ItemFactory.setPesquisa(vm.item);
 			} else if (!angular.isUndefined(objeto)) {
               vm.item = objeto;
@@ -150,7 +150,7 @@
               }
 			  
 			  if(angular.isUndefined(vm.item.ordem)){
-				  vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
+				  //vm.item.ordem = ORDEM.lista[Math.floor((Math.random() * 34))];
 				  ItemFactory.setPesquisa(vm.item);
 			  }
 			  
